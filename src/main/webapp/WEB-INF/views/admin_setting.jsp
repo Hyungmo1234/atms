@@ -20,7 +20,7 @@
 		}
 	</style> 
 </head>
-<body>
+<body> 
 <jsp:include page="/WEB-INF/common/header.jsp"></jsp:include>
 	<div style="height:70%;">
 		<div>
