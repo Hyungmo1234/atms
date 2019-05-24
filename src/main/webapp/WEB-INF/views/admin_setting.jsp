@@ -37,7 +37,7 @@
 						<td>性別</td>
 						<td>メール</td>
 						<td></td>
-					</tr> 
+					</tr>
 					<tr>
 						<td></td>
 						<td></td>
