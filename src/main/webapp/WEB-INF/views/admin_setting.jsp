@@ -18,7 +18,7 @@
 		#add{
 			width:85%; margin:0 auto;
 		}
-	</style>
+	</style> 
 </head>
 <body>
 <jsp:include page="/WEB-INF/common/header.jsp"></jsp:include>
