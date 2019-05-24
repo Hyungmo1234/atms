@@ -92,4 +92,10 @@ public class HomeController {
 		return new ModelAndView("join");
 	}
 	
+	
+	@RequestMapping("/admin_setting")
+	public ModelAndView settingpage() {
+		return new ModelAndView("admin_setting");
+	}
+	
 }
