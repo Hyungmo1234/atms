@@ -1,9 +1,6 @@
 package com.attmng.dto;
 
 
-/*
- * table�걫�겏�겓DTO�굮鵝쒏닇�걮�겍�걦�걽�걬�걚��
- */
 public class EmployeeDTO {
 	private String id;
     private String password;

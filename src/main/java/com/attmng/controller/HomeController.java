@@ -81,10 +81,10 @@ public class HomeController {
 	@Inject
 	LoginDAO LoginDAO;
 	
-	//�꺆�궛�궎�꺍�뵽�씊
+	//login
 	@RequestMapping("/login")
 	public ModelAndView loginpage() throws Exception {
-		LoginDAO.getLoginInfo();
+		/* LoginDAO.getLoginInfo(); */
 		return new ModelAndView("login");
 	}
 
