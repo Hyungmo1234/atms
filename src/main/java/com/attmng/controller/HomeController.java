@@ -23,7 +23,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.attmng.dao.LoginDAO;
 
 
-
 @Controller
 public class HomeController {
 	
@@ -99,6 +98,12 @@ public class HomeController {
 	@RequestMapping("/join")
 	public ModelAndView joinpage() {
 		return new ModelAndView("join");
+	}
+	
+	
+	@RequestMapping("/admin_setting")
+	public ModelAndView settingpage() {
+		return new ModelAndView("admin_setting");
 	}
 	
 }

@@ -16,7 +16,7 @@ public class LoginDAOImpl implements LoginDAO {
 
 	@Override
 	public List getLoginInfo() throws Exception {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub　
 		
 		System.out.println(sqlSession.selectList(namespace + ".getLoginInfo"));
 		return null;
