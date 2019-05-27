@@ -1,12 +1,14 @@
 package com.attmng.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import javax.inject.Inject;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.slf4j.Logger;
@@ -17,6 +19,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.attmng.dao.LoginDAO;
 
 
 
@@ -40,6 +44,7 @@ public class HomeController {
 		
 		return "main";
 	}
+	
 	@RequestMapping("/dbTest.do")
     public String dbTest(Model model) {
         Connection conn = null;
@@ -74,9 +79,13 @@ public class HomeController {
         return "main";
     }
 
+	@Inject
+	LoginDAO LoginDAO;
+	
 	//�꺆�궛�궎�꺍�뵽�씊
 	@RequestMapping("/login")
-	public ModelAndView loginpage() {
+	public ModelAndView loginpage() throws Exception {
+		LoginDAO.getLoginInfo();
 		return new ModelAndView("login");
 	}
 
