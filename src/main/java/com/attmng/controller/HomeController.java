@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.attmng.dao.AdminSetDAO;
 import com.attmng.dao.LoginDAO;
 
 
@@ -100,9 +101,11 @@ public class HomeController {
 		return new ModelAndView("join");
 	}
 	
-	
+	@Inject
+	AdminSetDAO adminSetDAO;	
 	@RequestMapping("/admin_setting")
-	public ModelAndView settingpage() {
+	public ModelAndView settingpage(Model model) throws Exception {
+		model.addAttribute("list", adminSetDAO.AdminList());
 		return new ModelAndView("admin_setting");
 	}
 	

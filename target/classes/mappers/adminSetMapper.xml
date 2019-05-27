@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.attmng.atms.mappers.adminSet">
+	
+	<select id="adminList" resultType="map">
+		SELECT emp_name, gender, dep_name, substr(com_name3,5) as "com_name",  substr(com_name3,1,4) as "group", pos_name1, mail
+		FROM t_employee 
+		WHERE NOT adm_code = '0000' 
+	</select>
+	
+</mapper>
