@@ -35,10 +35,10 @@ public class AttendanceDAOImpl implements AttendanceDAO {
 
 		return sqlSession.selectList(namespace + ".getAttendanceInfo", sessionID);
 	}
-	
-	@Override
-	public List<AttendanceVO> ExcelGet(String sessionID, String date) throws Exception {
-
-		return sqlSession.selectList(namespace + ".getExcelInfo", sessionID);
-	}
+	/*
+	 * @Override public List<AttendanceVO> ExcelGet(String sessionID, String date)
+	 * throws Exception {
+	 * 
+	 * return sqlSession.selectList(namespace + ".getExcelInfo", sessionID); }
+	 */
 }

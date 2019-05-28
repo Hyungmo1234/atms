@@ -27,10 +27,9 @@ public class AttendanceServiceImpl implements AttendanceService {
 		return dao.AttendanceGET(sessionID);
 	}
 	
-	@Override
-	public List<AttendanceVO> ExcelGet(String sessionID, String check) throws Exception {
-		// TODO Auto-generated method stub
-		return dao.ExcelGet(sessionID, check);
-	}
-
+	/*
+	 * @Override public List<AttendanceVO> ExcelGet(String sessionID, String check)
+	 * throws Exception { // TODO Auto-generated method stub return
+	 * dao.ExcelGet(sessionID, check); }
+	 */
 }

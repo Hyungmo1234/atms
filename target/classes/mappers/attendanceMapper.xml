@@ -9,7 +9,7 @@
 		 SELECT * FROM t_attendance
 		 WHERE id = #{id}
 	</select>
-	
+	<!-- 
 	<select id="getExcelInfo" parameterType="map" resultType="AttendanceDTO">
 		
 		
@@ -18,6 +18,6 @@
 	<insert id="insertAttendanceInfo">
 		
 	</insert>
-	
+	 -->
 	
 </mapper>

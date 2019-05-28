@@ -11,5 +11,5 @@ import com.attmng.dto.AttendanceDTO;
 public interface AttendanceDAO {
 	public AttendanceVO AttendancePOST(AttendanceDTO dto) throws Exception;
 	public List<AttendanceVO> AttendanceGET(String sessionID) throws Exception;
-	public List<AttendanceVO> ExcelGet(String sessionID, String date) throws Exception;
+	//public List<AttendanceVO> ExcelGet(String sessionID, String date) throws Exception;
 }

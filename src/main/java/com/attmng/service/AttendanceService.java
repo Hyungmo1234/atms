@@ -11,5 +11,5 @@ public interface AttendanceService {
 
 	public List<AttendanceVO> AttendanceGET(String sessionID) throws Exception;
 	
-	public List<AttendanceVO> ExcelGet(String sessionID, String date) throws Exception;
+	//public List<AttendanceVO> ExcelGet(String sessionID, String date) throws Exception;
 }
