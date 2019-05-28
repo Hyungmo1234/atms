@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	//URL 管理社員情報照会
+	// FULL URL /G00-2/G10
+	String URL_MembersInfomation = "/G00-2/G10"; 
+%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -57,7 +62,7 @@
 					<tr>
 						<td colspan="3">
 							<a href="#">勤怠情報 </a>
-							<a href="/member">キャンセル</a>
+							<a href=<%= URL_MembersInfomation %>>キャンセル</a>
 						</td>
 					</tr>
 			</table>

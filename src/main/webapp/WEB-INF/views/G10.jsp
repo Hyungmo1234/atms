@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+	// URL設定
+	// FULL URL : /G00-2/G10/G11
+	String URL_personal_information = "/G00-2/G10/G11";
+%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -38,7 +43,7 @@
 						<td>${membersData.mail}</td>
 						<td>근무시간(임시)</td>
 						<td>
-							<form action="/member/info" method="POST">
+							<form action=<%= URL_personal_information %> method="POST">
 								<button type="submit">클릭</button>
 								<input type="hidden" name="name" value=${membersData.emp_name}>
 							</form>

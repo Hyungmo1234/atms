@@ -1,6 +1,6 @@
 package com.attmng.dto;
 
-public class MemberInfomationDTO {
+public class MemberInformationDTO {
 	private String id;
 	private String emp_name;
 	private String gender;
