@@ -147,8 +147,8 @@ button:hover:before, button:hover:after {
          <%=month+1%>月&nbsp;
       </p>
    </center>
-   <form action = "G06-1" id = "dbfrm" method = "post">
    <div id = "monthmain">
+   <form action = "G06-1" id = "dbfrm" method = "post">
       <table  id = "monthtable"  class="scrolltable">
          <tr>
             <td style="width: 5%; height: 25px; 0 auto;">日付</td>
@@ -218,16 +218,16 @@ button:hover:before, button:hover:after {
             }
          %>
       </table>
+      <button style="float:right">保存後EXCEL出力</button>
+      <button style="float:right">保存</button>
+      </form>
    </div>
    <!-- 追加 -->
    <div>
       <p style="folat: left;">
-         <b>TOTAL</b> :&nbsp; <div id="list"></div>
+         <b>TOTAL</b> :&nbsp; <div id="list" style = "font-size : 15px;"></div>
       </p>
    </div>
-      <button style="float:right">保存後EXCEL出力</button>
-      <button style="float:right">保存</button>
-      </form>
    <button onclick="history.back();" style = "width : 100px"> キャンセル</button>
    <!-- 追加 -->
 
