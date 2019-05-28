@@ -7,9 +7,9 @@
 <html>
 <head>
 <%
-   int year = 2019;//他の場所から呼んで使用
-   int month = 1;//他の場所から呼んで使用
-   int num = 0;
+	Date now = new Date();
+   int year = now.getYear()+1900;//他の場所から呼んで使用
+   int month = now.getMonth();//他の場所から呼んで使用
 %>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -78,9 +78,8 @@ button:hover:before, button:hover:after {
 	<script language='javascript'>
       var input = new Date();
       var output = new Date();
-      var work = new Array();
+      var op_time = new Array();
       var test_text;
-      var work;
       var target;
       var f_work = 0;
 
@@ -93,36 +92,28 @@ button:hover:before, button:hover:after {
       function setinhour(name) {
          target = document.getElementById("inhour"+name);
          input.setHours(parseInt(target.options[target.selectedIndex].value));
-         window.alert(input);
       }
       function setinminute(name) {
          target = document.getElementById("inminute"+name);
-         input
-               .setMinutes(parseInt(target.options[target.selectedIndex].value));
-         window.alert(input);
+         input.setMinutes(parseInt(target.options[target.selectedIndex].value));
       }
       function setouthour(name) {
          target = document.getElementById("outhour"+name);
-         output
-               .setHours(parseInt(target.options[target.selectedIndex].value));
-         window.alert(output);
+         output.setHours(parseInt(target.options[target.selectedIndex].value));
       }
       function setoutminute(name) {
          target = document.getElementById("outminute"+name);
-         output
-               .setMinutes(parseInt(target.options[target.selectedIndex].value));
-         window.alert(output);
+         output.setMinutes(parseInt(target.options[target.selectedIndex].value));
       }
       function setfreetime(name) {
           target = document.getElementById("freetime"+name);
-          window.alert(parseInt(target.options[target.selectedIndex].value));
-          work[name] = (output.getTime() - input.getTime()) / 3600000;
-          work[name] = work[name] - (parseInt(target.options[target.selectedIndex].value)/60);
+          op_time[name] = (output.getTime() - input.getTime()) / 3600000;
+          op_time[name] = op_time[name] - (parseInt(target.options[target.selectedIndex].value)/60);
           f_work = 0;
-          for(var num = 0; num<work.length; num++){
-         	f_work = f_work+work[num];
+          for(var num = 0; num<op_time.length; num++){
+         	f_work = f_work+op_time[num];
           }
-          document.getElementById("time"+name).innerHTML = work[name];
+          document.getElementById("time"+name).innerHTML = op_time[name];
           document.getElementById("list").innerHTML = f_work;
       }      
    </script>
@@ -156,8 +147,8 @@ button:hover:before, button:hover:after {
          <%=month+1%>月&nbsp;
       </p>
    </center>
+   <form action = "G06-1" id = "dbfrm" method = "post">
    <div id = "monthmain">
-   <form action = "db.jsp" id = "dbfrm">
       <table  id = "monthtable"  class="scrolltable">
          <tr>
             <td style="width: 5%; height: 25px; 0 auto;">日付</td>
@@ -170,25 +161,25 @@ button:hover:before, button:hover:after {
             <td style="width: 25%;">備考</td>
          </tr>
          <%
-            for (int k = 0; k <= data; k++) {
+            for (int k = 0; k < data; k++) {
             	System.out.println(cal);
          %>
          <tr>
                <td><%=k+1 %>日</td>
-               <td><select id="inhour<%=k %>" onchange="setinhour(<%=k %>)">
-                     <c:forEach var="i" begin="1" end="23" step="1">
+               <td><select id="inhour<%=k %>" name = "inhour<%=k %>" onchange="setinhour(<%=k %>)">
+                     <c:forEach var="i" begin="0" end="23" step="1">
                            <option><c:out value="${i}" /></option>
                      </c:forEach>
-               </select> <select id="inminute<%=k %>" onchange="setinminute(<%=k %>)">
+               </select> <select id="inminute<%=k %>" name ="inminute<%=k %>" onchange="setinminute(<%=k %>)">
                      <c:forEach var="i" begin="0" end="59" step="15">
                               <option><c:out value="${i}" /></option>
                      </c:forEach>
                </select></td>
-               <td><select id="outhour<%=k %>" onchange="setouthour(<%=k %>)">
-                     <c:forEach var="i" begin="1" end="23" step="1">
+               <td><select id="outhour<%=k %>" name = "outhour<%=k %>" onchange="setouthour(<%=k %>)">
+                     <c:forEach var="i" begin="0" end="23" step="1">
                               <option><c:out value="${i}" /></option>
                      </c:forEach>
-               </select> <select id="outminute<%=k %>" onchange="setoutminute(<%=k %>)">
+               </select> <select id="outminute<%=k %>" name = "outminute<%=k %>" onchange="setoutminute(<%=k %>)">
                      <c:forEach var="i" begin="0" end="59" step="15">
                               <option><c:out value="${i}" /></option>
                      </c:forEach>
@@ -209,7 +200,7 @@ button:hover:before, button:hover:after {
          </select>
          </td>
          <td>
-         <select id="freetime<%=k %>" onchange="setfreetime(<%=k %>)">
+         <select id="freetime<%=k %>" name = "freetime<%=k %>" onchange="setfreetime(<%=k %>)">
                <option>=休憩=</option>
                <c:forEach var="i" begin="0" end="60" step="15">
                         <option><c:out value="${i}" /></option>
@@ -217,27 +208,27 @@ button:hover:before, button:hover:after {
          </select>
          </td>
          <td>
-                  <input id = "test" type="text" value="作業内容を入力要望" style="width: 300px;"/>
+                  <input id = "notice" name = "notice" type="text" maxlength="200" value="作業内容を入力要望" style="width: 300px;"/>
          </td>
          <td>
-                  <input type="text" style="width: 400px;" />
+                  <input id = "remark" name = "remark" type="text" style="width: 400px;" maxlength="200" />
          </td>
          
          <%
             }
          %>
       </table>
-      <input style="float:right" type = "submit" value = "EXCEL">
-      <input style="float:right" type = "submit" value = "登録">
-      </form>
    </div>
-      <button onclick = "refresh_div()">a</button>
    <!-- 追加 -->
    <div>
       <p style="folat: left;">
          <b>TOTAL</b> :&nbsp; <div id="list"></div>
       </p>
    </div>
+      <button style="float:right">保存後EXCEL出力</button>
+      <button style="float:right">保存</button>
+      </form>
+   <button onclick="history.back();" style = "width : 100px"> キャンセル</button>
    <!-- 追加 -->
 
 
