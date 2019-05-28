@@ -120,8 +120,8 @@
 						</tr>
 						<tr>
 							<td rowspan="2">
-								<button>キャンセル</button>
-								<button>登録完了</button>
+								<input type="button" value="キャンセル" onclick="history.back();"/>
+								<input type="button" value="登録完了" onclick=""/>
 							</td>
 						</tr>
 					</table>

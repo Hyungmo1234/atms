@@ -100,7 +100,7 @@ th {
         </tr>
     </table><br>
     <input type="button" value="修正完了"/>
-    <input type="button" value="キャンセル"/>
+    <input type="button" value="キャンセル" onclick="history.back();"/>
     </center>
     </div>
 </body>

@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.attmng.dao.AdminSetDAO;
@@ -31,9 +32,10 @@ public class HomeController {
 	@Autowired
     BasicDataSource dataSource;
 
+//	main page 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+		logger.info("call main");
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -42,7 +44,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "main";
+		return "G00-0";
 	}
 	
 	@RequestMapping("/dbTest.do")
@@ -79,34 +81,4 @@ public class HomeController {
         return "main";
     }
 
-	@Inject
-	LoginDAO LoginDAO;
-	
-	//login
-	@RequestMapping("/login")
-	public ModelAndView loginpage() throws Exception {
-		/* LoginDAO.getLoginInfo(); */
-		return new ModelAndView("login");
-	}
-
-	//�깳�궎�꺍�뵽�씊
-	@RequestMapping("/main")
-	public ModelAndView mainpage() {
-		return new ModelAndView("main");
-	}
-
-	//鴉싧뱻�쇉�뙯�뵽�씊
-	@RequestMapping("/join")
-	public ModelAndView joinpage() {
-		return new ModelAndView("join");
-	}
-	
-	@Inject
-	AdminSetDAO adminSetDAO;	
-	@RequestMapping("/admin_setting")
-	public ModelAndView settingpage(Model model) throws Exception {
-		model.addAttribute("list", adminSetDAO.AdminList());
-		return new ModelAndView("admin_setting");
-	}
-	
 }

@@ -16,7 +16,7 @@
 			style="font-family: verdana; border: 1px solid red; font-size: 25px; text-align: left; height: 100%">
 			<h1>ログイン</h1>
 
-			<form action="LoginPOST" method="post">
+			<form action="G00-1" method="post">
 				<table style="margin-left: auto; margin-right: auto;">
 					<tr>
 						<td><label>ID</label>
