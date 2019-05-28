@@ -31,9 +31,16 @@ public class AttendanceController {
 
 		model.addAttribute("attendanceList", attendance);
 		/* request.getAttribute(ID); */
-		return "test";
+		return "G06-1";
 
 	}
+	
+	/*
+	 * @RequestMapping(value = "/updatePOST", method = RequestMethod.GET) public
+	 * String updatePOST(Model model, HttpServletResponse ) throws Exception {
+	 * 
+	 * }
+	 */
 	/*
 	 * @RequestMapping(value = "/ExcelSave", method = RequestMethod.GET) public
 	 * String ExcelGet(Model model, HttpServletResponse response, HttpServletRequest
