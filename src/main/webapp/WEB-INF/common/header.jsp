@@ -25,9 +25,9 @@ header {
 				</c:if>
 				<c:if test="${Logininfo.id ne null}">
 				<td style="width: 59%"><img src="resources/images/logo.png" width="10%"></td>
-				<td style="width: 5%">${Logininfo.com_name3}</td>
+				<td style="width: 5%">${Logininfo.comName_ryak}</td>
 				<td style="width: 11%">${Logininfo.dep_name}</td>
-				<td style="width: 5%">${Logininfo.pos_name1}</td>
+				<td style="width: 5%">${Logininfo.pos_name}</td>
 				<td style="width: 5%">${Logininfo.emp_name}</td>
 				<td style="width: 5%">${Logininfo.id}</td>
 				<td style="width: 5%"><form action="/logout" method="GET"><input type="submit" value="ログアウト"/></form></td>
