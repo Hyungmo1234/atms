@@ -84,6 +84,14 @@
 		// window.opener.onPopupClose(myValue);//myValue is the value you want to return to main javascript
 		window.close();
 	}
+	
+	// 年度のlengthチェック
+	function maxLengthCheck(object){
+		if (object.value.length > object.maxLength){
+			object.value = object.value.slice(0, object.maxLength);
+		}
+	}
+		  
 </script>
 
 	
@@ -97,7 +105,7 @@
 			<tr>
 			
 				<td colspan="3" style="text-align:center; padding: 15px; margin: auto;">
-					<input type="number" id="txtYear" name="年度" maxlength="4">
+					<input type="number" id="txtYear" name="年度" maxlength="4" oninput="maxLengthCheck(this)"/>
 						<font size="6">年</font>
 				</td>
 			</tr>
