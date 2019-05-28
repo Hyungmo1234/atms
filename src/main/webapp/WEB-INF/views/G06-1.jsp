@@ -170,7 +170,7 @@ button:hover:before, button:hover:after {
             <td style="width: 25%;">備考</td>
          </tr>
          <%
-            for (int k = 0; k <= data; k++) {
+            for (int k = 0; k < data; k++) {
             	System.out.println(cal);
          %>
          <tr>
