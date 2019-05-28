@@ -8,6 +8,8 @@
 
 		<typeAlias alias="login" type="com.attmng.dto.EmployeeDTO" />
 		<typeAlias alias="EmployeeVO" type="com.attmng.domain.EmployeeVO" />
+		<typeAlias alias="memberInfo" type="com.attmng.dto.MemberInfomationDTO" />
+		
 	</typeAliases>
 
 </configuration>
