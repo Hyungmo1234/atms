@@ -49,4 +49,13 @@ public class LoginController {
 			return "G01";
 		}
 	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+    //메소드 이름은 LOGOUT 매게 변수는 SESSION
+    public String logout(HttpSession session) {
+        //m으로 선언된 세션을 삭제시킨다.
+        session.removeAttribute("Logininfo");
+        // /페이지로 리다이렉트 시킨다.
+        return "redirect:/";
+    }
 }
