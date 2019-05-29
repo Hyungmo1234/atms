@@ -12,24 +12,24 @@ import com.attmng.dto.AttendanceDTO;
 @Repository
 public class AttendanceServiceImpl implements AttendanceService {
 
-	@Autowired
-	private AttendanceDAO dao;
+   @Autowired
+   private AttendanceDAO dao;
 
-	@Override
-	public AttendanceVO AttendancePOST(AttendanceDTO dto) throws Exception {
-		// TODO Auto-generated method stub
-		return dao.AttendancePOST(dto);
-	}
+   @Override
+   public AttendanceVO AttendancePOST(AttendanceDTO dto) throws Exception {
+      // TODO Auto-generated method stub
+      return dao.AttendancePOST(dto);
+   }
 
-	@Override
-	public List<AttendanceVO> AttendanceGET(String sessionID) throws Exception {
-		// TODO Auto-generated method stub
-		return dao.AttendanceGET(sessionID);
-	}
-	
-	/*
-	 * @Override public List<AttendanceVO> ExcelGet(String sessionID, String check)
-	 * throws Exception { // TODO Auto-generated method stub return
-	 * dao.ExcelGet(sessionID, check); }
-	 */
+   @Override
+   public List<AttendanceVO> AttendanceGET(String sessionID, String month, int deleteFlag) throws Exception {
+      // TODO Auto-generated method stub
+      return dao.AttendanceGET(sessionID, month, deleteFlag);
+   }
+   
+   /*
+    * @Override public List<AttendanceVO> ExcelGet(String sessionID, String check)
+    * throws Exception { // TODO Auto-generated method stub return
+    * dao.ExcelGet(sessionID, check); }
+    */
 }

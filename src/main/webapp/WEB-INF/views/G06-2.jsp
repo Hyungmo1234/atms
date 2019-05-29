@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.*"%>
 <html>
+<%
+ArrayList list = new ArrayList();
+for(int k = 0; k < 10; k++){
+	 list.add(request.getParameter("inhour"+k+""));
+	 out.println("park = ["+list.get(k)+"]");
+}
+%>
 <head>
 <meta charset="UTF-8">
 <title></title>
