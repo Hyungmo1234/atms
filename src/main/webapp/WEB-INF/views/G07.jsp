@@ -53,7 +53,6 @@
 <body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-
 <script type="text/javascript">
 
 	//今年の年度をもらう
@@ -62,26 +61,25 @@
 		var today = new Date();
 		var year = today.getFullYear();
 		
-	    $('#txtYear').val(year);
+		$('#txtYear').val(year);
+		
 	});
 	
 	//年度入力チェック
-	function yearCheck() {
-		var txtYear = document.month.txtYear;
-		var btnMonth = document.month.btnMonth;
+	function yearCheck(month) {
+		var txtYear = document.getElementById("txtYear").value;
+		var btnMonth = month;
 		
-		if (txtYear.value.length <= 0) {
+		if (txtYear.length <= 0) {
 			alert("年度を入力してください。");
 			document.month.txtYear.focus();
 			return false;
 		}
 		
-		// alert(document.month.txtYear+" "+document.month.btnMonth);
-		
-		/* $(opener.document).find("#txtYear").val(document.month.txtYear);
-		$(opener.document).find("#btnMonth").val(document.month.btnMonth); */
-		
 		// window.opener.onPopupClose(myValue);//myValue is the value you want to return to main javascript
+		opener.document.getElementById("txtYear").value = txtYear;
+		opener.document.getElementById("month").value = btnMonth;
+		
 		window.close();
 	}
 	
@@ -95,8 +93,6 @@
 </script>
 
 	
-	<form action="/G00-2/G10/G12" name="month" method="post">
-	
 
 		<!-- テーブル -->
 		<table class="calendar">
@@ -105,7 +101,7 @@
 			<tr>
 			
 				<td colspan="3" style="text-align:center; padding: 15px; margin: auto;">
-					<input type="number" id="txtYear" name="年度" maxlength="4" oninput="maxLengthCheck(this)"/>
+					<input type="number" id="txtYear" name="year" maxlength="4" oninput="maxLengthCheck(this)"/>
 						<font size="6">年</font>
 				</td>
 			</tr>
@@ -118,8 +114,8 @@
 						<td>
 						
 							<c:set var="month" value="${month+1}" />
-							<button id="btnMonth" name="月" class="btnMonth"
-								value="${month}" onclick="return yearCheck();" >${month }</button>
+							<button id="btnMonth" name="month" class="btnMonth"
+								value="${month}" onclick="return yearCheck(${month});" >${month }</button>
 						
 						</td>
 					</c:forEach>
@@ -127,8 +123,6 @@
 				</tr>
 			</c:forEach>
 		</table>
-
-	</form>
 
 </body>
 </html>
