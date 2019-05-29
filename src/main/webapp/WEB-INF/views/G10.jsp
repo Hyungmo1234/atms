@@ -56,10 +56,10 @@
 						<td>${membersData.dep_name}</td>
 						<td><c:set var="gender" value="${membersData.gender}" /> <c:choose>
 								<c:when test="${gender eq 1 }">
-									남자
+									男性
 								</c:when>
 								<c:otherwise>
-									여자
+									女性
 								</c:otherwise>
 							</c:choose></td>
 						<td>${membersData.mail}</td>
