@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	//URL 管理社員情報照会
+	//URL 管理社員情報照会　
 	// FULL URL /G00-2/G10
 	String URL_MembersInfomation = "/G00-2/G10"; 
 %>
