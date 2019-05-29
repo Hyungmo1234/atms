@@ -28,7 +28,7 @@
       </tr>
      </table>
    </c:forEach>
-         <input type="button" value="Şûğ¶" />
+         <div><a href="attendanceUpdate">update</a></div>
 </body>
 
 

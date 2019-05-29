@@ -27,6 +27,11 @@ public class AttendanceServiceImpl implements AttendanceService {
 		return dao.AttendanceGET(sessionID, month, deleteFlag);
 	}
 	
+	@Override
+	public void AttendanceUpdate(String sessionID, String month, String day, int deleteFlag) throws Exception{
+		
+		dao.AttendanceUpdate(sessionID, month, day, deleteFlag);
+	}
 	/*
 	 * @Override public List<AttendanceVO> ExcelGet(String sessionID, String check)
 	 * throws Exception { // TODO Auto-generated method stub return

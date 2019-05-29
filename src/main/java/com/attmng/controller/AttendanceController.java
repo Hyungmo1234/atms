@@ -31,8 +31,20 @@ public class AttendanceController {
 
 		model.addAttribute("attendanceList", attendance);
 		/* request.getAttribute(ID); */
-		return "test";
+		return "G06-1";
 
+	}
+	
+	@RequestMapping(value = "/attendanceUpdate", method = RequestMethod.GET)
+	public String AttendanceUpdate(Model model, HttpServletResponse response, HttpServletRequest request,
+			AttendanceDTO dto, HttpSession session) throws Exception {
+
+		AService.AttendanceUpdate("designer", "201905", "03", 0);
+
+		//model.addAttribute("attendanceUpdate", attendance);
+		/* request.getAttribute(ID); */
+
+		return "test";
 	}
 	/*
 	 * @RequestMapping(value = "/ExcelSave", method = RequestMethod.GET) public

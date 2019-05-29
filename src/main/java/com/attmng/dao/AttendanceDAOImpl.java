@@ -1,5 +1,7 @@
 package com.attmng.dao;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +44,26 @@ public class AttendanceDAOImpl implements AttendanceDAO {
 		
 		return sqlSession.selectList(namespace + ".getAttendanceInfo", paraMap);
 	}
+	
+	@Override
+	public void AttendanceUpdate(String sessionID, String month, String day, int deleteFlag) throws Exception {
+		Map<String, Object> paraMap = new HashMap<String, Object>();
+		
+		SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+		
+		String formatOfDatetime = format.format (System.currentTimeMillis());
+		
+		paraMap.put("id", sessionID);
+		paraMap.put("month", month);
+		paraMap.put("day", day);
+		paraMap.put("flag", deleteFlag);
+		paraMap.put("upd_id", sessionID);
+		paraMap.put("upd_date", formatOfDatetime);
+		
+		sqlSession.update(namespace + ".attendanceUpdate", paraMap);
+	}
+	
+	
 	/*
 	 * @Override public List<AttendanceVO> ExcelGet(String sessionID, String date)
 	 * throws Exception {

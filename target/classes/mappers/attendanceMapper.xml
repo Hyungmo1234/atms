@@ -8,9 +8,18 @@
 	<select id="getAttendanceInfo" parameterType="map" resultType="AttendanceDTO">
 		 SELECT * FROM t_attendance
 		 WHERE id = #{id}
-		 AND yearmonth = #{month}
+		 AND key_year_month = #{month}
 		 AND del_cd = #{flag}
 	</select>
+	
+	<update id="attendanceUpdate" parameterType="map">
+		UPDATE t_attendance 
+		SET s_time= # {upd_date}, upd_id = #{upd_id}
+		WHERE id= #{id} 
+		AND key_year_month= #{month} 
+		AND key_day= #{day}
+		AND del_cd = #{flag}
+	</update>
 	<!-- 
 	<select id="getExcelInfo" parameterType="map" resultType="AttendanceDTO">
 		
