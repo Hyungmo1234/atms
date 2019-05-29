@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.attmng.domain.AttendanceVO;
+import com.attmng.domain.EmployeeVO;
 import com.attmng.dto.AttendanceDTO;
 import com.attmng.service.AttendanceService;
 
@@ -41,7 +42,9 @@ public class AttendanceController {
 		
 		String yearMonth = format.format (System.currentTimeMillis());
 		
-		List<AttendanceVO> attendance = AService.AttendanceGET("aaa", "12312", 0);
+		EmployeeVO vo =  (EmployeeVO) session.getAttribute("Logininfo");
+	
+		List<AttendanceVO> attendance = AService.AttendanceGET(vo.getId(), "12312", 0);
 
 		model.addAttribute("attendanceList", attendance);
 		/* request.getAttribute(ID); */
