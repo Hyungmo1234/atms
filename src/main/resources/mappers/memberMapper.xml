@@ -6,11 +6,19 @@
 <mapper namespace="com.attmng.atms.mappers.member">
 
 	<select id="get_membersInfo" parameterType="map" resultType="MemberInfo">
-		 select id, emp_name, gender, entry_date, e.dep_code, dep_name, e.com_code, comName_ryak, e.pos_code, pos_name, mail, address
+		select e.id, e.emp_name, c.comName_ryak, p.pos_name, d.dep_name, e.adm_code, e.gender, e.entry_date, e.mail, e.address
 		from  t_employee e, t_company c, t_department d, t_position p 
 		where e.com_code = c.com_code 
 		and   e.pos_code = p.pos_code
 		and   e.dep_code = d.dep_code
+		<choose>
+		<when test="comNameList.size != 0">
+			and comName_ryak IN
+			<foreach collection="comNameList" item="item" index="index" separator="," open="(" close=")">
+				#{item}
+			</foreach>
+		</when>
+        </choose>
 	</select>
 	<select id="get_memberInfo" parameterType="map" resultType="MemberInfo">
 		select id, emp_name, entry_date, dep_name, comName_ryak, pos_name, cellphone, mail, address
