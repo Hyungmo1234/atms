@@ -35,12 +35,14 @@
 				<c:forEach items="${membersData}" var="membersData">
 					<tr>
 						<td class="table_CountArea">번호(임시)</td>
-						<td>${membersData.com_name3}</td>
+						<td>${membersData.comName_ryak}</td>
 						<td>${membersData.dep_name}</td>
 						<td>${membersData.emp_name}</td>
-						<td>${membersData.pos_name1}</td>
+						<td>${membersData.pos_name}</td>
 						<td>${membersData.gender}</td>
 						<td>${membersData.mail}</td>
+						<td>${membersData.entry_date}</td>
+						<td>${membersData.address}</td>
 						<td>근무시간(임시)</td>
 						<td>
 							<form action=<%= URL_personal_information %> method="POST">

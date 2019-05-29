@@ -33,7 +33,7 @@
 					</tr>
 					<tr>
 						<td>会社</td><td>:</td>
-						<td>${memberData.com_name3}</td>
+						<td>${memberData.com_name}</td>
 					</tr>
 					<tr>
 						<td>部署</td><td>:</td>
@@ -41,7 +41,7 @@
 					</tr>
 					<tr>
 						<td>職位</td><td>:</td>
-						<td>${memberData.pos_name1}</td>
+						<td>${memberData.pos_name}</td>
 					</tr>
 					<tr>
 						<td>性別</td><td>:</td>
