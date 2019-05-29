@@ -3,8 +3,8 @@ package com.attmng.dto;
 public class AttendanceDTO {
 
 	private String id;
-	private String year_month;
-	private String day;
+	private String key_year_month;
+	private String key_day;
 	private String s_time;
 	private String e_time;
 	private double br_time;
@@ -26,20 +26,20 @@ public class AttendanceDTO {
 		this.id = id;
 	}
 
-	public String getYear_month() {
-		return year_month;
+	public String getKey_year_month() {
+		return key_year_month;
 	}
 
-	public void setYear_month(String year_month) {
-		this.year_month = year_month;
+	public void setKey_year_month(String year_month) {
+		this.key_year_month = year_month;
 	}
 
-	public String getDay() {
-		return day;
+	public String getKey_Day() {
+		return key_day;
 	}
 
-	public void setDay(String day) {
-		this.day = day;
+	public void setKey_Day(String day) {
+		this.key_day = day;
 	}
 
 	public String getS_time() {
