@@ -139,7 +139,7 @@ button:hover:before, button:hover:after {
       </p>
    </center>
    <div id="monthmain">
-      <form action="AttendanceGet" id="dbfrm" method="get">
+      <form action="attendanceGET" id="dbfrm" method="get">
          <table id="monthtable" class="scrolltable">
             <tr>
                <td style="width: 5%; height: 25px; 0 auto;">日付</td>
@@ -256,11 +256,15 @@ button:hover:before, button:hover:after {
    </div>
    <!-- 追加 -->
    <div>
-      <p style="folat: left;">
+      <p style="float: left;">
          <b>TOTAL</b> :&nbsp;
-      <div id="list" style="font-size: 15px;"></div>
+      <div id="list" style="font-size: 30px;"></div>
       </p>
    </div>
+   <input type = "hidden" id = "month" 
+   name = "month" value = <%=month+1 %>/>
+   <input type = "hidden" id = "year" 
+   name = "year" value = <%=year %>/>
    <button onclick="history.back();" style="width: 100px">キャンセル</button>
    <!-- 追加 -->
 

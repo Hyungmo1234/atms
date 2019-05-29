@@ -1,5 +1,6 @@
 package com.attmng.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +28,20 @@ public class AttendanceController {
 	public String AttendanceGet(Model model, HttpServletResponse response, HttpServletRequest request,
 			AttendanceDTO dto, HttpSession session) throws Exception {
 
-		List<AttendanceVO> attendance = AService.AttendanceGET("designer", "201905", 0);
+		/*
+		 * String year = request.getParameter("year"); String month =
+		 * request.getParameter("month");
+		 * 
+		 * if(Integer.parseInt(month) < 10) { month = "0" + month; }
+		 * 
+		 * String yearMonth = year + month;
+		 */
+		
+		SimpleDateFormat format = new SimpleDateFormat ("yyyyMM");
+		
+		String yearMonth = format.format (System.currentTimeMillis());
+		
+		List<AttendanceVO> attendance = AService.AttendanceGET("aaa", "12312", 0);
 
 		model.addAttribute("attendanceList", attendance);
 		/* request.getAttribute(ID); */
@@ -39,7 +53,9 @@ public class AttendanceController {
 	public String AttendanceUpdate(Model model, HttpServletResponse response, HttpServletRequest request,
 			AttendanceDTO dto, HttpSession session) throws Exception {
 
-		AService.AttendanceUpdate("designer", "201905", "03", 0);
+		String time = request.getParameter("inhour1");
+		
+		AService.AttendanceUpdate("aaa", "201905", "12", 0);
 
 		//model.addAttribute("attendanceUpdate", attendance);
 		/* request.getAttribute(ID); */
