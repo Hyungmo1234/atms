@@ -6,23 +6,28 @@
 <mapper namespace="com.attmng.atms.mappers.member">
 
 	<select id="get_membersInfo" parameterType="map" resultType="MemberInfo">
-		select id, emp_name, comName_ryak, pos_name, dep_name, adm_code, gender, entry_date, mail, address
+		SELECT * FROM t_employee
+	</select>
+	<!-- select id, emp_name, comName_ryak, pos_name, dep_name, adm_code, gender, entry_date, mail, address
 		from  t_employee e, t_company c, t_department d, t_position p 
 		where e.com_code = c.com_code 
 		and   e.pos_code = p.pos_code
 		and   e.dep_code = d.dep_code
-		<!-- <choose>
+		<choose>
 		<when test="adm_code == '1000'">
 			and and comName_ryak = 'GCS'
 		</when>
 
-		</choose> -->
+		</choose>
 		and adm_code = '1000'
-		and comName_ryak = 'GCS'
-	</select>
+		and comName_ryak = 'GCS' -->
 	
 	<select id="get_memberInfo" parameterType="map" resultType="MemberInfo">
 		 SELECT * FROM t_employee WHERE emp_name = #{name}
+	</select>
+	
+	<select id="get_memberAttendance" resultType="AttendanceDTO">
+		 SELECT * FROM t_attendance WHERE id =#{id} AND key_year_month = #{year_month}
 	</select>
 	
 </mapper>

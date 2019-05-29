@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.attmng.dto.MemberAttendanceDTO;
 import com.attmng.dto.MemberInformationDTO;
 
 @Repository
@@ -32,5 +33,12 @@ public class MemberInformationDAOImpl implements MemberInformationDAO {
 		infoMap.put("name", name);
 
 		return sqlSession.selectList(namespace + ".get_memberInfo", infoMap);
+	}
+
+	@Override
+	public List<MemberAttendanceDTO> getMemberAttendance(Map<String, Object> sqlData) throws Exception {
+		// TODO Auto-generated method stub
+		
+		return sqlSession.selectList(namespace + ".get_memberAttendance", sqlData);
 	}
 }

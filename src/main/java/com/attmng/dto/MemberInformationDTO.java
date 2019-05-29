@@ -5,31 +5,19 @@ public class MemberInformationDTO {
 	private String emp_name;
 	private String gender;
 	private String entry_date;
-	private String com_name;
-	private String dep_name;
-	private String pos_name;
+	private String dep_code;
+	private String com_code;
+	private String pos_code;
 	private String mail;
-	private String comName_ryak;
+	private String cellphone;
+	private String addrass;
 	
-	public String getComName_ryak() {
-		return comName_ryak;
+
+	public String getDep_code() {
+		return dep_code;
 	}
-	public void setComName_ryak(String comName_ryak) {
-		this.comName_ryak = comName_ryak;
-	}
-	public String getPos_name() {
-		return pos_name;
-	}
-	public void setPos_name(String pos_name) {
-		this.pos_name = pos_name;
-	}
-	private String address;
-	
-	public String getCom_name() {
-		return com_name;
-	}
-	public void setCom_name(String com_name) {
-		this.com_name = com_name;
+	public void setDep_code(String dep_code) {
+		this.dep_code = dep_code;
 	}
 	public String getId() {
 		return id;
@@ -55,11 +43,17 @@ public class MemberInformationDTO {
 	public void setEntry_date(String entry_date) {
 		this.entry_date = entry_date;
 	}
-	public String getDep_name() {
-		return dep_name;
+	public String getCom_code() {
+		return com_code;
 	}
-	public void setDep_name(String dep_name) {
-		this.dep_name = dep_name;
+	public void setCom_code(String com_code) {
+		this.com_code = com_code;
+	}
+	public String getPos_code() {
+		return pos_code;
+	}
+	public void setPos_code(String pos_code) {
+		this.pos_code = pos_code;
 	}
 	public String getMail() {
 		return mail;
@@ -67,11 +61,17 @@ public class MemberInformationDTO {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	public String getAddress() {
-		return address;
+	public String getCellphone() {
+		return cellphone;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setCellphone(String cellphone) {
+		this.cellphone = cellphone;
+	}
+	public String getAddrass() {
+		return addrass;
+	}
+	public void setAddrass(String addrass) {
+		this.addrass = addrass;
 	}
 	
 	

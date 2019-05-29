@@ -21,7 +21,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.attmng.dto.MemberInformationDTO;
 import com.attmng.service.MemberInformationService;
@@ -41,10 +40,15 @@ public class MemberInformationController {
 	 */
 	@RequestMapping(value="", method = RequestMethod.GET)
 	public String Admin_Main(Model model) throws Exception {
+		//　例外処理必要　！！！　ユザーの権限確認
 		
+		//　クエリを実行してデータをもらう
 		List<MemberInformationDTO> membersData = MemInfoService.getMembersInformation();
+		
+		//　データを追加する
 		model.addAttribute("membersData", membersData);
 		
+		//　画面に移動
 		return "G00-2";
 	}
 	
@@ -54,9 +58,15 @@ public class MemberInformationController {
 	@RequestMapping(value="/G10", method = RequestMethod.GET)
 	public String Admin_get_MembersInformation(Model model) throws Exception {
 		
+		//　クエリを実行してデータをもらう
 		List<MemberInformationDTO> membersData = MemInfoService.getMembersInformation();
+		
+		//　例外処理必要　！！！　データがない場合
+		
+		//　データを追加する
 		model.addAttribute("membersData", membersData);
 		
+		//　画面に移動
 		return "G10";
 	}
 	
@@ -65,43 +75,31 @@ public class MemberInformationController {
 	 */
 	@RequestMapping(value="/G10/G11", method = RequestMethod.POST)
 	public String Admin_get_MemberInformation(HttpServletRequest request, Model model) throws Exception {
-		
+		//　パラメータ、NAMEをもらう
 		String name = request.getParameter("name");
 		
+		//　クエリを実行してデータをもらう
 		List<MemberInformationDTO> memberData = MemInfoService.getMemberInformation(name);
+		
+		//　例外処理必要　！！！データがない場合
+		
+		//　データを追加する
 		model.addAttribute("memberData", memberData.get(0));
 		
+		//　画面に移動
 		return "G11";
 	}
 	
-	// return new ModelAndView("login");
 	/*
-	 * // public void board_main(HttpSession session, Model model)
-	 * throws Exception { 
-	 * List<boardBean> boardList =
-	 * boardService.getBoardList(); model.addAttribute("boardList", boardList); }
-	 * 
-	 * // 
-	 * @RequestMapping(value="writing", method = RequestMethod.POST) public String
-	 * writing(HttpSession session) throws Exception {
-	 * 
-	 * return "board_writing"; }
-	 * 
-	 * // 
-	 * @RequestMapping("/update")
-	 * 
-	 * @ResponseBody public Map<String,Object> updatePosts(HttpServletRequest
-	 * request, HttpSession session) throws Exception { String boardNum =
-	 * request.getParameter("boardNum"); String title =
-	 * request.getParameter("title"); String content =
-	 * request.getParameter("content");
-	 * 
-	 * Map<String, Object> param = new HashMap<String, Object>(); param.put("title",
-	 * title); param.put("content", content);
-	 * 
-	 * String sessionId = (String) session.getAttribute("userId");
-	 * 
-	 * return boardService.udtPosts(boardNum, param, sessionId); }
+	 * 4．管理者_社員別勤怠情報照会
 	 */
+	@RequestMapping(value="/G10/G12", method = RequestMethod.POST)
+	public String Admin_get_commuteInformation(HttpServletRequest request, HttpSession session, Model model) throws Exception {
+		 
+		//
+		MemInfoService.getMemberAttendanceData(request, session, model);
+		
+		return "G12";
+	}
 	
 }

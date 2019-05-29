@@ -33,32 +33,29 @@
 					</tr>
 					<tr>
 						<td>会社</td><td>:</td>
-						<td>${memberData.com_name}</td>
-					</tr>
-					<tr>
-						<td>部署</td><td>:</td>
-						<td>${memberData.dep_name}</td>
+						<td>${memberData.com_code}</td>
 					</tr>
 					<tr>
 						<td>職位</td><td>:</td>
-						<td>${memberData.pos_name}</td>
-					</tr>
-					<tr>
-						<td>性別</td><td>:</td>
-						<td>${memberData.gender}</td>
+						<td>${memberData.pos_code}</td>
 					</tr>
 					<tr>
 						<td>メール</td><td>:</td>
 						<td>${memberData.mail}</td>
 					</tr>
 					<tr>
+						<td>電話番号</td><td>:</td>
+						<td>${memberData.cellphone}</td>
+					</tr>
+					<tr>
 						<td>住所</td><td>:</td>
-						<td>${memberData.address}</td>
+						<td>${memberData.addrass}</td>
 					</tr>
 					<tr>
 						<td>入社日</td><td>:</td>
 						<td>${memberData.entry_date}</td>
 					</tr>
+					
 					<tr>
 						<td colspan="3">
 							<a href="#">勤怠情報 </a>
