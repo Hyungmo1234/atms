@@ -24,9 +24,9 @@ public class MemberInformationServiceImpl implements MemberInformationService{
 	MemberInformationDAO MemberInformationDAO;
 	
 	@Override
-	public List<MemberInformationDTO> getMembersInformation() throws Exception {
+	public List<MemberInformationDTO> getMembersInformation(String Adm_code, String ComName_ryak) throws Exception {
 		// TODO Auto-generated method stub
-		return MemberInformationDAO.getMembersInfo();
+		return MemberInformationDAO.getMembersInfo(Adm_code, ComName_ryak);
 	}
 
 	@Override

@@ -22,6 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.attmng.domain.EmployeeVO;
 import com.attmng.dto.MemberInformationDTO;
 import com.attmng.service.MemberInformationService;
 
@@ -38,7 +39,7 @@ public class MemberInformationController {
 	/*
 	 * １．管理者メイン画面
 	 */
-	@RequestMapping(value="", method = RequestMethod.GET)
+	/*@RequestMapping(value="", method = RequestMethod.GET)
 	public String Admin_Main(Model model) throws Exception {
 		//　例外処理必要　！！！　ユザーの権限確認
 		
@@ -50,16 +51,16 @@ public class MemberInformationController {
 		
 		//　画面に移動
 		return "G00-2";
-	}
+	}*/
 	
 	/*
 	 * ２．管理者_社員情報照会
 	 */
 	@RequestMapping(value="/G10", method = RequestMethod.GET)
-	public String Admin_get_MembersInformation(Model model) throws Exception {
-		
+	public String Admin_get_MembersInformation(Model model, HttpSession session) throws Exception {
+		EmployeeVO vo = (EmployeeVO) session.getAttribute("Logininfo");
 		//　クエリを実行してデータをもらう
-		List<MemberInformationDTO> membersData = MemInfoService.getMembersInformation();
+		List<MemberInformationDTO> membersData = MemInfoService.getMembersInformation(vo.getAdm_code(), vo.getComName_ryak());
 		
 		//　例外処理必要　！！！　データがない場合
 		
