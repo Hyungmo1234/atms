@@ -2,7 +2,7 @@ package com.attmng.domain;
 
 
 /*
- * table占쎄괴占쎄쾹占쎄쾽DTO占쎄뎌俑앹뮀�땱占쎄괼占쎄쾷占쎄괜占쎄굵占쎄괵占쎄콢占쏙옙
+ * table�뜝�럡愿닷뜝�럡苡밧뜝�럡苡폛TO�뜝�럡�럩岳묒빘裕�占쎈빋�뜝�럡愿쇔뜝�럡苡룟뜝�럡愿쒎뜝�럡援드뜝�럡愿드뜝�럡肄℡뜝�룞�삕
  */
 public class EmployeeVO {
 	private String id;
@@ -11,6 +11,14 @@ public class EmployeeVO {
     private String dep_name;
     private String pos_name;
     private String comName_ryak;
+    private String adm_code;
+    
+	public String getAdm_code() {
+		return adm_code;
+	}
+	public void setAdm_code(String adm_code) {
+		this.adm_code = adm_code;
+	}
 	public String getId() {
 		return id;
 	}

@@ -10,7 +10,7 @@
 	</select>
 	
 	<select id="LoginPOST" resultType="EmployeeVO">
-		select id, password, emp_name, comName_ryak, pos_name, dep_name
+		select id, password, emp_name, comName_ryak, pos_name, dep_name, adm_code
 		from  t_employee e, t_company c, t_department d, t_position p 
 		where e.com_code = c.com_code 
 		and   e.pos_code = p.pos_code

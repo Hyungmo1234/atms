@@ -8,7 +8,14 @@ public class EmployeeDTO {
     private String pos_name;
     private String comName_ryak;
     private String dep_name;
+    private String adm_code;
     
+	public String getAdm_code() {
+		return adm_code;
+	}
+	public void setAdm_code(String adm_code) {
+		this.adm_code = adm_code;
+	}
 	public String getDep_name() {
 		return dep_name;
 	}
