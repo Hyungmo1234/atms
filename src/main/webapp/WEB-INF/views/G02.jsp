@@ -8,129 +8,144 @@
 #join {
 	text-align: left;
 	height: 70%;
+	
 }
+
 #tab2 {
-	margin-top:20%;
-	margin-left:200%;
-	width:100%;
+	margin-top: 20%;
+	margin-left: 200%;
+	width: 100%;
+	
 }
+
 #joinbtn1 {
+	
 }
+
 #joinbtn2 {
+	
 }
 </style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/common/header.jsp"></jsp:include>
 	<div id="join">
-	<div
+		<div
 			style="font-family: verdana; border: 1px solid red; font-size: 25px; text-align: left; height: 100%">
-		<table id="tab1">
-			<tr>
-				<td><h1>社員登録画面</h1></td>
-			</tr>
-			<tr>
-				<td>
-					<table id="tab2">
-						<tr>
-							<td>ID</td>
-							<td>: <input type="text"></td>
-						</tr>
-						<tr>
-							<td>パスワード</td>
-							<td>: <input type="password"></td>
-						</tr>
-						<tr>
-							<td>パスワード確認</td>
-							<td>: <input type="password"></td>
-						</tr>
-						<tr>
-							<td>名前</td>
-							<td>: <input type="text"></td>
-						</tr>
-						<tr>
-							<td>会社</td>
-							<td>: <select name=company>
-									<option value="">会社を選択してください。</option>
-									<option value="FOS">FOS</option>
-									<option value="PSS">PSS</option>
-									<option value="GCS">GCS</option>
-									<option value="CSS">CSS</option>
-									<option value="NCB">NCB</option>
-									<option value="ISS">ISS</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td>部署</td>
-							<td>: <select name=department>
-									<option value="">部署を選択してください。</option>
-									<option value="">戦略企画室</option>
-									<option value="">人事総括本部 対内人事部</option>
-									<option value="">人事総括本部 対外人事部</option>
-									<option value="">開発事業本部 開発1部</option>
-									<option value="">開発事業本部 開発2部</option>
-									<option value="">開発事業本部 開発3部</option>
-									<option value="">開発事業本部 開発4部</option>
-									<option value="">開発事業本部 開発5部</option>
-									<option value="">個人契約</option>
-									<option value="">営業部</option>
-									<option value="">管理部</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td>職位</td>
-							<td>: <select name=position>
-									<option value="">職位を選択してください。</option>
-									<option value="">会長</option>
-									<option value="">社長</option>
-									<option value="">室長</option>
-									<option value="">本部長</option>
-									<option value="">本部長代理</option>
-									<option value="">部長</option>
-									<option value="">部長代理</option>
-									<option value="">マネージャー</option>
-									<option value="">マネージャー代理</option>
-									<option value="">総括リーダ</option>
-									<option value="">リーダ</option>
-									<option value="">メンバー</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td>メール</td>
-							<td>: <input type="text"></td>
-						</tr>
-						<tr>
-							<td>性別</td>
-							<td>:  男性 <input type="radio" name="fruit" value="men" />
-								  女性 <input type="radio" name="fruit" value="women" />
-							</td>
-						</tr>
-						<tr>
-							<td>入社日</td>
-							<td>: <input type="date" id="userdate" name="userdate" value="2019-05-14">
-							</td>
-						</tr>
-						<tr>
-							<td>電話番号</td>
-							<td>: <input type="text"></td>
-						</tr>
-						<tr>
-							<td>住所</td>
-							<td>: <input type="text"></td>
-						</tr>
-						<tr>
-							<td rowspan="2">
-								<input type="button" value="キャンセル" onclick="history.back();"/>
-								<input type="button" value="登録完了" onclick=""/>
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-		</table>
-	</div>
+			<form action="/JoinPOST" id="JoinPOST" method="post">
+				<table id="tab1">
+					<tr>
+						<td><h1>社員登録画面</h1></td>
+					</tr>
+					<tr>
+						<td>
+							<table id="tab2">
+								<tr>
+									<td>ID</td>
+									<td>: <input type="text" id="id" name="id"></td>
+								</tr>
+								<tr>
+									<td>パスワード</td>
+									<td>: <input type="password" id="password" name="password"></td>
+								</tr>
+								<tr>
+									<td>パスワード確認</td>
+									<td>: <input type="password"></td>
+								</tr>
+								<tr>
+									<td>名前</td>
+									<td>: <input type="text" id="emp_name" name="emp_name"></td>
+								</tr>
+								<tr>
+									<td>会社</td>
+									<td>: <select name="com_code" id="com_code">
+											<option value="">会社を選択してください。</option>
+											<option value="21">PSS</option>
+											<option value="11">GCS</option>
+											<option value="12">NCB</option>
+											<option value="13">CSS</option>
+											<option value="22">FOS</option>
+											<option value="23">ISS</option>
+									</select></td>
+								</tr>
+								<tr>
+									<td>部署</td>
+									<td>: <select name="dep_code" id="dep_code">
+											<option value="">部署を選択してください。</option>
+											<option value="BSNS">営業部</option>
+											
+											
+									</select></td>
+								</tr>
+								<tr>
+									<td>職位</td>
+									<td>: <select name="pos_code" id="pos_code">
+											<option value="">職位を選択してください。</option>
+											<option value="ONE">会長</option>
+											<option value="PD">社長</option>
+											<option value="DIR">室長</option>
+											<option value="EM">本部長</option>
+											<option value="AEM">本部長代理</option>
+											<option value="GM">部長</option>
+											<option value="AGM">部長代理</option>
+											<option value="MG">マネージャー</option>
+											<option value="AMG">マネージャー代理</option>
+											<option value="SLD">総括リーダ</option>
+											<option value="LD">リーダ</option>
+											<option value="MB">メンバー</option>
+									</select></td>
+								</tr>
+								<tr>
+									<td>メール</td>
+									<td>: <input type="text" id="mail" name="mail"></td>
+								</tr>
+								<tr>
+									<td>性別</td>
+									<td>: 男性 <input type="radio" id="gender" name="gender"
+										value="1" /> 女性 <input type="radio" id="gender"
+										name="gender" value="2" />
+									</td>
+								</tr>
+								<tr>
+									<td>入社日 <font size="2" color="red"> ex)20190528</h5> </td>
+									<td>: <input type="number" name="entry_date" id="entry_date">
+									</td>
+								</tr>
+								<tr>
+									<td>住所</td>
+									<td>: <input type="text" name="address" id="address"></td>
+								</tr>
+								<tr>
+									<td rowspan="2">
+										<button type="reset" onclick = "check()">キャンセル</button>
+										<button  type="submit" id="join" name="join" onclick = "finish()">登録完了</button>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
 	</div>
 
 	<jsp:include page="/WEB-INF/common/footer.jsp"></jsp:include>
 </body>
+<script type="text/javascript">
+function check(){
+	  if (confirm("本当にキャンセルしますか。") == true){    //확인
+	      document.form.submit();
+	  		return "G01";
+	  }else{   //취소
+	      return;
+	  }
+	}
+function finish(){
+	  if (confirm("登録が完了しました。") == true){    //확인
+	      document.form.submit();
+	  }else{   //취소
+	      return;
+	  }
+	}
+</script>
 </html>

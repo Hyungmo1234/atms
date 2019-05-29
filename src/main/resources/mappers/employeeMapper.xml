@@ -6,16 +6,54 @@
 <mapper namespace="com.attmng.atms.mappers.employee">
 
 	<select id="getLoginInfo" parameterType="map" resultType="login">
-		 SELECT * FROM t_employee
+		SELECT * FROM t_employee
 	</select>
-	
+
 	<select id="LoginPOST" resultType="EmployeeVO">
-		select id, password, emp_name, comName_ryak, pos_name, dep_name, adm_code
-		from  t_employee e, t_company c, t_department d, t_position p 
-		where e.com_code = c.com_code 
-		and   e.pos_code = p.pos_code
-		and   e.dep_code = d.dep_code
-		and   id = #{id}
+		select id, password, emp_name,
+		comName_ryak, pos_name, dep_name, adm_code
+		from t_employee e, t_company
+		c, t_department d, t_position p
+		where e.com_code = c.com_code
+		and e.pos_code = p.pos_code
+		and e.dep_code = d.dep_code
+		and id = #{id}
 	</select>
-	
+
+	<select id="DepartmentPOST" resultType="EmployeeVO">
+		SELECT dep_name
+		FROM
+		t_affiliation
+		inner join t_department
+		ON t_affiliation.dep_code = t_department.dep_code
+		where com_name3 = #{com_name3}
+	</select>
+
+	<insert id="JoinPOST">
+		INSERT INTO T_EMPLOYEE(
+		id,
+		password,
+		emp_name,
+		gender,
+		entry_date,
+		com_code,
+		dep_code,
+		pos_code,
+		mail,
+		address,
+		del_cd
+		)VALUES(
+		#{id},
+		#{password},
+		#{emp_name},
+		#{gender},
+		#{entry_date},
+		#{com_code},
+		#{dep_code},
+		#{pos_code},
+		#{mail},
+		#{address},
+		0
+		)
+	</insert>
 </mapper>
