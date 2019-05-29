@@ -82,7 +82,7 @@
 				<p style="display: inline; border: 1px solid #444444;">
 					<!-- Link to open the modal -->
 <!-- 					<a href="#ex1" rel="modal:open"> -->
-					<a href="#" onclick="test()">
+					<a onclick="test()">
 						<!-- 날짜 데이터 분류 필요 // 달력 모달 기능 추가 -->
 						 ${year}年 ${month}月
 					</a>
@@ -132,9 +132,9 @@
  --%>
 <!-- form test -->
 <form id="formTest" action=<%= URL_member_info %> method="POST">
-	<input id="name" type="hidden" name="name" value="劉晟佑">
-	<input id="year" type="hidden" name="year" value="2019">
-	<input id="month" type="hidden" name="month" value="05">
+	<input id="id" type="hidden" name="id" value="${id}">
+	<input id="year" type="hidden" name="year" value="${year}">
+	<input id="month" type="hidden" name="month" value="${month}">
 </form>
 
 </body>

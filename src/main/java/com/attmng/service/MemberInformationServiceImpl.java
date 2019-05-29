@@ -50,7 +50,7 @@ public class MemberInformationServiceImpl implements MemberInformationService{
 		//
 		Date time = new Date();
 		
-		// 二つの中で一つでもない場合はエラー
+		// 雅뚣겇�겗訝��겎訝��겇�겎�굚�겒�걚�졃�릦�겘�궓�꺀�꺖
 		if(year == null || month == null) {
 			SimpleDateFormat SimDateYear = new SimpleDateFormat ("yyyy");
 			String DateYear = SimDateYear.format(time);
@@ -74,6 +74,7 @@ public class MemberInformationServiceImpl implements MemberInformationService{
 		model.addAttribute("attendanceData", attendanceData);
 		
 		//
+		model.addAttribute("id", id);
 		model.addAttribute("year", year);
 		model.addAttribute("month", month);
 		

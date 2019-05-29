@@ -77,7 +77,7 @@
 		}
 		
 		// window.opener.onPopupClose(myValue);//myValue is the value you want to return to main javascript
-		opener.document.getElementById("txtYear").value = txtYear;
+		opener.document.getElementById("year").value = txtYear;
 		opener.document.getElementById("month").value = btnMonth;
 		
 		window.close();
