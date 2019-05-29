@@ -75,7 +75,7 @@ public class AttendanceDAOImpl implements AttendanceDAO {
 		Date now = new Date();
 		int year = now.getYear() + 1900;
 		int month = now.getMonth() + 1;
-		Calendar cal = new GregorianCalendar(year, month, 1);
+		Calendar cal = Calendar.getInstance(); //new GregorianCalendar(year, month, 1);
 		int data = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 
 		String temp = null;
