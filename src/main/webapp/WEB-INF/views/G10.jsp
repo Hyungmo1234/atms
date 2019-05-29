@@ -37,7 +37,6 @@
 .table_EmpName,.table_WorkTime{
 	font-weight: bold;
 }
-
 </style>
 
 </head>
