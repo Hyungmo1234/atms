@@ -5,13 +5,14 @@
 
 <configuration>
 	<typeAliases>	
-
 		<typeAlias alias="login" type="com.attmng.dto.EmployeeDTO" />
 		<typeAlias alias="EmployeeVO" type="com.attmng.domain.EmployeeVO" />
 		<typeAlias alias="memberInfo" type="com.attmng.dto.MemberInformationDTO" />
 		<typeAlias alias="AttendanceDTO" type="com.attmng.dto.AttendanceDTO" />
 		<typeAlias alias="AttendanceVO" type="com.attmng.domain.AttendanceVO" />
 		<typeAlias alias="JoinVO" type="com.attmng.domain.JoinVO" />
+		<typeAlias alias="ExcelToSaveAttendanceGetDTO" type="com.attmng.dto.ExcelToSaveAttendanceGetDTO" />
+		<typeAlias alias="ExcelToSaveAttendanceGetVo" type="com.attmng.domain.ExcelToSaveAttendanceGetVo" />
 	</typeAliases>
 
 </configuration>
