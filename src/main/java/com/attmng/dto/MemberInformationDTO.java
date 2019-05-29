@@ -6,13 +6,33 @@ public class MemberInformationDTO {
 	private String gender;
 	private String entry_date;
 	private String dep_code;
+	private String dep_name;
 	private String com_code;
+	private String comName_ryak;
 	private String pos_code;
+	private String pos_name;
 	private String mail;
 	private String cellphone;
-	private String addrass;
+	private String address;
 	
-
+	public String getDep_name() {
+		return dep_name;
+	}
+	public void setDep_name(String dep_name) {
+		this.dep_name = dep_name;
+	}
+	public String getComName_ryak() {
+		return comName_ryak;
+	}
+	public void setComName_ryak(String comName_ryak) {
+		this.comName_ryak = comName_ryak;
+	}
+	public String getPos_name() {
+		return pos_name;
+	}
+	public void setPos_name(String pos_name) {
+		this.pos_name = pos_name;
+	}
 	public String getDep_code() {
 		return dep_code;
 	}
@@ -67,11 +87,11 @@ public class MemberInformationDTO {
 	public void setCellphone(String cellphone) {
 		this.cellphone = cellphone;
 	}
-	public String getAddrass() {
-		return addrass;
+	public String getAddress() {
+		return address;
 	}
-	public void setAddrass(String addrass) {
-		this.addrass = addrass;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	
 	

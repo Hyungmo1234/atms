@@ -33,11 +33,11 @@
 					</tr>
 					<tr>
 						<td>会社</td><td>:</td>
-						<td>${memberData.com_code}</td>
+						<td>${memberData.comName_ryak}</td>
 					</tr>
 					<tr>
 						<td>職位</td><td>:</td>
-						<td>${memberData.pos_code}</td>
+						<td>${memberData.pos_name}</td>
 					</tr>
 					<tr>
 						<td>メール</td><td>:</td>
@@ -49,7 +49,7 @@
 					</tr>
 					<tr>
 						<td>住所</td><td>:</td>
-						<td>${memberData.addrass}</td>
+						<td>${memberData.address}</td>
 					</tr>
 					<tr>
 						<td>入社日</td><td>:</td>

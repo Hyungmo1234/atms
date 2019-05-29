@@ -5,7 +5,7 @@
 	// URL設定
 	// FULL URL : /G00-2/G10/G11
 	String URL_personal_information = "/G00-2/G10/G11";
-	String URL_attendance_information="/G00-2/G10/G12";
+	String URL_attendance_information = "/G00-2/G10/G12";
 %>
 <html>
 <head>
@@ -18,13 +18,12 @@
 }
 
 .table_CountArea {
-	background-color : yellow;
+	background-color: yellow;
 }
 
 .table_memberInfoList, .table_memberInfoList td {
-	border : 1px solid black;
+	border: 1px solid black;
 }
-
 </style>
 </head>
 <body>
@@ -32,7 +31,8 @@
 	<div id="main">
 		<div
 			style="font-family: verdana; border: 1px solid red; font-size: 25px; text-align: left; height: 100%">
-			<table class="table_memberInfoList">
+			<table class="table_memberInfoList"
+				style="width: 95%; margin: 0 auto;">
 				<tr>
 					<td class="table_CountArea">番号</td>
 					<td>会社</td>
@@ -43,37 +43,41 @@
 					<td>メール</td>
 					<td>근무시간(임시)</td>
 				</tr>
-				
-				<c:forEach items="${membersData}" var="membersData">
+
+				<c:forEach items="${membersData}" var="membersData"
+					varStatus="status">
 					<tr>
-						<td class="table_CountArea">번호(임시)</td>
-						<td>${membersData.com_code}</td>
-						<td>${membersData.pos_code}</td>
-						<td onClick="document.getElementById('get_memeberInfoForm_${membersData.emp_name}').submit()">
-							${membersData.emp_name}
-						</td>
-						<td>${membersData.dep_code}</td>
-						<td>${membersData.gender}</td>
+						<td class="table_CountArea">${status.count }</td>
+						<td>${membersData.comName_ryak}</td>
+						<td>${membersData.pos_name}</td>
+						<td
+							onClick="document.getElementById('get_memeberInfoForm_${membersData.emp_name}').submit()">
+							${membersData.emp_name}</td>
+						<td>${membersData.dep_name}</td>
+						<td><c:set var="gender" value="${membersData.gender}" /> <c:choose>
+								<c:when test="${gender eq 1 }">
+									남자
+								</c:when>
+								<c:otherwise>
+									여자
+								</c:otherwise>
+							</c:choose></td>
 						<td>${membersData.mail}</td>
-						<td onClick="document.getElementById('get_memeberAttdanceForm_${membersData.emp_name}').submit()">
-						근무시간(임시)
-						</td>
+						<td
+							onClick="document.getElementById('get_memeberAttdanceForm_${membersData.emp_name}').submit()">
+							근무시간(임시)</td>
 					</tr>
 					<!-- 社員情報アクセス -->
-					<form 
-						id="get_memeberInfoForm_${membersData.emp_name}"
-						action=<%= URL_personal_information %> 
-						method="POST">
-					<input type="hidden" name="name" value=${membersData.emp_name}>
+					<form id="get_memeberInfoForm_${membersData.emp_name}"
+						action=<%= URL_personal_information %> method="POST">
+						<input type="hidden" name="name" value=${membersData.emp_name}>
 					</form>
 					<!-- 勤怠情報アクセス -->
-					<form 
-						id="get_memeberAttdanceForm_${membersData.emp_name}"
-						action=<%= URL_attendance_information %> 
-						method="POST">
+					<form id="get_memeberAttdanceForm_${membersData.emp_name}"
+						action=<%= URL_attendance_information %> method="POST">
 						<input type="hidden" name="id" value=${membersData.id}>
 					</form>
-					
+
 				</c:forEach>
 			</table>
 		</div>
