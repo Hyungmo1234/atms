@@ -18,7 +18,7 @@
 	        <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
 	        <property name="url" value="jdbc:log4jdbc:mysql://localhost:3306/attendance_management_system" />
 	        <property name="username" value="root"/> 
-	        <property name="password" value="0000"/>
+	        <property name="password" value="1234"/>
 	    </bean>
 	    
 	    <!-- Mybatis SqlSession -->

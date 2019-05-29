@@ -25,10 +25,17 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_202">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/mwy01/Desktop/조롱이/lib/commons-compress-1.18.jar"/>
+	<classpathentry kind="lib" path="C:/Users/mwy01/Desktop/조롱이/lib/poi-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/mwy01/Desktop/조롱이/lib/poi-examples-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/mwy01/Desktop/조롱이/lib/poi-excelant-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/mwy01/Desktop/조롱이/lib/poi-ooxml-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/mwy01/Desktop/조롱이/lib/poi-ooxml-schemas-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/mwy01/Desktop/조롱이/lib/poi-scratchpad-4.1.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

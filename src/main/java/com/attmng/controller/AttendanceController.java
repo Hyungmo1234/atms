@@ -11,11 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.attmng.domain.AttendanceVO;
 import com.attmng.dto.AttendanceDTO;
 import com.attmng.service.AttendanceService;
+
+import sun.rmi.runtime.Log;
 
 @Controller
 public class AttendanceController {

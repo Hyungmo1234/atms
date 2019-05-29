@@ -218,7 +218,7 @@ button:hover:before, button:hover:after {
             }
          %>
       </table>
-      <button style="width:150px; float:right" onclick = "location.href = '/Excel'">保存後EXCEL出力</button>
+      <button style="width:150px; float:right" onclick = "document.location.href='/Excel'">保存後EXCEL出力</button>
       <button style="float:right">保存</button>
       </form>
    </div>
