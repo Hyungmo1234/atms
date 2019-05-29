@@ -21,12 +21,10 @@
 	</select>
 
 	<select id="DepartmentPOST" resultType="EmployeeVO">
-		SELECT dep_name
-		FROM
-		t_affiliation
+		SELECT * FROM t_affiliation
 		inner join t_department
 		ON t_affiliation.dep_code = t_department.dep_code
-		where com_name3 = #{com_name3}
+		where com_name = 'CSS'
 	</select>
 
 	<insert id="JoinPOST">
@@ -56,4 +54,11 @@
 		0
 		)
 	</insert>
+	
+	<select id="JoinGET" resultType="JoinVO">
+		SELECT * FROM t_affiliation
+		inner join t_department
+		ON t_affiliation.dep_code = t_department.dep_code
+		where com_name = #{com_name}
+	</select>
 </mapper>

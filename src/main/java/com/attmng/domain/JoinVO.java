@@ -7,6 +7,8 @@ public class JoinVO {
     private String emp_name;
     private String gender;
     
+    private String dep_name;
+    private String com_name;
     private String entry_date;
     private String com_code;
     private String dep_code;
@@ -87,6 +89,18 @@ public class JoinVO {
 	}
 	public void setDel_cd(String del_cd) {
 		this.del_cd = del_cd;
+	}
+	public String getCom_name() {
+		return com_name;
+	}
+	public void setCom_name(String com_name) {
+		this.com_name = com_name;
+	}
+	public String getDep_name() {
+		return dep_name;
+	}
+	public void setDep_name(String dep_name) {
+		this.dep_name = dep_name;
 	}
 	
 }

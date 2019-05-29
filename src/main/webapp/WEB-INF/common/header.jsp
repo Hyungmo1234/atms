@@ -20,7 +20,7 @@ header {
 			<tr>
 				<c:if test="${Logininfo.id eq null}">
 				<td style="width: 90%; text-align:left;"><img src="resources/images/logo.png" width="10%"></td>
-				<td style="width: 5%"><a href="G02">社員登録</a></td>
+				<td style="width: 5%"><a href="G02?com_name=PSS">社員登録</a></td>
 				<td style="width: 5%"><a href="G01">ログイン</a></td>
 				</c:if>
 				<c:if test="${Logininfo.id ne null}">

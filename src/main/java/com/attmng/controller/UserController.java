@@ -1,33 +1,15 @@
 package com.attmng.controller;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
-
-import javax.inject.Inject;
-
-import org.apache.commons.dbcp2.BasicDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.attmng.dao.AdminSetDAO;
-import com.attmng.dao.LoginDAO;
-
 /**
- * ユーザ側のページ移動
+ * �깺�꺖�궣�겢�겗�깪�꺖�궦燁삣땿
  * @author Use
- *担当者：李宇鎬
+ *�땯壤볢�낉폏�쓮若뉔렗
  */
 @Controller
 public class UserController {
@@ -47,12 +29,14 @@ public class UserController {
 		return new ModelAndView("G00-0");
 	}
 
-	//add member page 
-	@RequestMapping("/G02")
-	public ModelAndView joinpage() {
-		logger.info("call add member");
-		return new ModelAndView("G02");
-	}
+	
+	 //add member page
+	  
+	 @RequestMapping("/G02") public ModelAndView joinpage() {
+	  logger.info("call add member");
+	  
+	 return new ModelAndView("G02"); }
+	 
 	
 	//member data page 
 	@RequestMapping("/G03")
@@ -61,6 +45,8 @@ public class UserController {
 		return new ModelAndView("G03");
 	}
 	
+	
+
 	//update member page 
 	@RequestMapping("/G04")
 	public ModelAndView upadatemember() {

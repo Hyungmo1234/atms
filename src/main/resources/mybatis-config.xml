@@ -11,7 +11,7 @@
 		<typeAlias alias="memberInfo" type="com.attmng.dto.MemberInformationDTO" />
 		<typeAlias alias="AttendanceDTO" type="com.attmng.dto.AttendanceDTO" />
 		<typeAlias alias="AttendanceVO" type="com.attmng.domain.AttendanceVO" />
-		
+		<typeAlias alias="JoinVO" type="com.attmng.domain.JoinVO" />
 	</typeAliases>
 
 </configuration>

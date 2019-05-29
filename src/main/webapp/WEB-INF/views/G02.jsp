@@ -1,5 +1,7 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -58,25 +60,35 @@
 								</tr>
 								<tr>
 									<td>会社</td>
-									<td>: <select name="com_code" id="com_code">
+									
+									<td>: <select name="com_name" id="com_name">
 											<option value="">会社を選択してください。</option>
-											<option value="21">PSS</option>
-											<option value="11">GCS</option>
-											<option value="12">NCB</option>
-											<option value="13">CSS</option>
-											<option value="22">FOS</option>
-											<option value="23">ISS</option>
-									</select></td>
+											<option value="PSS">PSS</option>
+											<option value="GCS">GCS</option>
+											<option value="NCB">NCB</option>
+											<option value="CSS">CSS</option>
+											<option value="FOS">FOS</option>
+											<option value="ISS">ISS</option>
+											</select>
+											
+									</td>	
+									
+									
+							
 								</tr>
-								<tr>
+								
+ 								<tr>
 									<td>部署</td>
-									<td>: <select name="dep_code" id="dep_code">
-											<option value="">部署を選択してください。</option>
-											<option value="BSNS">営業部</option>
-											
-											
-									</select></td>
+									<td id = "dep_area">: <select name="dep_name" id="dep_name">
+											<c:forEach items="${JoinGET}" var="JoinGET">
+											<option value="${JoinGET.dep_code}">${JoinGET.dep_name}</option>
+											</c:forEach>
+											</select>
+									</td>
 								</tr>
+								
+								<%-- <jsp:include page="./dddd.jsp"></jsp:include> --%>
+								
 								<tr>
 									<td>職位</td>
 									<td>: <select name="pos_code" id="pos_code">
@@ -147,5 +159,28 @@ function finish(){
 	      return;
 	  }
 	}
+	
+/* function check() { 
+	
+	var com_name = $("#com_name option:selected").val();
+	location ( )
+	alert(com_name);
+} */
+$('#com_name').change(function(){
+	$("#dep_name").remove();
+	var select = $("#com_name option:selected").val();
+    $.ajax({
+        url:'G02_1',
+        type:'POST',
+        data: {
+            "com_name": select
+        },
+        success:function(data){
+        	$("#dep_area").append(data);
+        }
+    })
+})
+
+
 </script>
 </html>
