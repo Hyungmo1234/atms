@@ -44,7 +44,7 @@ public class AttendanceController {
 		
 		EmployeeVO vo =  (EmployeeVO) session.getAttribute("Logininfo");
 	
-		List<AttendanceVO> attendance = AService.AttendanceGET(vo.getId(), "12312", 0);
+		List<AttendanceVO> attendance = AService.AttendanceGET(vo.getId(), yearMonth, 0);
 
 		model.addAttribute("attendanceList", attendance);
 		/* request.getAttribute(ID); */
