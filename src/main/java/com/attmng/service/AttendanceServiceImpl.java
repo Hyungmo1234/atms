@@ -22,9 +22,9 @@ public class AttendanceServiceImpl implements AttendanceService {
 	}
 
 	@Override
-	public List<AttendanceVO> AttendanceGET(String sessionID) throws Exception {
+	public List<AttendanceVO> AttendanceGET(String sessionID, String month, int deleteFlag) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.AttendanceGET(sessionID);
+		return dao.AttendanceGET(sessionID, month, deleteFlag);
 	}
 	
 	/*

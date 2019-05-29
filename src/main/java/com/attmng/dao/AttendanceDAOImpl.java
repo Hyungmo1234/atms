@@ -1,6 +1,8 @@
 package com.attmng.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +33,14 @@ public class AttendanceDAOImpl implements AttendanceDAO {
 	}
 	
 	@Override
-	public List<AttendanceVO> AttendanceGET(String sessionID) throws Exception {
-
-		return sqlSession.selectList(namespace + ".getAttendanceInfo", sessionID);
+	public List<AttendanceVO> AttendanceGET(String sessionID, String month, int deleteFlag) throws Exception {
+		Map<String, Object> paraMap = new HashMap<String, Object>();
+		
+		paraMap.put("id", sessionID);
+		paraMap.put("month", month);
+		paraMap.put("flag", deleteFlag);
+		
+		return sqlSession.selectList(namespace + ".getAttendanceInfo", paraMap);
 	}
 	/*
 	 * @Override public List<AttendanceVO> ExcelGet(String sessionID, String date)

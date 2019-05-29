@@ -8,6 +8,8 @@
 	<select id="getAttendanceInfo" parameterType="map" resultType="AttendanceDTO">
 		 SELECT * FROM t_attendance
 		 WHERE id = #{id}
+		 AND yearmonth = #{month}
+		 AND del_cd = #{flag}
 	</select>
 	<!-- 
 	<select id="getExcelInfo" parameterType="map" resultType="AttendanceDTO">

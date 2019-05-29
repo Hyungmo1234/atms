@@ -27,7 +27,7 @@ public class AttendanceController {
 	public String AttendanceGet(Model model, HttpServletResponse response, HttpServletRequest request,
 			AttendanceDTO dto, HttpSession session) throws Exception {
 
-		List<AttendanceVO> attendance = AService.AttendanceGET("designer");
+		List<AttendanceVO> attendance = AService.AttendanceGET("designer", "201905", 0);
 
 		model.addAttribute("attendanceList", attendance);
 		/* request.getAttribute(ID); */
