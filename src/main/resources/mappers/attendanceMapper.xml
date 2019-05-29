@@ -26,9 +26,14 @@
 		
 	</select>
 	
-	<insert id="insertAttendanceInfo">
-		
+	-->
+	
+	<insert id="attendanceInsert" parameterType="map">
+		INSERT INTO t_attendance(id, key_year_month,
+		key_day, reg_id, reg_date, del_cd)
+		VALUES(#{id}, #{yearMonth}, #{day}, #{reg_id}
+		, #{reg_date}, #{flag})
 	</insert>
-	 -->
+	
 	
 </mapper>
