@@ -2,14 +2,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <%
-	Date now = new Date();
-   int year = now.getYear()+1900;//他の場所から呼んで使用
-   int month = now.getMonth();//他の場所から呼んで使用
+   Date now = new Date();
+   int year = now.getYear() + 1900;//他の場所から呼んで使用
+   int month = now.getMonth() +1;//他の場所から呼んで使用
+   Calendar cal = new GregorianCalendar(year, month, 1);
+   int data = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 %>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -19,17 +23,14 @@
    margin: 0 auto;
    text-align: center;
 }
-
 html, body {
    height: 90%;
 }
-
 #monthmain {
    height: 80%;
    margin: 0 auto;
    overflow: scroll;
 }
-
 button {
    background: #1AAB8A;
    color: #fff;
@@ -41,12 +42,10 @@ button {
    transition: 800ms ease all;
    outline: none;
 }
-
 button:hover {
    background: #fff;
    color: #1AAB8A;
 }
-
 button:before, button:after {
    content: '';
    position: absolute;
@@ -57,14 +56,12 @@ button:before, button:after {
    background: #1AAB8A;
    transition: 400ms ease all;
 }
-
 button:after {
    right: inherit;
    top: inherit;
    left: 0;
    bottom: 0;
 }
-
 button:hover:before, button:hover:after {
    width: 100%;
    transition: 800ms ease all;
@@ -74,21 +71,20 @@ button:hover:before, button:hover:after {
 </head>
 <body>
 
-	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-	<script language='javascript'>
+   <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+   <script language='javascript'>
       var input = new Date();
       var output = new Date();
       var op_time = new Array();
+     var list = new Array();
       var test_text;
       var target;
       var f_work = 0;
-
       for( var num = 0; num < 31; num++){
-    	  work[num] = 0;
+         op_time[num] = 0;
       }
       
       var name;
-
       function setinhour(name) {
          target = document.getElementById("inhour"+name);
          input.setHours(parseInt(target.options[target.selectedIndex].value));
@@ -111,124 +107,176 @@ button:hover:before, button:hover:after {
           op_time[name] = op_time[name] - (parseInt(target.options[target.selectedIndex].value)/60);
           f_work = 0;
           for(var num = 0; num<op_time.length; num++){
-         	f_work = f_work+op_time[num];
+            f_work = f_work+parseInt(op_time[num]);
           }
           document.getElementById("time"+name).innerHTML = op_time[name];
           document.getElementById("list").innerHTML = f_work;
       }      
+      function insertlist(){
+         for(var num = 0; num < <%=data%>; num ++){
+             target = document.getElementById("inhour"+num);
+            list[num] = parseInt(target.options[target.selectedIndex].value);
+         }
+        window.alert(list[0]);
+      }
    </script>
    <jsp:include page="/WEB-INF/common/header.jsp"></jsp:include>
 
-   <%
-      Calendar cal = new GregorianCalendar(year, month, 1);
-      int data = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-      ArrayList<String> inhour=new ArrayList<String>();
-      ArrayList<String> inminute=new ArrayList<String>();
-      ArrayList<String> outhour=new ArrayList<String>();
-      ArrayList<String> outminute=new ArrayList<String>();
-      for(int y = 1; y <data; y++){
-    	  inhour.add("inhour"+y);
-      }
-      for(int y = 1; y <data; y++){
-    	  inminute.add("inminute"+y);
-      }
-      for(int y = 1; y <data; y++){
-    	  outhour.add("outhour"+y);
-      }
-      for(int y = 1; y <data; y++){
-    	  outminute.add("outminute"+y);
-      }
-   %>
-
    <center>
       <!-- 前月と来月に月の変更 のメソッドを追加-->
-      <p style="display: inline; border: 1px solid #444444; margin-bottom : 5px;">
+      <p
+         style="display: inline; border: 1px solid #444444; margin-bottom: 5px;">
          &nbsp;<%=year%>年
-         <%=month+1%>月&nbsp;
+         <%=month%>月&nbsp;
       </p>
    </center>
-   <div id = "monthmain">
-   <form action = "G06-1" id = "dbfrm" method = "post">
-      <table  id = "monthtable"  class="scrolltable">
-         <tr>
-            <td style="width: 5%; height: 25px; 0 auto;">日付</td>
-            <td style="width: 10%;">開始時間</td>
-            <td style="width: 10%;">終了時間</td>
-            <td style="width: 5%;">稼働時間</td>
-            <td style="width: 10%;">勤怠</td>
-            <td style="width: 10%;">休憩時間</td>
-            <td style="width: 25%;">作業内容</td>
-            <td style="width: 25%;">備考</td>
-         </tr>
-         <%
-            for (int k = 0; k < data; k++) {
-            	System.out.println(cal);
-         %>
-         <tr>
-               <td><%=k+1 %>日</td>
-               <td><select id="inhour<%=k %>" name = "inhour<%=k %>" onchange="setinhour(<%=k %>)">
-                     <c:forEach var="i" begin="0" end="23" step="1">
-                           <option><c:out value="${i}" /></option>
-                     </c:forEach>
-               </select> <select id="inminute<%=k %>" name ="inminute<%=k %>" onchange="setinminute(<%=k %>)">
-                     <c:forEach var="i" begin="0" end="59" step="15">
-                              <option><c:out value="${i}" /></option>
-                     </c:forEach>
-               </select></td>
-               <td><select id="outhour<%=k %>" name = "outhour<%=k %>" onchange="setouthour(<%=k %>)">
-                     <c:forEach var="i" begin="0" end="23" step="1">
-                              <option><c:out value="${i}" /></option>
-                     </c:forEach>
-               </select> <select id="outminute<%=k %>" name = "outminute<%=k %>" onchange="setoutminute(<%=k %>)">
-                     <c:forEach var="i" begin="0" end="59" step="15">
-                              <option><c:out value="${i}" /></option>
-                     </c:forEach>
-               </select></td>
-         <td>
-         <div id ="time<%=k%>">
-         </div>
-         </td>
-         <td>
-         <select class="select font">
-                  <option>勤怠</option>
-                  <option>正常出勤</option>
-                  <option>休憩</option>
-                  <option>遅刻</option>
-                  <option>早退</option>
-                  <option>半休</option>
-                  <option>欠勤</option>
-         </select>
-         </td>
-         <td>
-         <select id="freetime<%=k %>" name = "freetime<%=k %>" onchange="setfreetime(<%=k %>)">
-               <option>=休憩=</option>
-               <c:forEach var="i" begin="0" end="60" step="15">
-                        <option><c:out value="${i}" /></option>
-               </c:forEach>
-         </select>
-         </td>
-         <td>
-                  <input id = "notice" name = "notice" type="text" maxlength="200" value="作業内容を入力要望" style="width: 300px;"/>
-         </td>
-         <td>
-                  <input id = "remark" name = "remark" type="text" style="width: 400px;" maxlength="200" />
-         </td>
-         
-         <%
-            }
-         %>
-      </table>
-      <button style="width:150px; float:right" onclick = "location.href = '/Excel'">保存後EXCEL出力</button>
-      <button style="float:right">保存</button>
+   <div id="monthmain">
+      <form action="attendanceUpdate" id="dbfrm" method="get">
+         <table id="monthtable" class="scrolltable">
+            <tr>
+               <td style="width: 5%; height: 25px; 0 auto;">日付</td>
+               <td style="width: 10%;">開始時間</td>
+               <td style="width: 10%;">終了時間</td>
+               <td style="width: 5%;">稼働時間</td>
+               <td style="width: 10%;">勤怠</td>
+               <td style="width: 10%;">休憩時間</td>
+               <td style="width: 25%;">作業内容</td>
+               <td style="width: 25%;">備考</td>
+            </tr>
+            <c:set var="x" value="1" />
+            <c:set var="f_time" value="0" />
+            <c:set var="wco_name_list">勤怠,正常出勤,休憩,遲刻,早退,半休,欠勤</c:set>
+            <c:forEach items="${attendanceList}" var="list">
+               <fmt:parseNumber value="${fn:substring(list.s_time,0,2) }"
+                  type="number" var="s_hour" />
+               <fmt:parseNumber value="${fn:substring(list.s_time,3,5) }"
+                  type="number" var="s_minute" />
+               <fmt:parseNumber value="${fn:substring(list.e_time,0,2) }"
+                  type="number" var="e_hour" />
+               <fmt:parseNumber value="${fn:substring(list.e_time,3,5) }"
+                  type="number" var="e_minute" />
+               <c:set var="w_time"
+                  value="${((e_hour*60+e_minute) - (s_hour*60+s_minute)-list.br_time)/60}" />
+               <script>
+               op_time['<c:out  value="${x-1}"/>'] = '<c:out value="${w_time}"/>';
+            </script>
+               <c:set var="f_time" value="${w_time + f_time }" />
+               <tr>
+                  <td><c:out value="${x}" /> 日</td>
+                  <td><select id="inhour<c:out value = "${x}"/>"
+                     name="inhour<c:out value = "${x}"/>"
+                     onchange="setinhour(<c:out value = "${x}"/>)">
+                        <c:forEach var="i" begin="0" end="23" step="1">
+                           <c:choose>
+                              <c:when test="${fn:substring(list.s_time,0,2) eq i }">
+                                 <option selected="selected"><c:out value="${i}" /></option>
+                              </c:when>
+                              <c:otherwise>
+                                 <option><c:out value="${i}" /></option>
+                              </c:otherwise>
+                           </c:choose>
+                        </c:forEach>
+                  </select> <select id="inminute<c:out value = "${x}"/>"
+                     name="inminute<c:out value = "${x}"/>"
+                     onchange="setinminute(<c:out value = "${x}"/>)">
+                        <c:forEach var="i" begin="0" end="59" step="15">
+                           <c:choose>
+                              <c:when test="${fn:substring(list.s_time,3,5) eq i }">
+                                 <option selected="selected"><c:out value="${i}" /></option>
+                              </c:when>
+                              <c:otherwise>
+                                 <option><c:out value="${i}" /></option>
+                              </c:otherwise>
+                           </c:choose>
+                        </c:forEach>
+                  </select></td>
+                  <td><select id="outhour<c:out value = "${x}"/>"
+                     name="outhour<c:out value = "${x}"/>"
+                     onchange="setouthour(<c:out value = "${x}"/>)">
+                        <c:forEach var="i" begin="0" end="23" step="1">
+                           <c:choose>
+                              <c:when test="${fn:substring(list.e_time,0,2) eq i }">
+                                 <option selected="selected"><c:out value="${i}" /></option>
+                              </c:when>
+                              <c:otherwise>
+                                 <option><c:out value="${i}" /></option>
+                              </c:otherwise>
+                           </c:choose>
+                        </c:forEach>
+                  </select> <select id="outminute<c:out value = "${x}"/>"
+                     name="outminute<c:out value = "${x}"/>"
+                     onchange="setoutminute(<c:out value = "${x}"/>)">
+                        <c:forEach var="i" begin="0" end="59" step="15">
+                           <c:choose>
+                              <c:when test="${fn:substring(list.e_time,3,5) eq i }">
+                                 <option selected="selected"><c:out value="${i}" /></option>
+                              </c:when>
+                              <c:otherwise>
+                                 <option><c:out value="${i}" /></option>
+                              </c:otherwise>
+                           </c:choose>
+                        </c:forEach>
+                  </select></td>
+                  <td>
+                     <div id="time<c:out value = "${x}"/>">
+                        <input id = "worktime<c:out value = "${x}"/>" name = "worktime<c:out value = "${x}"/>" type = "hidden" value = "${w_time }"/>
+                        <c:out value="${w_time}" />
+                     </div>
+                  </td>
+                  <td><select class="select font">
+                        <option>=休憩=</option>
+                        <c:forEach items="${wco_name_list}" var="w_list">
+                           <c:choose>
+                              <c:when test="${list.wco_name eq w_list }">
+                                 <option selected="selected"><c:out value="${w_list}" /></option>
+                              </c:when>
+                              <c:otherwise>
+                                 <option><c:out value="${w_list}" /></option>
+                              </c:otherwise>
+                           </c:choose>
+                        </c:forEach>
+                  </select></td>
+                  <td><select id="freetime<c:out value = "${x}"/>"
+                     name="freetime<c:out value = "${x}"/>"
+                     onchange="setfreetime(<c:out value = "${x}"/>)">
+                        <c:forEach var="i" begin="0" end="60" step="15">
+                           <c:choose>
+                              <c:when test="${list.br_time eq i }">
+                                 <option selected="selected"><c:out value="${i}" /></option>
+                              </c:when>
+                              <c:otherwise>
+                                 <option><c:out value="${i}" /></option>
+                              </c:otherwise>
+                           </c:choose>
+                        </c:forEach>
+                  </select></td>
+                  <td><input id="notice<c:out value = "${x}"/>"
+                     name="notice<c:out value = "${x}"/>" type="text" maxlength="200"
+                     style="width: 300px;" value="${list.notice}" /></td>
+                  <td><input style="width: 400px;"
+                     id="remark<c:out value = "${x}"/>"
+                     name="remark<c:out value = "${x}"/>" type="text" maxlength="200"
+                     value="${list.remarks}" /></td>
+               </tr>
+               <c:set var="x" value="${x+1 }" />
+            </c:forEach>
+         </table>
+         <input type = "hidden" id = "month" name = "month" value = "<%=month%>"/>
+         <input type = "hidden" id = "year" name = "year" value = "<%=year %>"/>
+         <input type = "submit"  style="width: 70px; float: right" onclick="insertlist()'" value = "保存"/>
+         <input type="button" style="width:150px; float:right" value="保存後EXCEL出力" onclick="location.href='/Excel'">
       </form>
    </div>
    <!-- 追加 -->
    <div>
-      <p style="folat: left;">
-         <b>TOTAL</b> :&nbsp; <div id="list" style = "font-size : 15px;"></div>
+      <p style="float: left;">
+         <b>TOTAL</b> :&nbsp;
+      <div id="list" style="font-size: 30px;">
+         <c:out value="${f_time}" />
+      </div>
       </p>
    </div>
-   <button onclick="history.back();" style = "width : 100px"> キャンセル</button>
+   <button onclick="history.back();" style="width: 100px">キャンセル</button>
    <!-- 追加 -->
 
 
