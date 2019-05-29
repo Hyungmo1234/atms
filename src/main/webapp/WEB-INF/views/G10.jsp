@@ -51,7 +51,7 @@
                <td class="table_CountArea">番号</td>
                <td>会社</td>
                <td>職位</td>
-               <td>名前</td>
+               <td>名前</td>　
                <td>部署</td>
                <td>性別</td> 
                <td>メール</td>
