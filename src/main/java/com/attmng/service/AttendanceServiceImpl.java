@@ -23,13 +23,17 @@ public class AttendanceServiceImpl implements AttendanceService {
 
 	@Override
 	public List<AttendanceVO> AttendanceGET(String sessionID, String month, int deleteFlag) throws Exception {
-		// TODO Auto-generated method stub
+		List<AttendanceVO> resultList = dao.AttendanceGET(sessionID, month, deleteFlag);
+		
+		if(resultList.size() == 0) {
+			dao.AttendanceInput(sessionID, month);
+		}
+		
 		return dao.AttendanceGET(sessionID, month, deleteFlag);
 	}
 	
 	@Override
 	public void AttendanceUpdate(String sessionID, String month, String day, int deleteFlag) throws Exception{
-		
 		dao.AttendanceUpdate(sessionID, month, day, deleteFlag);
 	}
 	/*
