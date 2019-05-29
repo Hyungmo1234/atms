@@ -77,7 +77,7 @@
                         </c:otherwise>
                      </c:choose></td>
                   <td>${membersData.mail}</td>
-                  <td class="table_WorkingTime"
+                  <td class="table_WorkTime"
                      onClick="document.getElementById('get_memeberAttdanceForm_${membersData.emp_name}').submit()">
                	      稼働時間</td>
                </tr>
