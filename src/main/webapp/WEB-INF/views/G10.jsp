@@ -92,7 +92,7 @@
                   <td>${membersData.mail}</td>
                   <td class="table_WorkTime"
                      onClick="document.getElementById('get_memeberAttdanceForm_${membersData.emp_name}').submit()">
-               	      稼働時間</td>
+               	${membersData.full_op_time}</td>
                </tr>
                <!-- 社員情報アクセス -->
                <form id="get_memeberInfoForm_${membersData.emp_name}"
