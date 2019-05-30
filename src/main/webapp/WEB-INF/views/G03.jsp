@@ -43,7 +43,7 @@
 
 		<div
 			style="font-family: verdana; border: 1px solid red; font-size: 25px; text-align: left; height: 100%">
-			<h2>社員情報登録</h2>
+			<h2>社員情報照会</h2>
 			<form action="G03" method="POST">
 				<table id="list" style="margin-left: auto; margin-right: auto;">
 					<tr>

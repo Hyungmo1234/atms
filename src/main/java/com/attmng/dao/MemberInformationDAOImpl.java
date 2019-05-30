@@ -30,7 +30,7 @@ public class MemberInformationDAOImpl implements MemberInformationDAO {
 			switch (Adm_code) {
 			case "0000":
 				comNameList.add("GCS");
-				comNameList.add("NUVO");
+				comNameList.add("NCB");
 				comNameList.add("CSS");
 				comNameList.add("FOS");
 				comNameList.add("PSS");
@@ -38,7 +38,7 @@ public class MemberInformationDAOImpl implements MemberInformationDAO {
 				break;
 			case "0100":
 				comNameList.add("GCS");
-				comNameList.add("NUVO");
+				comNameList.add("NCB");
 				comNameList.add("CSS");
 				break;
 			case "0200":
@@ -50,7 +50,7 @@ public class MemberInformationDAOImpl implements MemberInformationDAO {
 				comNameList.add("GCS");
 				break;
 			case "2000":
-				comNameList.add("NUVO");
+				comNameList.add("NCB");
 				break;
 			case "3000":
 				comNameList.add("CSS");

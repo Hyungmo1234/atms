@@ -61,14 +61,14 @@
 								<tr>
 									<td>会社</td>
 									
-									<td>: <select name="com_name" id="com_name">
+									<td>: <select name="com_code" id="com_code">
 											<option value="">会社を選択してください。</option>
-											<option value="PSS">PSS</option>
-											<option value="GCS">GCS</option>
-											<option value="NCB">NCB</option>
-											<option value="CSS">CSS</option>
-											<option value="FOS">FOS</option>
-											<option value="ISS">ISS</option>
+											<option value="21">PSS</option>
+											<option value="11">GCS</option>
+											<option value="12">NCB</option>
+											<option value="13">CSS</option>
+											<option value="22">FOS</option>
+											<option value="23">ISS</option>
 											</select>
 											
 									</td>	
@@ -79,7 +79,7 @@
 								
  								<tr>
 									<td>部署</td>
-									<td id = "dep_area">: <select name="dep_name" id="dep_name">
+									<td id = "dep_area">: <select name="dep_code" id="dep_code">
 											<c:forEach items="${JoinGET}" var="JoinGET">
 											<option value="${JoinGET.dep_code}">${JoinGET.dep_name}</option>
 											</c:forEach>
@@ -166,14 +166,14 @@ function finish(){
 	location ( )
 	alert(com_name);
 } */
-$('#com_name').change(function(){
-	$("#dep_name").remove();
-	var select = $("#com_name option:selected").val();
+$('#com_code').change(function(){
+	$("#dep_code").remove();
+	var select = $("#com_code option:selected").val();
     $.ajax({
         url:'G02_1',
         type:'POST',
         data: {
-            "com_name": select
+            "com_code": select
         },
         success:function(data){
         	$("#dep_area").append(data);

@@ -32,9 +32,9 @@ public class JoinDAOImpl implements JoinDAO {
 		return sqlSession.selectList(namespace + ".DepartmentInfo", vo);
 	}
 
-	public List<JoinVO> JoinGET(String com_name) throws Exception {
+	public List<JoinVO> JoinGET(String com_code) throws Exception {
 		Map<String, Object> parameter = new HashMap<String, Object>();
-		parameter.put("com_name", com_name);
+		parameter.put("com_code", com_code);
 		
 		System.out.println(parameter.toString());
 		

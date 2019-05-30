@@ -56,10 +56,10 @@
 	</insert>
 	
 	<select id="JoinGET" resultType="JoinVO">
-		SELECT * FROM t_affiliation
-		inner join t_department
-		ON t_affiliation.dep_code = t_department.dep_code
-		where com_name = #{com_name}
+		SELECT * FROM t_affiliation af, t_department dep, t_company com
+		where af.dep_code = dep.dep_code
+		AND af.com_name = com.comName_ryak
+		and com.com_code =  #{com_code}
 	</select>
 	
 	<update id="Modify">

@@ -1,7 +1,5 @@
 package com.attmng.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +21,9 @@ public class AjaxController {
 	
 	
 	@RequestMapping(value = "/G02_1", method = RequestMethod.POST)
-	public String JoinPOST(@RequestParam("com_name") String com_name, Model model) throws Exception {	
+	public String JoinPOST(@RequestParam("com_code") String com_code, Model model) throws Exception {	
 		
-		model.addAttribute("JoinGET", joinService.JoinGET(com_name));
+		model.addAttribute("JoinGET", joinService.JoinGET(com_code));
 		
 		return "G02_1";
 	}
