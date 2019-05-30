@@ -34,7 +34,7 @@
 }
 
 #table_area tr:nth-child(2n){
-	background-color : gray;
+	background-color : #e6e6e6;
 }
 
 button {
@@ -132,10 +132,6 @@ button:hover:before, button:hover:after {
    </div>
    
 </div>
-	
-<!-- btn Area -->
-<button onclick="location.href='<%= URL_MembersInfomation %>'" style="width: 100px">キャンセル</button>
-
 
 <jsp:include page="/WEB-INF/common/footer.jsp"></jsp:include>
    

@@ -14,4 +14,5 @@ public interface MemberInformationService {
 	public List<MemberInformationDTO> getMembersInformation(String Adm_code, String ComName_ryak) throws Exception;
 	public List<MemberInformationDTO> getMemberInformation(String name) throws Exception;
 	public List<MemberAttendanceDTO> getMemberAttendanceData(HttpServletRequest request, HttpSession session,  Model model) throws Exception;
+	public List<MemberAttendanceDTO> getUserAttendanceData(HttpServletRequest request, HttpSession session,  Model model) throws Exception;
 }

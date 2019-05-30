@@ -20,9 +20,9 @@ import com.attmng.service.EmployeeInfoService;
 import com.attmng.service.modifyService;
 
 /**
- * 占쎄뭔占쎄틬占쎄땃占쎄깻占쎄쿁占쎄묫占쎄틬占쎄땋�뇖�궍�빣
+ * �뜝�럡萸붷뜝�럡�떖�뜝�럡�븗�뜝�럡源삣뜝�럡荑곩뜝�럡臾ュ뜝�럡�떖�뜝�럡�븢占쎈뇲占쎄텓占쎈묍
  * 
- * @author Use 占쎈빉鶯ㅻ끼占쎈굢�룒占쎌벍畑대돁�젛
+ * @author Use �뜝�럥鍮됮땡�끇�겮�뜝�럥援�占쎈짂�뜝�럩踰띸븨���뢾占쎌젢
  */
 @Controller
 public class UserController {
@@ -89,13 +89,6 @@ public class UserController {
 	public ModelAndView inputdata() {
 		logger.info("call  input datar");
 		return new ModelAndView("G06-1");
-	}
-
-	// all month data
-	@RequestMapping("/G06-2")
-	public ModelAndView alldata() {
-		logger.info("call  all data");
-		return new ModelAndView("G06-2");
 	}
 
 	// Calendar

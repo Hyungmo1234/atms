@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.attmng.dao.MemberInformationDAO;
+import com.attmng.domain.EmployeeVO;
 import com.attmng.dto.MemberAttendanceDTO;
 import com.attmng.dto.MemberInformationDTO;
 
@@ -46,11 +47,35 @@ public class MemberInformationServiceImpl implements MemberInformationService{
 		String month = null; 
 		month = request.getParameter("month");
 		
+		set_sql_attendanceData(model, id, year, month);
 		
+		return null;
+	}
+
+	@Override
+	public List<MemberAttendanceDTO> getUserAttendanceData(HttpServletRequest request, HttpSession session, Model model) throws Exception {
+		//
+		EmployeeVO loginInfoVo = (EmployeeVO) session.getAttribute("Logininfo");
+		String id = loginInfoVo.getId();
+		
+		String year = null;
+		year = request.getParameter("year");
+		
+		String month = null; 
+		month = request.getParameter("month");
+		
+		set_sql_attendanceData(model, id, year, month);
+		
+		return null;
+	}
+	
+	
+	public void set_sql_attendanceData(Model model, String id, String year, String month) throws Exception {
+	
 		//
 		Date time = new Date();
 		
-		// 占쎌뜏占쎌뒗野껊돍�삕野껋�⑥칮�뜝�룞�삕野껊〃易곩뜝�룞�삕野껊돍�삕野껊〕�삕�뤃�떣�삕野껊���삕椰꾩떣�삕鈺곌퍜�삕�뵳占썲뜝�럡荑귛뜝�럡�뀣�뜝�럡占썲뜝�럡�떖
+		// 
 		if(year == null || month == null) {
 			SimpleDateFormat SimDateYear = new SimpleDateFormat ("yyyy");
 			String DateYear = SimDateYear.format(time);
@@ -81,10 +106,6 @@ public class MemberInformationServiceImpl implements MemberInformationService{
 		model.addAttribute("id", id);
 		model.addAttribute("year", year);
 		model.addAttribute("month", month);
-		
-		return null;
 	}
-
 	
-
 }
