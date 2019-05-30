@@ -86,28 +86,28 @@ button:hover:before, button:hover:after {
       
       var name;
       function setinhour(name) {
-         target = document.getElementById("inhour"+name);
+         target = document.getElementById("in_hour"+name);
          input.setHours(parseInt(target.options[target.selectedIndex].value));
       }
       function setinminute(name) {
-         target = document.getElementById("inminute"+name);
+         target = document.getElementById("in_minute"+name);
          input.setMinutes(parseInt(target.options[target.selectedIndex].value));
       }
       function setouthour(name) {
-         target = document.getElementById("outhour"+name);
+         target = document.getElementById("out_hour"+name);
          output.setHours(parseInt(target.options[target.selectedIndex].value));
       }
       function setoutminute(name) {
-         target = document.getElementById("outminute"+name);
+         target = document.getElementById("out_minute"+name);
          output.setMinutes(parseInt(target.options[target.selectedIndex].value));
       }
       function setfreetime(name) {
-          target = document.getElementById("freetime"+name);
+          target = document.getElementById("br_time"+name);
           op_time[name] = (output.getTime() - input.getTime()) / 3600000;
           op_time[name] = op_time[name] - (parseInt(target.options[target.selectedIndex].value)/60);
           f_work = 0;
-          for(var num = 0; num<op_time.length; num++){
-            f_work = f_work+parseInt(op_time[num]);
+          for(var num = 1; num<op_time.length; num++){
+            f_work = f_work+parseFloat(op_time[num]);
           }
           document.getElementById("time"+name).innerHTML = op_time[name];
           document.getElementById("list").innerHTML = f_work;
@@ -163,8 +163,8 @@ button:hover:before, button:hover:after {
                <c:set var="f_time" value="${w_time + f_time }" />
                <tr>
                   <td><c:out value="${x}" /> 日</td>
-                  <td><select id="inhour<c:out value = "${x}"/>"
-                     name="inhour<c:out value = "${x}"/>"
+                  <td><select id="in_hour<c:out value = "${x}"/>"
+                     name="in_hour<c:out value = "${x}"/>"
                      onchange="setinhour(<c:out value = "${x}"/>)">
                         <c:forEach var="i" begin="0" end="23" step="1">
                            <c:choose>
@@ -176,8 +176,8 @@ button:hover:before, button:hover:after {
                               </c:otherwise>
                            </c:choose>
                         </c:forEach>
-                  </select> <select id="inminute<c:out value = "${x}"/>"
-                     name="inminute<c:out value = "${x}"/>"
+                  </select> <select id="in_minute<c:out value = "${x}"/>"
+                     name="in_minute<c:out value = "${x}"/>"
                      onchange="setinminute(<c:out value = "${x}"/>)">
                         <c:forEach var="i" begin="0" end="59" step="15">
                            <c:choose>
@@ -190,8 +190,8 @@ button:hover:before, button:hover:after {
                            </c:choose>
                         </c:forEach>
                   </select></td>
-                  <td><select id="outhour<c:out value = "${x}"/>"
-                     name="outhour<c:out value = "${x}"/>"
+                  <td><select id="out_hour<c:out value = "${x}"/>"
+                     name="out_hour<c:out value = "${x}"/>"
                      onchange="setouthour(<c:out value = "${x}"/>)">
                         <c:forEach var="i" begin="0" end="23" step="1">
                            <c:choose>
@@ -203,8 +203,8 @@ button:hover:before, button:hover:after {
                               </c:otherwise>
                            </c:choose>
                         </c:forEach>
-                  </select> <select id="outminute<c:out value = "${x}"/>"
-                     name="outminute<c:out value = "${x}"/>"
+                  </select> <select id="out_minute<c:out value = "${x}"/>"
+                     name="out_minute<c:out value = "${x}"/>"
                      onchange="setoutminute(<c:out value = "${x}"/>)">
                         <c:forEach var="i" begin="0" end="59" step="15">
                            <c:choose>
@@ -219,11 +219,11 @@ button:hover:before, button:hover:after {
                   </select></td>
                   <td>
                      <div id="time<c:out value = "${x}"/>">
-                        <input id = "worktime<c:out value = "${x}"/>" name = "worktime<c:out value = "${x}"/>" type = "hidden" value = "${w_time }"/>
+                        <input id = "op_time<c:out value = "${x}"/>" name = "op_time<c:out value = "${x}"/>" type = "hidden" value = "${w_time }"/>
                         <c:out value="${w_time}" />
                      </div>
                   </td>
-                  <td><select class="select font">
+                  <td><select id= "w_list<c:out value = "${x}"/>" name= "w_list<c:out value = "${x}"/>" class="select font">
                         <option>=休憩=</option>
                         <c:forEach items="${wco_name_list}" var="w_list">
                            <c:choose>
@@ -236,8 +236,8 @@ button:hover:before, button:hover:after {
                            </c:choose>
                         </c:forEach>
                   </select></td>
-                  <td><select id="freetime<c:out value = "${x}"/>"
-                     name="freetime<c:out value = "${x}"/>"
+                  <td><select id="br_time<c:out value = "${x}"/>"
+                     name="br_time<c:out value = "${x}"/>"
                      onchange="setfreetime(<c:out value = "${x}"/>)">
                         <c:forEach var="i" begin="0" end="60" step="15">
                            <c:choose>
