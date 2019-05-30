@@ -8,5 +8,5 @@
 </tr>
 <tr id="p2">
    <td id="pw2" style="width : 158px;">パスワード確認</td>
-   <td id="password2">: <input type="password" ></td>
+   <td id="password2">: <input type="password" id="passwordCheck" name="passwordCheck"></td>
 </tr>
