@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
-	//
+	// 
 	String URL_member_info = "/G00-2/G10/G12";
 	String URL_MembersInfomation = "/G00-2/G10"; 
 %>

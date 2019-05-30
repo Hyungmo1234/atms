@@ -26,7 +26,7 @@ $(function() {
 		}else {
 			$("#month").val(month_data);
 		}
-		
+
 		if( month > 0 && month < 10){
 			month_data = "0" + String(month_data);
 			$("#month").val(month_data);

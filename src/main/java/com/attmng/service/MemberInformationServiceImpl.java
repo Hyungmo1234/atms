@@ -25,7 +25,7 @@ public class MemberInformationServiceImpl implements MemberInformationService{
 	
 	@Override
 	public List<MemberInformationDTO> getMembersInformation(String Adm_code, String ComName_ryak) throws Exception {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 
 		return MemberInformationDAO.getMembersInfo(Adm_code, ComName_ryak);
 	}
 
@@ -50,7 +50,7 @@ public class MemberInformationServiceImpl implements MemberInformationService{
 		//
 		Date time = new Date();
 		
-		// �썒�슔寃뉛옙寃쀨쯁占쏙옙寃롨쯁占쏙옙寃뉛옙寃롳옙援싷옙寃믭옙嫄싷옙議껓옙由�占쎄쿂占쎄텚占쎄�占쎄틬
+		// 占쎌뜏占쎌뒗野껊돍�삕野껋�⑥칮�뜝�룞�삕野껊〃易곩뜝�룞�삕野껊돍�삕野껊〕�삕�뤃�떣�삕野껊���삕椰꾩떣�삕鈺곌퍜�삕�뵳占썲뜝�럡荑귛뜝�럡�뀣�뜝�럡占썲뜝�럡�떖
 		if(year == null || month == null) {
 			SimpleDateFormat SimDateYear = new SimpleDateFormat ("yyyy");
 			String DateYear = SimDateYear.format(time);
