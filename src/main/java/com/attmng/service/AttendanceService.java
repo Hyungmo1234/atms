@@ -11,6 +11,6 @@ public interface AttendanceService {
 
 	public List<AttendanceVO> AttendanceGET(String sessionID, String month, int deleteFlag) throws Exception;
 	
-	public void AttendanceUpdate(String sessionID, String month, String day, int deleteFlag) throws Exception;
+	public void AttendanceUpdate(String sessionID, String month, String day, int deleteFlag, String[] tempArray) throws Exception;
 	//public List<AttendanceVO> ExcelGet(String sessionID, String date) throws Exception;
 }

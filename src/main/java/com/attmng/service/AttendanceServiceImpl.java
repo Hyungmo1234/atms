@@ -33,8 +33,8 @@ public class AttendanceServiceImpl implements AttendanceService {
 	}
 	
 	@Override
-	public void AttendanceUpdate(String sessionID, String month, String day, int deleteFlag) throws Exception{
-		dao.AttendanceUpdate(sessionID, month, day, deleteFlag);
+	public void AttendanceUpdate(String sessionID, String month, String day, int deleteFlag, String[] tempArray) throws Exception{
+		dao.AttendanceUpdate(sessionID, month, day, deleteFlag, tempArray);
 	}
 	/*
 	 * @Override public List<AttendanceVO> ExcelGet(String sessionID, String check)
