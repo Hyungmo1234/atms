@@ -12,9 +12,14 @@
 <meta charset="UTF-8">
 <title>G12</title>
 <style>
+html, body { 
+   height:100%; overflow:hidden 
+}
+
 #main {
-	width : 100%;
-	height : 70%;
+   width : 100%;
+   height : 70%;
+   overflow : hidden;
 }
 
 #table_area {
@@ -24,17 +29,17 @@
 }
 
 #table_div {
-	height: 100%;
-	margin: 0 auto;
-	overflow-y: scroll;
+   height: 100%;
+   margin: 0 auto;
+   overflow-y: scroll;
 }
 
 #table_area tr:first-child{
-	background-color : #1AAB8A;
+   background-color : #1AAB8A;
 }
 
 #table_area tr:nth-child(2n){
-	background-color : #e6e6e6;
+   background-color : #e6e6e6;
 }
 
 button {
@@ -71,7 +76,7 @@ button:after {
 button:hover:before, button:hover:after {
    width: 100%;
    transition: 800ms ease all;
-}
+
 </style>
 <!-- jQuery Load -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -84,8 +89,9 @@ button:hover:before, button:hover:after {
 <jsp:include page="/WEB-INF/common/header.jsp"></jsp:include>
 
 <div id="main">
+	<div id="table"; style="font-family: verdana; border: 1px solid red; font-size: 25px; text-align: left; height: 100%">
 	<!-- calendar Area -->
-	<div id="monthmain">				
+	<div id="monthmain"   >				
 	   <center>
 			<!-- 이벤트 분류 필요 -->
 			<input id="month_before" style="display: inline;" type="button" value="前月">
@@ -130,7 +136,7 @@ button:hover:before, button:hover:after {
 		<!-- // table cotent Area -->
       </table>
    </div>
-   
+   </div>
 </div>
 
 <jsp:include page="/WEB-INF/common/footer.jsp"></jsp:include>
