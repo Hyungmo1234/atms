@@ -35,19 +35,10 @@ public class AttendanceController {
 	public String AttendanceGet(Model model, HttpServletResponse response, HttpServletRequest request,
 			AttendanceDTO dto, HttpSession session) throws Exception {
 
-		/*
-		 * String year = request.getParameter("year"); String month =
-		 * request.getParameter("month");
-		 * 
-		 * if(Integer.parseInt(month) < 10) { month = "0" + month; }
-		 * 
-		 * String yearMonth = year + month;
-		 */
-
 		vo = (EmployeeVO) session.getAttribute("Logininfo");
 
 		List<AttendanceVO> attendance = AService.AttendanceGET(vo.getId(), yearMonth, 0);
-
+		
 		model.addAttribute("attendanceList", attendance);
 		/* request.getAttribute(ID); */
 		return "G06-1";
@@ -100,7 +91,6 @@ public class AttendanceController {
 				String name = (String) p.nextElement();
 				String[] values = (String[]) m.get(name);
 				
-				
 				tempArray[j] = values[i-1];
 				
 			}
@@ -125,7 +115,7 @@ public class AttendanceController {
 		// model.addAttribute("attendanceUpdate", attendance);
 		/* request.getAttribute(ID); */
 
-		return "G00-1";
+		return "G06-1";
 	}
 	/*
 	 * @RequestMapping(value = "/ExcelSave", method = RequestMethod.GET) public

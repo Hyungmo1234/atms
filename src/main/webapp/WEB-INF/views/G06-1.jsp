@@ -119,6 +119,12 @@ button:hover:before, button:hover:after {
          }
         window.alert(list[0]);
       }
+      
+      function btn_click(str){
+    	 	if(str=="saveWithExcel"){
+    		  dbfrm.action="Excel"
+    	  } 
+      }
    </script>
    <jsp:include page="/WEB-INF/common/header.jsp"></jsp:include>
 
@@ -267,8 +273,9 @@ button:hover:before, button:hover:after {
          </table>
          <input type = "hidden" id = "month" name = "month" value = "<%=month%>"/>
          <input type = "hidden" id = "year" name = "year" value = "<%=year %>"/>
-         <input type = "submit"  style="width: 70px; float: right" onclick="insertlist()'" value = "保存"/>
-         <input type="button" style="width:150px; float:right" value="保存後EXCEL出力" onclick="location.href='/Excel'">
+         <input type = "submit" style="width: 70px; float: right" value = "保存"/>
+         <input type = "submit" style="width:150px; float: right" onclick="btn_click('saveWithExcel')" value="保存後EXCEL出力" >
+
       </form>
    </div>
    <!-- 追加 -->

@@ -5,7 +5,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Enumeration;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,12 +18,14 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.attmng.domain.AttendanceVO;
 import com.attmng.domain.EmployeeVO;
-import com.attmng.domain.ExcelToSaveAttendanceGetVo;
 import com.attmng.dto.ExcelToSaveAttendanceGetDTO;
+import com.attmng.service.AttendanceService;
 import com.attmng.service.ExcelService;
 
 @Controller
@@ -33,18 +37,58 @@ public class ExcelController {
 	
 	@Autowired
 	private ExcelService EService;
+	@Autowired
+	private AttendanceService AService;
 
-	@RequestMapping(value = "/Excel", method = RequestMethod.GET)
+	@RequestMapping(value = "/Excel", method = RequestMethod.POST)
 	public String AttendanceGet(HttpServletResponse response, HttpServletRequest request,
-			ExcelToSaveAttendanceGetDTO exceldto, HttpSession session) throws Exception {
+			ExcelToSaveAttendanceGetDTO exceldto, HttpSession session, Model model) throws Exception {
 		
+		//Session ID값 저장
 		vo =  (EmployeeVO) session.getAttribute("Logininfo");
 		
-		List<ExcelToSaveAttendanceGetDTO> excel = EService.ExcelGET(vo.getId(), key_year_month);
+		//해당 날짜 저장 및 변환
+		String year = request.getParameter("year");
+		String month = request.getParameter("month");
+		if (Integer.parseInt(month) < 10) {
+			month = "0" + month;
+		}
+		String yearMonth = year + month;
+		Calendar cal = Calendar.getInstance(); // new GregorianCalendar(year, month, 1);
+		int data = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+
 		
+		Map m = request.getParameterMap();
+		int mSize = m.size();
+		
+		for (int i = 1; i < data; i++) {
+			
+			String[] tempArray = new String[10];
+			String temp = null;
+			temp = i + "";
+
+			if (i < 10) temp = "0" + i;
+			
+			Enumeration p = request.getParameterNames();
+			
+			for (int j = 0; j < 10; j++) {
+				String name = (String) p.nextElement();
+				String[] values = (String[]) m.get(name);
+				tempArray[j] = values[i-1];
+			}
+			
+			AService.AttendanceUpdate(vo.getId(), yearMonth, temp, 0, tempArray);
+		}
+		
+		//Excel저장
+		List<ExcelToSaveAttendanceGetDTO> excel = EService.ExcelGET(vo.getId(), key_year_month);
 		saveToPoi(excel);
 		
-		return "G00-1";
+		//화면 Redirect
+		List<AttendanceVO> attendance = AService.AttendanceGET(vo.getId(), yearMonth, 0);
+		model.addAttribute("attendanceList", attendance);
+		
+		return "G06-1";
 	}
 	
 	public static void saveToPoi(List<ExcelToSaveAttendanceGetDTO> excel) throws Exception {
@@ -86,7 +130,7 @@ public class ExcelController {
 
 			String inputDay = excel.get(rowNum).getKey_day();
 			String inputDayOfWeek = getWeek(inputYear, inputMonth, inputDay);
-			String inputNotice = excel.get(rowNum).getNotice();
+			String inputWco_name = excel.get(rowNum).getWco_name();
 			
 			String forInputS_time = ""; 
 			
@@ -108,9 +152,13 @@ public class ExcelController {
 			
 			String inputS_time = forInputS_time.substring(0, 5);
 			String inputE_time = forInputE_time.substring(0, 5);
-			double inputBr_time = excel.get(rowNum).getBr_time();
-			double inputOp_time = excel.get(rowNum).getOp_time();
-			double inputRop_time = inputOp_time - inputBr_time;
+			double inputBr_time = excel.get(rowNum).getBr_time()/60;
+			double inputOp_time = excel.get(rowNum).getOp_time()/60;
+			if(excel.get(rowNum).getOp_time() == 0.0) {
+				double inputRop_time = 0.0;
+			}
+			double inputRop_time = inputOp_time + inputBr_time;
+			
 			// 날짜
 			cell = my_worksheet.getRow(9 + rowNum).getCell(2);
 			cell.setCellValue(inputDay);
@@ -121,7 +169,7 @@ public class ExcelController {
 
 			// 사업내용
 			cell = my_worksheet.getRow(9 + rowNum).getCell(4);
-			cell.setCellValue(inputNotice);
+			cell.setCellValue(inputWco_name);
 
 			// 업무 시작시간
 			cell = my_worksheet.getRow(9 + rowNum).getCell(6);
@@ -133,7 +181,7 @@ public class ExcelController {
 
 			// 실가동시간
 			cell = my_worksheet.getRow(9 + rowNum).getCell(27);
-			cell.setCellValue(inputRop_time);
+			cell.setCellValue(inputOp_time);
 
 			// 휴식시간
 			cell = my_worksheet.getRow(9 + rowNum).getCell(28);
@@ -141,7 +189,7 @@ public class ExcelController {
 
 			// 총 시간
 			cell = my_worksheet.getRow(9 + rowNum).getCell(31);
-			cell.setCellValue(inputOp_time);
+			cell.setCellValue(inputRop_time);
 			
 			countBr_time += inputBr_time;
 			countOp_time += inputOp_time;
@@ -151,7 +199,7 @@ public class ExcelController {
 		
 		// 총 실가동 시간
 		cell = my_worksheet.getRow(41).getCell(27);
-		cell.setCellValue(countRop_time);
+		cell.setCellValue(countOp_time);
 		
 		// 총 휴식 시간
 		cell = my_worksheet.getRow(41).getCell(28);
@@ -159,7 +207,7 @@ public class ExcelController {
 		
 		// 총 가동 시간
 		cell = my_worksheet.getRow(41).getCell(31);
-		cell.setCellValue(countOp_time);
+		cell.setCellValue(countRop_time);
 		
 
 		input_document.close();

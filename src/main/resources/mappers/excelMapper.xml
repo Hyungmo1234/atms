@@ -6,7 +6,7 @@
 <mapper namespace="com.attmng.atms.mappers.excelMapper">
 
 	<select id="getExcelInfo" parameterType="map" resultType="ExcelToSaveAttendanceGetDTO">
-		select a.emp_name, a.dep_code, d.dep_name, b.key_year_month, b.key_day, b.s_time, b.e_time, b.br_time, b.op_time, b.notice
+		select a.emp_name, a.dep_code, d.dep_name, b.key_year_month, b.key_day, b.s_time, b.e_time, b.br_time, b.op_time, b.wco_name
 		from attendance_management_system.t_employee as a
   			left join attendance_management_system.t_attendance as b
     		on a.id = b.id
@@ -14,7 +14,7 @@
    			on a.dep_code = d.dep_code
     	where b.key_year_month = #{key_year_month} and a.id = #{id} and b.del_cd = 0
 		union
-		select a.emp_name, a.dep_code, d.dep_name, b.key_year_month, b.key_day, b.s_time, b.e_time, b.br_time, b.op_time, b.notice
+		select a.emp_name, a.dep_code, d.dep_name, b.key_year_month, b.key_day, b.s_time, b.e_time, b.br_time, b.op_time, b.wco_name
 		from attendance_management_system.t_employee as a
   			right join attendance_management_system.t_attendance as b
    			on a.id = b.id

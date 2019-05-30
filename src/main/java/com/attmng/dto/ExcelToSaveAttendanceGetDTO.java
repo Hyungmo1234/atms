@@ -13,7 +13,7 @@ public class ExcelToSaveAttendanceGetDTO {
 	private Time e_time;
 	private double br_time;
 	private double op_time;
-	private String notice;
+	private String wco_name;
 	
 	public String getEmp_name() {
 		return emp_name;
@@ -69,11 +69,11 @@ public class ExcelToSaveAttendanceGetDTO {
 	public void setOp_time(double op_time) {
 		this.op_time = op_time;
 	}
-	public String getNotice() {
-		return notice;
+	public String getWco_name() {
+		return wco_name;
 	}
-	public void setNotice(String notice) {
-		this.notice = notice;
+	public void setWco_name(String wco_name) {
+		this.wco_name = wco_name;
 	}
 	
 }
