@@ -61,4 +61,25 @@
 		ON t_affiliation.dep_code = t_department.dep_code
 		where com_name = #{com_name}
 	</select>
+	
+	<update id="Modify">
+		update t_employee
+		set
+		gender = #{gender},
+		mail = #{mail},
+		cellphone = #{cellphone},
+		address = #{address},
+		mail = #{mail},
+		entry_date= #{entry_date}
+		where id = #{id}
+		and password = #{password}
+	</update>
+
+	<select id="GetInfo" resultType="EmployeeVO">
+		SELECT * FROM
+		attendance_management_system.t_employee
+		inner join attendance_management_system.t_company
+		ON attendance_management_system.t_company.com_code =
+		attendance_management_system.t_employee.com_code;
+	</select>
 </mapper>

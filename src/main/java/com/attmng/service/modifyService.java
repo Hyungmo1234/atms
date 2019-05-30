@@ -1,0 +1,12 @@
+package com.attmng.service;
+
+import org.springframework.stereotype.Service;
+
+import com.attmng.domain.EmployeeVO;
+
+@Service
+public interface modifyService {
+	
+	public void modifyPOST(EmployeeVO vo) throws Exception;
+
+}

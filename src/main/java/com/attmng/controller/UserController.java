@@ -2,9 +2,15 @@ package com.attmng.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.attmng.domain.EmployeeVO;
+import com.attmng.service.modifyService;
 
 /**
  * �깺�꺖�궣�겢�겗�깪�꺖�궦燁삣땿
@@ -54,13 +60,24 @@ public class UserController {
 		return new ModelAndView("G04");
 	}
 	
-	//update member page 
+	 @Autowired
+		private modifyService modifyService;
+	
+	 @RequestMapping(value="/modifyPost", method = RequestMethod.POST)
+	   public String Modify(@ModelAttribute EmployeeVO vo) throws Exception {
+		   logger.info("modifyPOST");
+		   modifyService.modifyPOST(vo);
+
+			return "G03";
+	   }
+	
+	/*//update member page 
 	@RequestMapping("/G05")
 	public ModelAndView changepw() {
 		logger.info("call  change password");
 		return new ModelAndView("G05");
 	}
-	
+	*/
 	//this month data 
 		@RequestMapping("/G06-1")
 		public ModelAndView inputdata() {
