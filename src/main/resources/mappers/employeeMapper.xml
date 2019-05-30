@@ -72,9 +72,13 @@
 		and com.com_code =  #{com_code}
 	</select>
 	
+	
 	<update id="Modify">
 		update t_employee
 		set
+		com_code = #{com_code},
+		dep_code = #{dep_code},
+		pos_code = #{pos_code},
 		gender = #{gender},
 		mail = #{mail},
 		cellphone = #{cellphone},

@@ -2,23 +2,51 @@ package com.attmng.domain;
 
 
 /*
- * table�뜝�럡愿닷뜝�럡苡밧뜝�럡苡폛TO�뜝�럡�럩岳묒빘裕�占쎈빋�뜝�럡愿쇔뜝�럡苡룟뜝�럡愿쒎뜝�럡援드뜝�럡愿드뜝�럡肄℡뜝�룞�삕
+ * table占쎈쐻占쎈윞�꽴�떣�쐻占쎈윞�떋諛㏓쐻占쎈윞�떋�룢TO占쎈쐻占쎈윞占쎈윪略노쵐鍮섋짆占썲뜝�럥鍮뗰옙�쐻占쎈윞�꽴�뇯�쐻占쎈윞�떋猷잙쐻占쎈윞�꽴�뭿�쐻占쎈윞�뤃�뱶�쐻占쎈윞�꽴�뱶�쐻占쎈윞�굜�꽒�쐻占쎈짗占쎌굲
  */
 public class EmployeeVO {
-   private String id;
-    private String password;
-    private String emp_name;
-    private String dep_name;
-    private String pos_name;
-    private String comName_ryak;
-    private String adm_code;
-    private String mail;
-    private int gender;
-    private String entry_date;
-    private String cellphone;
-    private String address;
+	private String id;
+	private String password;
+	private String emp_name;
+	private String dep_name;
+	private String pos_name;
+	private String emp_code;
+	private String dep_code;
+	private String pos_code;
+	private String comName_ryak;
+	private String com_code;
+	private String adm_code;
+	private String mail;
+	private int gender;
+	private String entry_date;
+	private String cellphone;
+	private String address;
     
-   public String getMail() {
+   public String getCom_code() {
+		return com_code;
+	}
+	public void setCom_code(String com_code) {
+		this.com_code = com_code;
+	}
+public String getEmp_code() {
+		return emp_code;
+	}
+	public void setEmp_code(String emp_code) {
+		this.emp_code = emp_code;
+	}
+	public String getDep_code() {
+		return dep_code;
+	}
+	public void setDep_code(String dep_code) {
+		this.dep_code = dep_code;
+	}
+	public String getPos_code() {
+		return pos_code;
+	}
+	public void setPos_code(String pos_code) {
+		this.pos_code = pos_code;
+	}
+public String getMail() {
       return mail;
    }
    public void setMail(String mail) {

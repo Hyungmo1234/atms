@@ -1,5 +1,8 @@
 package com.attmng.controller;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.attmng.domain.EmployeeVO;
+import com.attmng.dto.EmployeeInfoDTO;
+import com.attmng.service.EmployeeInfoService;
 import com.attmng.service.modifyService;
 
 /**
@@ -57,10 +62,18 @@ public class UserController {
 		return new ModelAndView("G04");
 	}
 
+	@Autowired
+	private EmployeeInfoService service;
+
 	@RequestMapping(value = "/modifyPost", method = RequestMethod.POST)
-	public String Modify(@ModelAttribute EmployeeVO vo) throws Exception {
+	public String Modify(@ModelAttribute EmployeeVO vo, Model model, HttpServletResponse response, EmployeeInfoDTO dto,
+			HttpSession session) throws Exception {
 		logger.info("modifyPOST");
 		modifyService.modifyPOST(vo);
+		EmployeeVO loginUser = (EmployeeVO) session.getAttribute("Logininfo");
+		dto.setId(loginUser.getId());
+
+		model.addAttribute("listAll", service.User_read(dto));
 
 		return "G03";
 	}
