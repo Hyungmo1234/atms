@@ -39,7 +39,7 @@ public class MemberPasswordChangeController {
 	@RequestMapping(value = "/G05/pw_change")
 		public String G05_pwchange(Model model, MemberPasswordChangeDTO dto, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws Exception{
 			
-		
+		request.setCharacterEncoding("UTF-8");
 			try {
 				
 				//1.�뿢耶섅깙�궧�꺈�꺖�깋�겏�뀯�뒟�걮�걼�깙�궧�꺈�꺖�깋閻븃첀
