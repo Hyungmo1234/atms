@@ -30,9 +30,11 @@
 	
 	<insert id="attendanceInsert" parameterType="map">
 		INSERT INTO t_attendance(id, key_year_month,
-		key_day, reg_id, reg_date, del_cd)
-		VALUES(#{id}, #{yearMonth}, #{day}, #{reg_id}
-		, #{reg_date}, #{flag})
+		key_day, reg_id, reg_date, del_cd, s_time, e_time,
+		br_time, op_time)
+		VALUES(#{id}, #{yearMonth}, #{day}, #{reg_id}, 
+		#{reg_date}, #{flag}, #{defTimeFormat}, #{defTimeFormat},
+		#{defDoubleFormat}, #{defDoubleFormat})
 	</insert>
 	
 	
