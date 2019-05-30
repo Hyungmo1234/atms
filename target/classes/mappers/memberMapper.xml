@@ -29,8 +29,12 @@
 		and emp_name = #{name}
 	</select>
 	
-	<select id="get_memberAttendance" resultType="AttendanceDTO">
-		 SELECT * FROM t_attendance WHERE id =#{id} AND key_year_month = #{year_month}
+	<select id="get_memberAttendance" resultType="memberAttendanceDTO">
+		 SELECT * 
+		 FROM t_attendance 
+		 WHERE id = #{id} 
+		 AND key_year_month = #{year_month} 
+		 ORDER BY ABS(day) ASC;
 	</select>
 	
 </mapper>
