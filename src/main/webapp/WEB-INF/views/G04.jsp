@@ -55,56 +55,18 @@ th {
 
 						<td>: <select name="com_code" id="com_code">
 								<c:set var="com_code" value="${emp.com_code}" />
-								<c:choose>
-									<c:when test="${com_code == '11'}">
-										<option value="11" selected>GCS</option>
-										<option value="21">PSS</option>
-										<option value="12">NCB</option>
-										<option value="13">CSS</option>
-										<option value="22">FOS</option>
-										<option value="23">ISS</option>
-									</c:when>
-									<c:when test="${com_code == '12'}">
-										<option value="12" selected>NCB</option>
-										<option value="21">PSS</option>
-										<option value="11">GCS</option>
-										<option value="13">CSS</option>
-										<option value="22">FOS</option>
-										<option value="23">ISS</option>
-									</c:when>
-									<c:when test="${com_code == '13'}">
-										<option value="13" selected>CSS</option>
-										<option value="21">PSS</option>
-										<option value="11">GCS</option>
-										<option value="12">NCB</option>
-										<option value="22">FOS</option>
-										<option value="23">ISS</option>
-									</c:when>
-									<c:when test="${com_code == '21'}">
-										<option value="21" selected>PSS</option>
-										<option value="11">GCS</option>
-										<option value="12">NCB</option>
-										<option value="13">CSS</option>
-										<option value="22">FOS</option>
-										<option value="23">ISS</option>
-									</c:when>
-									<c:when test="${com_code == '22'}">
-										<option value="22" selected>FOS</option>
-										<option value="21">PSS</option>
-										<option value="11">GCS</option>
-										<option value="12">NCB</option>
-										<option value="13">CSS</option>
-										<option value="23">ISS</option>
-									</c:when>
-									<c:when test="${com_code == '23'}">
-										<option value="23" selected>ISS</option>
-										<option value="21">PSS</option>
-										<option value="11">GCS</option>
-										<option value="12">NCB</option>
-										<option value="13">CSS</option>
-										<option value="22">FOS</option>
-									</c:when>
-								</c:choose>
+								<option value="11"
+									<c:if test="${com_code == '11'}">selected</c:if>>GCS</option>
+								<option value="21"
+									<c:if test="${com_code == '21'}">selected</c:if>>PSS</option>
+								<option value="12"
+									<c:if test="${com_code == '12'}">selected</c:if>>NCB</option>
+								<option value="13"
+									<c:if test="${com_code == '13'}">selected</c:if>>CSS</option>
+								<option value="22"
+									<c:if test="${com_code == '22'}">selected</c:if>>FOS</option>
+								<option value="23"
+									<c:if test="${com_code == '23'}">selected</c:if>>ISS</option>
 						</select>
 
 						</td>
@@ -123,18 +85,31 @@ th {
 						<td>職位</td>
 						<td>: <select name="pos_code" id="pos_code">
 								<option value="${emp.pos_code}">${emp.pos_name}</option>
-								<option value="ONE">会長</option>
-								<option value="PD">社長</option>
-								<option value="DIR">室長</option>
-								<option value="EM">本部長</option>
-								<option value="AEM">本部長代理</option>
-								<option value="GM">部長</option>
-								<option value="AGM">部長代理</option>
-								<option value="MG">マネージャー</option>
-								<option value="AMG">マネージャー代理</option>
-								<option value="SLD">総括リーダ</option>
-								<option value="LD">リーダ</option>
-								<option value="MB">メンバー</option>
+								<option value="ONE"
+									<c:if test="${emp.pos_code == 'ONE'}"> selected </c:if>>
+									会長</option>
+								<option value="PD"
+									<c:if test="${emp.pos_code == 'PD'}"> selected </c:if>>社長</option>
+								<option value="DIR"
+									<c:if test="${emp.pos_code == 'DIR'}"> selected </c:if>>室長</option>
+								<option value="EM"
+									<c:if test="${emp.pos_code == 'EM'}"> selected </c:if>>本部長</option>
+								<option value="AEM"
+									<c:if test="${emp.pos_code == 'AEM'}"> selected </c:if>>本部長代理</option>
+								<option value="GM"
+									<c:if test="${emp.pos_code == 'GM'}"> selected </c:if>>部長</option>
+								<option value="AGM"
+									<c:if test="${emp.pos_code == 'AGM'}"> selected </c:if>>部長代理</option>
+								<option value="MG"
+									<c:if test="${emp.pos_code == 'MG'}"> selected </c:if>>マネージャー</option>
+								<option value="AMG"
+									<c:if test="${emp.pos_code == 'AMG'}"> selected </c:if>>マネージャー代理</option>
+								<option value="SLD"
+									<c:if test="${emp.pos_code == 'SLD'}"> selected </c:if>>総括リーダ</option>
+								<option value="LD"
+									<c:if test="${emp.pos_code == 'LD'}"> selected </c:if>>リーダ</option>
+								<option value="MB"
+									<c:if test="${emp.pos_code == 'MB'}"> selected </c:if>>メンバー</option>
 						</select></td>
 					</tr>
 
