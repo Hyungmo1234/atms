@@ -4,10 +4,11 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-	<typeAliases>	
+	<typeAliases>
 		<typeAlias alias="login" type="com.attmng.dto.EmployeeDTO" />
 		<typeAlias alias="EmployeeVO" type="com.attmng.domain.EmployeeVO" />
 		<typeAlias alias="memberInfo" type="com.attmng.dto.MemberInformationDTO" />
+		<typeAlias alias="memberAttendanceDTO" type="com.attmng.dto.MemberAttendanceDTO" />
 		<typeAlias alias="AttendanceDTO" type="com.attmng.dto.AttendanceDTO" />
 		<typeAlias alias="AttendanceVO" type="com.attmng.domain.AttendanceVO" />
 		<typeAlias alias="JoinVO" type="com.attmng.domain.JoinVO" />
