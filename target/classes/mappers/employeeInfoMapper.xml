@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.attmng.atms.mappers.employeeinfo">
+
+	<select id="User_read" resultType="EmployeeInfoDTO">
+		SELECT id, emp_name,
+		com.comName_ryak, dep_name, pos_name, gender, mail, address,
+		entry_date
+		FROM t_employee emp
+		JOIN t_department dep
+		ON emp.dep_code = dep.dep_code
+		JOIN t_company com
+		ON com.com_code = emp.com_code
+		join t_position pos
+		ON pos.pos_code = emp.pos_code
+		WHERE id = #{id};
+	</select>
+
+
+</mapper>

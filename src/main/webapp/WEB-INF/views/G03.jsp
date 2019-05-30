@@ -1,16 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="true"%>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<jsp:include page="/WEB-INF/common/header.jsp"></jsp:include>
 <style type="text/css">
-th {
-	text-align: left;
+#main {
+	height: 70%;
 }
+
+#list {
+	font-size: 20px;
+}
+#btn {
+	text-align: center; 
+}
+#btn input {
+	font-size: 15px;
+} 
 </style>
 </head>
+<script type="text/javascript">
+	function goBack() {
+		window.history.back();
+	}
+</script>
 <%
 	String strReferer = request.getHeader("referer");
 
@@ -25,61 +38,82 @@ th {
 	}
 %>
 <body>
-	<br>
-	<div
-		style="font-family: verdana; padding: 5px; border: 1px solid red; font-size: 25px; text-align: left; height: 80%">
-		<h1>社員情報照会</h1>
-		<center>
-			<table>
-				<tr>
-					<th>ID</th>
-					<td>: honggildong</td>
-				</tr>
-				<tr>
-					<th>名前</th>
-					<td>: 李永泰</td>
-				</tr>
-				<tr>
-					<th>会社</th>
-					<td>: GCS</td>
-				</tr>
-				<tr>
-					<th>部署</th>
-					<td>: 第一事業部 開発1部</td>
-				</tr>
-				<tr>
-					<th>職位</th>
-					<td>: MB</td>
-				</tr>
-				<tr>
-					<th>性別</th>
-					<td>: 男</td>
-				</tr>
-				<tr>
-					<th>メール</th>
-					<td>: gildong@gmail.com</td>
-				</tr>
-				<tr>
-					<th>電話番号</th>
-					<td>: 070-1234-5678</td>
-				</tr>
-				<tr>
-					<th>住所</th>
-					<td>: 東京都品川区八潮5丁目6番37-315号</td>
-				</tr>
-				<tr>
-					<th>入社日</th>
-					<td>: 2019年4月6日</td>
-				</tr>
-			</table>
-			<br> <input type="button" value="情報修正"
-				onclick="location.href='/G04'" /> <input type="button"
-				value="パスワード変更" onclick="location.href='/G05'" /> <input
-				type="button" value="キャンセル" onclick="history.back();" />
-		</center>
+	<jsp:include page="/WEB-INF/common/header.jsp"></jsp:include>
+	<div id="main">
+
+		<div
+			style="font-family: verdana; border: 1px solid red; font-size: 25px; text-align: left; height: 100%">
+			<h2>社員情報登録</h2>
+			<form action="G03" method="POST">
+				<table id="list" style="margin-left: auto; margin-right: auto;">
+					<tr>
+						<td><label>ID</label></td>
+						<td>　: ${listAll.id}</td>
+					</tr>
+
+					<tr>
+						<td><label>名前</label></td>
+						<td>　: ${listAll.emp_name}</td>
+					</tr>
+
+					<tr>
+						<td><label>会社</label></td>
+						<td>　: ${listAll.comName_ryak}</td>
+					</tr>
+					<tr>
+					
+					
+						<td><label>部署</label></td>
+						<td>　: ${listAll.dep_name}</td>
+					</tr>
+					<tr>
+						<td><label>職位</label></td>
+						<td>　: ${listAll.pos_name}</td>
+					</tr>
+					<tr>
+					<c:choose>
+						<c:when test="${listAll.gender eq 1 }">
+						<td><label>性別</label></td>
+						<td>　: 男性 </td>
+						</c:when>
+						<c:otherwise>
+						<td><label>性別</label></td>
+						<td>　:　女性</td>
+						</c:otherwise>
+					</c:choose>
+					</tr>
+				<%-- 	<tr>
+						<td><label>性別</label></td>
+						<td>　: ${listAll.gender}</td>
+					</tr> --%>
+					<tr>
+						<td><label>メール</label></td>
+						<td>　: ${listAll.mail}</td>
+					</tr>
+					<tr>
+						<td><label>住所</label></td>
+						<td>　: ${listAll.address}</td>
+					</tr>
+					<tr>
+						<td><label>入社日</label></td>
+						<td>　: ${listAll.entry_date}</td>
+					</tr>
+
+
+				</table>
+			</form>
+			<div id="btn">
+				<a href="G04"><input type="button" value="情報修正" /></a>
+				<a href="G05"><input type="button" value="パスワード 変更" /></a>
+			<input type="button" class="btn_list" value="キャンセル" onclick="goBack()">
+			</div>
+
+
+
+
+		</div>
 	</div>
 </body>
-<footer style="margin-top: 20px">
-	<jsp:include page="/WEB-INF/common/footer.jsp"></jsp:include>
-</footer>
+
+<jsp:include page="/WEB-INF/common/footer.jsp"></jsp:include>
 </html>

@@ -44,14 +44,7 @@ public class UserController {
 	 return new ModelAndView("G02"); }
 	 
 	
-	//member data page 
-	@RequestMapping("/G03")
-	public ModelAndView memberdata() {
-		logger.info("call  member data");
-		return new ModelAndView("G03");
-	}
-	
-	
+
 
 	//update member page 
 	@RequestMapping("/G04")
