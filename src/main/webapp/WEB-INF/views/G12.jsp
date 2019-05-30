@@ -67,7 +67,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <!-- js File Load -->
-<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/G12_javaScript.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/G12_javaScript.js?var=2"></script>
 
 
 <jsp:include page="/WEB-INF/common/header.jsp"></jsp:include>
@@ -78,16 +78,16 @@
 	   <center>
 	   
 			<!-- 이벤트 분류 필요 -->
-			<input id="month_mae" style="display: inline;" type="button" value="前月">
+			<input id="month_before" style="display: inline;" type="button" value="前月">
 				<p style="display: inline; border: 1px solid #444444;">
 					<!-- Link to open the modal -->
 <!-- 					<a href="#ex1" rel="modal:open"> -->
-					<a onclick="test()">
+					<a id="calendar">
 						<!-- 날짜 데이터 분류 필요 // 달력 모달 기능 추가 -->
 						 ${year}年 ${month}月
 					</a>
 				</p>
-			<input style="display: inline;" type="button" value="来月" onClick="window.location.reload()">
+			<input id="month_next" style="display: inline;" type="button" value="来月">
 	      
 	   </center>
 	
@@ -106,7 +106,7 @@
 	         <!-- c:for문 처리 필요 -->
 	         <c:forEach items="${attendanceData}" var="attendanceData">
 				 <tr id = "month_Detail">
-				 	<td><label id="day">${attendanceData.day}</label></td>
+				 	<td><label id="day">${attendanceData.key_day}</label></td>
 				 	<td><label id="start_Time">${attendanceData.s_time}</label></td>
 				 	<td><label id="end_Time">${attendanceData.e_time}</label></td>
 				 	<td><label id="op_time">${attendanceData.op_time}</label></td>
