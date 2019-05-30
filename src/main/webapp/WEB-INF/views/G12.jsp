@@ -76,7 +76,7 @@ button:after {
 button:hover:before, button:hover:after {
    width: 100%;
    transition: 800ms ease all;
-
+}
 </style>
 <!-- jQuery Load -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
