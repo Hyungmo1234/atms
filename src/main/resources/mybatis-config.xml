@@ -13,8 +13,8 @@
 		<typeAlias alias="JoinVO" type="com.attmng.domain.JoinVO" />
 		<typeAlias alias="MemberPasswordChangeDTO" type="com.attmng.dto.MemberPasswordChangeDTO" />
 		<typeAlias alias="EmployeeInfoDTO" type="com.attmng.dto.EmployeeInfoDTO" />
-		<!-- <typeAlias alias="ExcelToSaveAttendanceGetDTO" type="com.attmng.dto.ExcelToSaveAttendanceGetDTO" />
-		<typeAlias alias="ExcelToSaveAttendanceGetVo" type="com.attmng.domain.ExcelToSaveAttendanceGetVo" /> -->
+		<typeAlias alias="ExcelToSaveAttendanceGetDTO" type="com.attmng.dto.ExcelToSaveAttendanceGetDTO" />
+		<typeAlias alias="ExcelToSaveAttendanceGetVo" type="com.attmng.domain.ExcelToSaveAttendanceGetVo" />
 	</typeAliases>
 
 </configuration>
