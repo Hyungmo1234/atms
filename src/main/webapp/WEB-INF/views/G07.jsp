@@ -73,7 +73,7 @@
 		
 		var today = new Date();
 		var year = today.getFullYear();
-		
+
 		$('#txtYear').val(year);
 		
 	});
@@ -85,8 +85,13 @@
 		
 		if (txtYear.length <= 0) {
 			alert("年度を入力してください。");
-			document.month.txtYear.focus();
+			document.getElementById("txtYear").focus();
 			return false;
+		}
+		
+		// 月に0を付ける
+		if (btnMonth < 10) {
+			btnMonth = "0" + btnMonth;
 		}
 		
 		// window.opener.onPopupClose(myValue);//myValue is the value you want to return to main javascript
