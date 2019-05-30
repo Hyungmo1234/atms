@@ -50,7 +50,7 @@ public class MemberInformationServiceImpl implements MemberInformationService{
 		//
 		Date time = new Date();
 		
-		// 雅뚣겇�겗訝��겎訝��겇�겎�굚�겒�걚�졃�릦�겘�궓�꺀�꺖
+		// �썒�슔寃뉛옙寃쀨쯁占쏙옙寃롨쯁占쏙옙寃뉛옙寃롳옙援싷옙寃믭옙嫄싷옙議껓옙由�占쎄쿂占쎄텚占쎄�占쎄틬
 		if(year == null || month == null) {
 			SimpleDateFormat SimDateYear = new SimpleDateFormat ("yyyy");
 			String DateYear = SimDateYear.format(time);
@@ -59,6 +59,10 @@ public class MemberInformationServiceImpl implements MemberInformationService{
 			SimpleDateFormat SimDateMonth = new SimpleDateFormat ("MM");
 			String DateMonth = SimDateMonth.format(time);
 			month = DateMonth;
+		}
+		
+		if(month.length() < 2) {
+			month = "0" + month;
 		}
 		
 		//
@@ -77,11 +81,6 @@ public class MemberInformationServiceImpl implements MemberInformationService{
 		model.addAttribute("id", id);
 		model.addAttribute("year", year);
 		model.addAttribute("month", month);
-		
-		
-		// session
-		// session.removeAttribute("attendanceMember_Id");
-		// session.setAttribute("attendanceMember_Id", id);
 		
 		return null;
 	}

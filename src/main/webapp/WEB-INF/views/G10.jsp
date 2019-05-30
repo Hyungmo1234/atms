@@ -18,7 +18,6 @@
 }
 
 .table_CountArea {
-	
 	background-color :#F6D8CE;
 	border : 1px solid #444444;
 }
