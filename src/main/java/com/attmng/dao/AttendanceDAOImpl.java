@@ -95,7 +95,8 @@ public class AttendanceDAOImpl implements AttendanceDAO {
 			paraMap.put("flag", 0);
 			paraMap.put("reg_date", formatOfDatetime);
 			paraMap.put("reg_id", sessionID);
-			paraMap.put("else", null);
+			paraMap.put("defTimeFormat", "00:00");
+			paraMap.put("defDoubleFormat", "0");
 
 			sqlSession.insert(namespace + ".attendanceInsert", paraMap);
 			
