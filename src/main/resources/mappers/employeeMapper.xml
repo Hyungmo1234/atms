@@ -84,6 +84,11 @@
 		where id = #{id}
 		and password = #{password}
 	</update>
+	
+	<select id="Idcheck" resultType="JoinVO">
+	SELECT * FROM t_employee
+	where id=#{id}	
+	</select> 
 
 	<select id="GetInfo" resultType="EmployeeVO">
 		SELECT * FROM

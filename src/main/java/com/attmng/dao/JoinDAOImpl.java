@@ -40,4 +40,10 @@ public class JoinDAOImpl implements JoinDAO {
 		
 		return sqlSession.selectList(namespace + ".JoinGET", parameter);
 	}
+	
+	public List<JoinVO> Idcheck(String id) throws Exception{
+		
+		return sqlSession.selectList(namespace + ".Idcheck", id);
+		
+	}
 }

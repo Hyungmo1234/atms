@@ -8,15 +8,12 @@
 <title>Insert title here</title>
 <style type="text/css">
 #join {
-	text-align: left;
+	text-align: center;
 	height: 70%;
 	
 }
 
 #tab2 {
-	margin-top: 20%;
-	margin-left: 200%;
-	width: 100%;
 	
 }
 
@@ -46,14 +43,16 @@
 									<td>ID</td>
 									<td>: <input type="text" id="id" name="id"></td>
 								</tr>
-								<tr>
-									<td>パスワード</td>
-									<td>: <input type="password" id="password" name="password"></td>
+								<table id="tab3">
+								<tr id="p1">
+									<td id="pw1">パスワード</td>
+									<td id="password1">: <input type="password" id="password" name="password"></td>
 								</tr>
-								<tr>
-									<td>パスワード確認</td>
-									<td>: <input type="password"></td>
+								<tr id="p2">
+									<td id="pw2">パスワード確認</td>
+									<td id="password2">: <input type="password"></td>
 								</tr>
+								</table>
 								<tr>
 									<td>名前</td>
 									<td>: <input type="text" id="emp_name" name="emp_name"></td>
@@ -119,7 +118,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td>入社日 <font size="2" color="red"> ex)20190528</h5> </td>
+									<td>入社日 <font size="2" color="red"> ex)20190528</font> </td>
 									<td>: <input type="number" name="entry_date" id="entry_date">
 									</td>
 								</tr>
@@ -177,6 +176,30 @@ $('#com_code').change(function(){
         },
         success:function(data){
         	$("#dep_area").append(data);
+        }
+    })
+})
+
+$('#id').change(function(){
+	/*  $("#id").remove();*/
+		
+		$("#p1").remove();
+		$("#p2").remove();
+		$("#pw1").remove(); 
+		$("#pw2").remove(); 
+	    $("#password1").remove(); 
+ 	  	$("#password2").remove(); 
+       
+	var id = $("#id").val(); 
+    $.ajax({
+        url:'G02_2',
+        type:'POST',
+        data: {
+            "id": id
+        },
+        success:function(data){
+        	$("#tab3").append(data);
+        	
         }
     })
 })

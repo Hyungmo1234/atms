@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.attmng.dao.JoinDAO;
-import com.attmng.domain.AttendanceVO;
 import com.attmng.domain.EmployeeVO;
 import com.attmng.domain.JoinVO;
 
@@ -32,6 +31,10 @@ public class JoinServiceImpl implements JoinService {
 
 	public List<JoinVO> JoinGET(String com_code) throws Exception {
 		return dao.JoinGET(com_code);
+	}
+	
+	public List<JoinVO> Idcheck(String id) throws Exception{
+		return dao.Idcheck(id);
 	}
 
 }

@@ -19,4 +19,5 @@ public interface JoinDAO {
 	public List<EmployeeVO> EmployeeGET(String vo) throws Exception;
 	
 	public List<JoinVO> JoinGET(String com_name) throws Exception;
+	public List<JoinVO> Idcheck(String id) throws Exception;
 }

@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.attmng.domain.AttendanceVO;
 import com.attmng.domain.EmployeeVO;
 import com.attmng.domain.JoinVO;
 
@@ -18,4 +17,5 @@ public interface JoinService {
 
 	public List<JoinVO> JoinGET(String com_code) throws Exception;
 
+	public List<JoinVO> Idcheck(String id) throws Exception;
 }
