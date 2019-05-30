@@ -83,9 +83,9 @@ public class AttendanceDAOImpl implements AttendanceDAO {
 		paraMap.put("s_time", tempArray[1] + ":" + tempArray[2]);
 		paraMap.put("e_time", tempArray[3] + ":" + tempArray[4]);
 		double opt =
-				((Double.parseDouble(tempArray[3])*60) + Double.parseDouble(tempArray[4])) -
+				(((Double.parseDouble(tempArray[3])*60) + Double.parseDouble(tempArray[4])) -
 				((Double.parseDouble(tempArray[1])*60) + Double.parseDouble(tempArray[2])) -
-				Double.parseDouble(tempArray[7]);
+				Double.parseDouble(tempArray[7]))/60;
 		paraMap.put("op_time", opt);
 		paraMap.put("wco_name", tempArray[6]);
 		paraMap.put("br_time", Double.parseDouble(tempArray[7]));

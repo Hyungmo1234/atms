@@ -14,25 +14,34 @@
 	
 	<update id="attendanceUpdate" parameterType="map">
 		UPDATE t_attendance 
-		SET s_time= #{s_date}, upd_id = #{upd_id}
+		SET s_time = #{s_time}, e_time = #{e_time}, op_time = #{op_time},
+		br_time = #{br_time}, notice = #{notice}, remarks = #{remarks},
+		upd_id = #{upd_id}, upd_date = #{upd_date}, wco_name = #{wco_name}
 		WHERE id= #{id} 
 		AND key_year_month= #{month} 
 		AND key_day= #{day}
 		AND del_cd = #{flag}
 	</update>
 	<!-- 
-	<select id="getExcelInfo" parameterType="map" resultType="AttendanceDTO">
-		
-		
-	</select>
-	
+		paraMap.put("s_time", dto.getS_time());
+		paraMap.put("e_time", dto.getE_time());
+		paraMap.put("op_time", dto.getOp_time());
+		paraMap.put("br_time", dto.getBr_time());
+		paraMap.put("wco_name", dto.getWco_name());
+		paraMap.put("notice", dto.getNotice());
+		paraMap.put("remarks", dto.getRemarks());
+		paraMap.put("upd_id", sessionID);
+		paraMap.put("upd_date", formatOfDatetime);
 	-->
 	
 	<insert id="attendanceInsert" parameterType="map">
 		INSERT INTO t_attendance(id, key_year_month,
-		key_day, reg_id, reg_date, del_cd)
-		VALUES(#{id}, #{yearMonth}, #{day}, #{reg_id}
-		, #{reg_date}, #{flag})
+		key_day, reg_id, reg_date, del_cd, s_time, e_time,
+		br_time, op_time, remarks, notice)
+		VALUES(#{id}, #{yearMonth}, #{day}, #{reg_id}, 
+		#{reg_date}, #{flag}, #{defTimeFormat}, #{defTimeFormat},
+		#{defDoubleFormat}, #{defDoubleFormat}, 
+		#{defVarcharFormat}, #{defVarcharFormat})
 	</insert>
 	
 	

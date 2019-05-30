@@ -269,7 +269,12 @@ button:hover:before, button:hover:after {
                      value="${list.remarks}" /></td>
                </tr>
                <c:set var="x" value="${x+1 }" />
-            </c:forEach>
+            </c:forEach>      
+                     <tr>
+                  <td>
+                        <input id = "op_time" name = "op_time" type = "hidden" value = "${w_time }"/>
+                  </td>
+               </tr>
          </table>
          <input type = "hidden" id = "month" name = "month" value = "<%=month%>"/>
          <input type = "hidden" id = "year" name = "year" value = "<%=year %>"/>
