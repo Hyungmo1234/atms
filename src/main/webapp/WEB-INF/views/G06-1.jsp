@@ -119,16 +119,6 @@ button:hover:before, button:hover:after {
          }
         window.alert(list[0]);
       }
-      
-      function btn_click(str){
-    	  if(str=="save"){
-    		  dbfrm.action="attendanceUpdate";
-    	  } else if(str=="saveWithExcel"){
-    		  dbfrm.action="Excel"
-    	  } else{
-    		  
-    	  }
-      }
    </script>
    <jsp:include page="/WEB-INF/common/header.jsp"></jsp:include>
 
@@ -141,7 +131,7 @@ button:hover:before, button:hover:after {
       </p>
    </center>
    <div id="monthmain">
-      <form action="attendanceUpdate" id="dbfrm" method="get">
+      <form action="attendanceUpdate" id="dbfrm" method="post">
          <table id="monthtable" class="scrolltable">
             <tr>
                <td style="width: 5%; height: 25px; 0 auto;">日付</td>
@@ -168,13 +158,17 @@ button:hover:before, button:hover:after {
                <c:set var="w_time"
                   value="${((e_hour*60+e_minute) - (s_hour*60+s_minute)-list.br_time)/60}" />
                <script>
-               op_time['<c:out  value="${x-1}"/>'] = '<c:out value="${w_time}"/>';
+               op_time['<c:out  value="${x}"/>'] = '<c:out value="${w_time}"/>';
             </script>
                <c:set var="f_time" value="${w_time + f_time }" />
                <tr>
-                  <td><c:out value="${x}" /> 日</td>
+                  <td><input  id = "day<c:out value="${x}" />" 
+                  name = "day"
+                   type = "text"  style = "width : 30px; border: 0px; text-align : center"
+                   value = "<c:out value="${x}" />" readOnly>
+                   </td>
                   <td><select id="in_hour<c:out value = "${x}"/>"
-                     name="in_hour<c:out value = "${x}"/>"
+                     name="in_hour"
                      onchange="setinhour(<c:out value = "${x}"/>)">
                         <c:forEach var="i" begin="0" end="23" step="1">
                            <c:choose>
@@ -187,7 +181,7 @@ button:hover:before, button:hover:after {
                            </c:choose>
                         </c:forEach>
                   </select> <select id="in_minute<c:out value = "${x}"/>"
-                     name="in_minute<c:out value = "${x}"/>"
+                     name="in_minute"
                      onchange="setinminute(<c:out value = "${x}"/>)">
                         <c:forEach var="i" begin="0" end="59" step="15">
                            <c:choose>
@@ -201,7 +195,7 @@ button:hover:before, button:hover:after {
                         </c:forEach>
                   </select></td>
                   <td><select id="out_hour<c:out value = "${x}"/>"
-                     name="out_hour<c:out value = "${x}"/>"
+                     name="out_hour"
                      onchange="setouthour(<c:out value = "${x}"/>)">
                         <c:forEach var="i" begin="0" end="23" step="1">
                            <c:choose>
@@ -214,7 +208,7 @@ button:hover:before, button:hover:after {
                            </c:choose>
                         </c:forEach>
                   </select> <select id="out_minute<c:out value = "${x}"/>"
-                     name="out_minute<c:out value = "${x}"/>"
+                     name="out_minute"
                      onchange="setoutminute(<c:out value = "${x}"/>)">
                         <c:forEach var="i" begin="0" end="59" step="15">
                            <c:choose>
@@ -229,11 +223,11 @@ button:hover:before, button:hover:after {
                   </select></td>
                   <td>
                      <div id="time<c:out value = "${x}"/>">
-                        <input id = "op_time<c:out value = "${x}"/>" name = "op_time<c:out value = "${x}"/>" type = "hidden" value = "${w_time }"/>
+                        <input id = "op_time<c:out value = "${x}"/>" name = "op_time" type = "hidden" value = "${w_time }"/>
                         <c:out value="${w_time}" />
                      </div>
                   </td>
-                  <td><select id= "w_list<c:out value = "${x}"/>" name= "w_list<c:out value = "${x}"/>" class="select font">
+                  <td><select id= "w_list<c:out value = "${x}"/>" name= "w_list" class="select font">
                         <option>=休憩=</option>
                         <c:forEach items="${wco_name_list}" var="w_list">
                            <c:choose>
@@ -247,7 +241,7 @@ button:hover:before, button:hover:after {
                         </c:forEach>
                   </select></td>
                   <td><select id="br_time<c:out value = "${x}"/>"
-                     name="br_time<c:out value = "${x}"/>"
+                     name="br_time"
                      onchange="setfreetime(<c:out value = "${x}"/>)">
                         <c:forEach var="i" begin="0" end="60" step="15">
                            <c:choose>
@@ -261,11 +255,11 @@ button:hover:before, button:hover:after {
                         </c:forEach>
                   </select></td>
                   <td><input id="notice<c:out value = "${x}"/>"
-                     name="notice<c:out value = "${x}"/>" type="text" maxlength="200"
+                     name="notice" type="text" maxlength="200"
                      style="width: 300px;" value="${list.notice}" /></td>
                   <td><input style="width: 400px;"
                      id="remark<c:out value = "${x}"/>"
-                     name="remark<c:out value = "${x}"/>" type="text" maxlength="200"
+                     name="remark" type="text" maxlength="200"
                      value="${list.remarks}" /></td>
                </tr>
                <c:set var="x" value="${x+1 }" />
@@ -273,8 +267,8 @@ button:hover:before, button:hover:after {
          </table>
          <input type = "hidden" id = "month" name = "month" value = "<%=month%>"/>
          <input type = "hidden" id = "year" name = "year" value = "<%=year %>"/>
-         <input type = "submit" style="width: 70px; float: right" onclick="btn_click('save')" value = "保存"/>
-         <input type = "submit" style="width:150px; float: right" onclick="btn_click('saveWithExcel')" value="保存後EXCEL出力" >
+         <input type = "submit"  style="width: 70px; float: right" onclick="insertlist()'" value = "保存"/>
+         <input type="button" style="width:150px; float:right" value="保存後EXCEL出力" onclick="location.href='/Excel'">
       </form>
    </div>
    <!-- 追加 -->
