@@ -13,4 +13,6 @@ public interface ModifyDAO {
 	 */
 	//public JoinVO insertMember(EmployeeDTO dto) throws Exception;
 	public void modifyPOST(EmployeeVO vo) throws Exception;
+
+	public EmployeeVO EmpData(String id) throws Exception;
 }

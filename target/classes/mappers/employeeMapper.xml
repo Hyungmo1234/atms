@@ -55,6 +55,16 @@
 		)
 	</insert>
 	
+	<select id="empList" resultType="EmployeeVO">
+		select *
+		from t_employee e, t_company
+		c, t_department d, t_position p
+		where e.com_code = c.com_code
+		and e.pos_code = p.pos_code
+		and e.dep_code = d.dep_code
+		and id = #{id}
+	</select>
+	
 	<select id="JoinGET" resultType="JoinVO">
 		SELECT * FROM t_affiliation af, t_department dep, t_company com
 		where af.dep_code = dep.dep_code

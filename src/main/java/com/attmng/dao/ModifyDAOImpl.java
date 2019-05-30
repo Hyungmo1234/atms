@@ -10,7 +10,6 @@ import com.attmng.domain.JoinVO;
 @Repository
 public class ModifyDAOImpl implements ModifyDAO {
 
-	
 	private static final String namespace = "com.attmng.atms.mappers.employee";
 
 	@Autowired
@@ -20,7 +19,13 @@ public class ModifyDAOImpl implements ModifyDAO {
 	public void modifyPOST(EmployeeVO vo) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println(vo.getCellphone());
-		sqlSession.update(namespace+".Modify", vo);
+		sqlSession.update(namespace + ".Modify", vo);
 	}
-    
+
+	@Override
+	public EmployeeVO EmpData(String id) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace + ".empList", id);
+	}
+
 }

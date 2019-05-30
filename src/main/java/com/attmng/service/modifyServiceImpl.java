@@ -20,4 +20,10 @@ public class modifyServiceImpl implements modifyService {
 		dao.modifyPOST(vo);
 	}
 
+	@Override
+	public EmployeeVO EmpData(String id) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.EmpData(id);
+	}
+
 }

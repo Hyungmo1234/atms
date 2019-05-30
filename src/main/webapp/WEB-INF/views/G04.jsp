@@ -35,21 +35,21 @@ th {
          <table>
             <tr>
                <th>ID</th>
-             <td>: ${Logininfo.id}<input type="hidden" value="${Logininfo.id}" name="id"/></td>
+             <td>: ${emp.id}<input type="hidden" value="${emp.id}" name="id"/></td>
 
             </tr>
             <tr>
                <th>既存パスワード</th>
-               <td>: <input type="password" name= "password" value="${Logininfo.password}"></td>
+               <td>: <input type="password" name= "password" value=""></td>
             </tr>
             <tr>
                <th>名前</th>
-               <td>: ${Logininfo.emp_name}</td>
+               <td>: ${emp.emp_name}</td>
             </tr>
             <tr>
                <th>会社</th>
                <td>: <select name=company>
-                     <option value="${Logininfo.comName_ryak}">${Logininfo.comName_ryak}</option>
+                     <option value="${emp.comName_ryak}">${emp.comName_ryak}</option>
                      <option value="FOS">FOS</option>
                      <option value="PSS">PSS</option>
                      <option value="GCS">GCS</option>
@@ -97,32 +97,36 @@ th {
          
             <tr>
                <th>性別</th>
-               <td>: <c:if test="${Logininfo.gender eq 1}">
-                     男性<input type="radio" name="gender" value="1" checked />
-                        女性<input type="radio" name="gender" value="2" />
-                  </c:if> <c:if test="${Logininfo.gender eq 2}">
-                     男性<input type="radio" name="gender" value="1" /> 
-                        女性<input type="radio" name="gender" value="2" checked />
-                  </c:if>
+               <td>: <c:set var = "gender" value="${emp.gender}"/>
+               		 <c:choose>
+               		 	<c:when test = "${gender == 1}">
+               		 		男性<input type="radio" name="gender" value="1" checked />
+                      	 	女性<input type="radio" name="gender" value="2" />
+               		 	</c:when>
+               		 	<c:otherwise>
+               		 		  男性<input type="radio" name="gender" value="1" /> 
+                     		  女性<input type="radio" name="gender" value="2" checked />
+               		 	</c:otherwise>
+ 					</c:choose>
                </td>
             </tr>
             
             <tr>
                <th>メール</th>
-               <td>: <input type="text" name="mail" value="${Logininfo.mail}"></td>
+               <td>: <input type="text" name="mail" value="${emp.mail}"></td>
             </tr>
             <tr>
                <th>電話番号</th>
-               <td>: <input type="text" name="cellphone" value="${Logininfo.cellphone}"></td>
+               <td>: <input type="text" name="cellphone" value="${emp.cellphone}"></td>
             </tr>
             <tr>
                <th>住所</th>
-               <td>: <input type="text" name="address" value="${Logininfo.address}"></td>
+               <td>: <input type="text" name="address" value="${emp.address}"></td>
             </tr>
             <tr>
                <th>入社日</th>
                <td>: <input type="number" id="userdate" name="entry_date"
-                  value="${Logininfo.entry_date}"></td>
+                  value="${emp.entry_date}"></td>
             </tr>
          </table>
       </center>

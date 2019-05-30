@@ -103,7 +103,7 @@
 				</table>
 			</form>
 			<div id="btn">
-				<a href="G04"><input type="button" value="情報修正" /></a>
+				<a href="G04?id=${listAll.id}"><input type="button" value="情報修正" /></a>
 				<a href="G05"><input type="button" value="パスワード 変更" /></a>
 			<input type="button" class="btn_list" value="キャンセル" onclick="goBack()">
 			</div>
