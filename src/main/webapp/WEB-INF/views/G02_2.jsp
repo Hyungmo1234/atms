@@ -4,9 +4,9 @@
 
 <tr id="p1">
 	<td id="pw1">パスワード</td>
-	<td id="password1">: <input type="password" id="password" name="password" disabled></td>
+	<td id="password1">: <input type="text" value="id중복" disabled></td>
 </tr>
 <tr id="p2">
 	<td id="pw2">パスワード確認</td>
-	<td id="password2">: <input type="password" disabled></td>
+	<td id="password2">: <input type="text" value="id중복" disabled></td>
 </tr>
