@@ -1,6 +1,7 @@
 package com.attmng.dao;
 
 import java.text.SimpleDateFormat;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -48,19 +49,50 @@ public class AttendanceDAOImpl implements AttendanceDAO {
 	}
 
 	@Override
-	public void AttendanceUpdate(String sessionID, String month, String day, int deleteFlag) throws Exception {
+	public void AttendanceUpdate(String sessionID, String month, String day, int deleteFlag, String[] tempArray) throws Exception {
 		Map<String, Object> paraMap = new HashMap<String, Object>();
 
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 		String formatOfDatetime = format.format(System.currentTimeMillis());
-
+		
+		/*
+		 * dto.setS_time(request.getParameter("in_hour"+i + "in_minute"+i));
+		 * dto.setE_time(request.getParameter("out_hour"+i + "out_minute"+i));
+		 * dto.setOp_time(Double.parseDouble(request.getParameter("op_time"+i)));
+		 * dto.setBr_time(Double.parseDouble(request.getParameter("br_time"+i)));
+		 * dto.setWco_name(request.getParameter("w_list"+i));
+		 * dto.setNotice(request.getParameter("notice"+i));
+		 * dto.setRemarks(request.getParameter("remark"+i));
+		 */
+		//	where part
 		paraMap.put("id", sessionID);
 		paraMap.put("month", month);
 		paraMap.put("day", day);
 		paraMap.put("flag", deleteFlag);
+		
+		
+		/*
+		 * dto.setS_time(tempArray[1] + ":" + tempArray[2]); dto.setE_time(tempArray[3]
+		 * + ":" + tempArray[4]); dto.setWco_name(tempArray[5]);
+		 * dto.setBr_time(Double.parseDouble(tempArray[6]));
+		 * dto.setNotice(tempArray[7]); dto.setRemarks(tempArray[8]);
+		 * dto.setOp_time(Double.parseDouble(tempArray[9]));
+		 */
+		//	update part
+		paraMap.put("s_time", tempArray[1] + ":" + tempArray[2]);
+		paraMap.put("e_time", tempArray[3] + ":" + tempArray[4]);
+		double opt =
+				((Double.parseDouble(tempArray[3])*60) + Double.parseDouble(tempArray[4])) -
+				((Double.parseDouble(tempArray[1])*60) + Double.parseDouble(tempArray[2])) -
+				Double.parseDouble(tempArray[7]);
+		paraMap.put("op_time", opt);
+		paraMap.put("wco_name", tempArray[6]);
+		paraMap.put("br_time", Double.parseDouble(tempArray[7]));
+		paraMap.put("notice", tempArray[8]);
+		paraMap.put("remarks", tempArray[9]);
 		paraMap.put("upd_id", sessionID);
-		paraMap.put("s_date", "18:00");
+		paraMap.put("upd_date", formatOfDatetime);
 
 		sqlSession.update(namespace + ".attendanceUpdate", paraMap);
 	}
@@ -97,6 +129,7 @@ public class AttendanceDAOImpl implements AttendanceDAO {
 			paraMap.put("reg_id", sessionID);
 			paraMap.put("defTimeFormat", "00:00");
 			paraMap.put("defDoubleFormat", "0");
+			paraMap.put("defVarcharFormat", "");
 
 			sqlSession.insert(namespace + ".attendanceInsert", paraMap);
 			
