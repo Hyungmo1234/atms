@@ -114,7 +114,6 @@ public class MemberPasswordChangeController {
             
          }
 
-      
       return "G03";
       
    }
