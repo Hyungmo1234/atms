@@ -285,7 +285,11 @@ button:hover:before, button:hover:after {
       </div>
       </p>
    </div>
-   <button onclick="history.back();" style="width: 100px">キャンセル</button><!-- 전 페이지로 되돌아가기  -->
+   
+   <form action="/G00-1" id="moveLoginMain" method="post">
+       <button style="width: 100px">キャンセル</button><!-- 전 페이지로 되돌아가기  -->
+   </form>
+   
    <!-- 追加 -->
 
 

@@ -45,6 +45,16 @@ public class AttendanceController {
 
 	}
 
+	@RequestMapping(value = "/G00-1", method = RequestMethod.GET)
+	public String moveLoginMain(Model model, HttpServletResponse response, HttpServletRequest request,
+			AttendanceDTO dto, HttpSession session) throws Exception {
+		
+		vo = (EmployeeVO) session.getAttribute("Logininfo");
+		List<AttendanceVO> attendance = AService.AttendanceGET(vo.getId(),  yearMonth, 0);
+		model.addAttribute("attendanceList", attendance);
+		return "G00-1";
+	}
+	
 	@RequestMapping(value = "/attendanceUpdate", method = RequestMethod.POST)
 	public String AttendanceUpdate(Model model, HttpServletResponse response, HttpServletRequest request,
 			AttendanceDTO dto, HttpSession session) throws Exception {

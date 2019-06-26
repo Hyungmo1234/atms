@@ -4,7 +4,7 @@
 <%
 	// URL 管理社員情報照会
 	// FULL URL /G00-2/G10
-	String URL_MembersInfomation = "/G00-2/G10"; 
+	String URL_MembersInfomation = "/G10"; 
 %>
    <!-- 
   	作成者：朴勇賢

@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.slf4j.Logger;

@@ -4,8 +4,8 @@
 <%
 	// URL設定
 	// FULL URL : /G00-2/G10/G11
-	String URL_personal_information = "/G00-2/G10/G11";
-	String URL_attendance_information = "/G00-2/G10/G12";
+	String URL_personal_information = "/G11";
+	String URL_attendance_information = "/G12";
 %>
 <html>
 <head>

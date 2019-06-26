@@ -51,7 +51,7 @@ public class MemberInformationController {
 	/*
 	 * 竊믭펿嶸←릤��_鹽얍뱻�깄�젿�뀱鴉�
 	 */
-	@RequestMapping(value="/G00-2/G10", method = RequestMethod.GET)
+	@RequestMapping(value="/G10", method = RequestMethod.GET)
 	public String Admin_get_MembersInformation(Model model, HttpSession session) throws Exception {
 		EmployeeVO vo = (EmployeeVO) session.getAttribute("Logininfo");
 		//���궚�궓�꺁�굮若잒죱�걮�겍�깈�꺖�궭�굮�굚�굢�걝
@@ -69,7 +69,7 @@ public class MemberInformationController {
 	/*
 	 * 竊볩펿嶸←릤��_鹽얍뱻�닪屋녕눗�깄�젿�뀱鴉�
 	 */
-	@RequestMapping(value="/G00-2/G10/G11", method = RequestMethod.POST)
+	@RequestMapping(value="/G11", method = RequestMethod.POST)
 	public String Admin_get_MemberInformation(HttpServletRequest request, Model model) throws Exception {
 		//���깙�꺀�깳�꺖�궭�갢AME�굮�굚�굢�걝
 		String name = request.getParameter("name");
@@ -89,7 +89,7 @@ public class MemberInformationController {
 	/*
 	 * 4竊롧�←릤��_鹽얍뱻�닪�떎�졿깄�젿�뀱鴉�
 	 */
-	@RequestMapping(value="/G00-2/G10/G12", method = RequestMethod.POST)
+	@RequestMapping(value="/G12", method = RequestMethod.POST)
 	public String Admin_get_commuteInformation(HttpServletRequest request, HttpSession session, Model model) throws Exception {
 		 
 		//

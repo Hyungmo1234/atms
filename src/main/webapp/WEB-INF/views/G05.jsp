@@ -27,6 +27,7 @@ input{
 	function back_click() {
 		window.history.back();
 	}
+	
 </script>
 </head>
 <%
