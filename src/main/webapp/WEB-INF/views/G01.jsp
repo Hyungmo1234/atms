@@ -29,9 +29,8 @@
 							placeholder="パスワード"></td>
 					</tr>
 					<tr>
-						<td style="margin-left: auto; margin-right: auto;"></td>
 						<td><input type="submit" id="login" name="login" value="ログイン" />
-							<button id="new_co">新規登録</button></td>
+						<td><a href= "G02"><input type="button" id = "new_co"  value="新規登録"/></a></td>	
 					</tr>
 				</table>
 			</form>

@@ -12,6 +12,9 @@
 th {
 	text-align: left;
 }
+#btn{
+	text-align: center;	
+}
 </style>
 </head>
 <%
@@ -32,129 +35,128 @@ th {
 	<div
 		style="font-family: verdana; padding: 5px; border: 1px solid red; font-size: 25px; text-align: left; height: 80%">
 		<h1>社員情報修正画面</h1>
-		<center>
-			<form action="/modifyPost" method="post" id="modify">
-				<table>
-					<tr>
-						<th>ID</th>
-						<td>: ${emp.id}<input type="hidden" value="${emp.id}"
-							name="id" /></td>
+		<form action="/modifyPost" method="post" id="modify">
+			<table
+				style="margin-left: auto; margin-right: auto; margin-top: 50px">
+				<tr>
+					<th>ID</th>
+					<td>: ${emp.id}<input type="hidden" value="${emp.id}"
+						name="id" /></td>
 
-					</tr>
-					<tr>
-						<th>既存パスワード</th>
-						<td>: <input type="password" id="password" name="password"
-							value=""></td>
-					</tr>
-					<tr>
-						<th>名前</th>
-						<td>: ${emp.emp_name}</td>
-					</tr>
-					<tr>
-						<td>会社</td>
+				</tr>
+				<tr>
+					<th>既存パスワード</th>
+					<td>: <input type="password" id="password" name="password"
+						value=""></td>
+				</tr>
+				<tr>
+					<th>名前</th>
+					<td>: ${emp.emp_name}</td>
+				</tr>
+				<tr>
+					<td>会社</td>
 
-						<td>: <select name="com_code" id="com_code">
-								<c:set var="com_code" value="${emp.com_code}" />
-								<option value="11"
-									<c:if test="${com_code == '11'}">selected</c:if>>GCS</option>
-								<option value="21"
-									<c:if test="${com_code == '21'}">selected</c:if>>PSS</option>
-								<option value="12"
-									<c:if test="${com_code == '12'}">selected</c:if>>NCB</option>
-								<option value="13"
-									<c:if test="${com_code == '13'}">selected</c:if>>CSS</option>
-								<option value="22"
-									<c:if test="${com_code == '22'}">selected</c:if>>FOS</option>
-								<option value="23"
-									<c:if test="${com_code == '23'}">selected</c:if>>ISS</option>
-						</select>
+					<td>: <select name="com_code" id="com_code">
+							<c:set var="com_code" value="${emp.com_code}" />
+							<option value="11"
+								<c:if test="${com_code == '11'}">selected</c:if>>GCS</option>
+							<option value="21"
+								<c:if test="${com_code == '21'}">selected</c:if>>PSS</option>
+							<option value="12"
+								<c:if test="${com_code == '12'}">selected</c:if>>NCB</option>
+							<option value="13"
+								<c:if test="${com_code == '13'}">selected</c:if>>CSS</option>
+							<option value="22"
+								<c:if test="${com_code == '22'}">selected</c:if>>FOS</option>
+							<option value="23"
+								<c:if test="${com_code == '23'}">selected</c:if>>ISS</option>
+					</select>
 
-						</td>
-					</tr>
-					<tr>
-						<td>部署</td>
-						<td id="dep_area">: <select name="dep_code" id="dep_code">
-								<c:forEach items="${JoinGET}" var="JoinGET">
-									<option value="${JoinGET.dep_code}">${JoinGET.dep_name}</option>
-								</c:forEach>
-						</select>
-						</td>
-					</tr>
+					</td>
+				</tr>
+				<tr>
+					<td>部署</td>
+					<td id="dep_area">: <select name="dep_code" id="dep_code">
+							<c:forEach items="${JoinGET}" var="JoinGET">
+								<option value="${JoinGET.dep_code}">${JoinGET.dep_name}</option>
+							</c:forEach>
+					</select>
+					</td>
+				</tr>
 
-					<tr>
-						<td>職位</td>
-						<td>: <select name="pos_code" id="pos_code">
-								<option value="${emp.pos_code}">${emp.pos_name}</option>
-								<option value="ONE"
-									<c:if test="${emp.pos_code == 'ONE'}"> selected </c:if>>
-									会長</option>
-								<option value="PD"
-									<c:if test="${emp.pos_code == 'PD'}"> selected </c:if>>社長</option>
-								<option value="DIR"
-									<c:if test="${emp.pos_code == 'DIR'}"> selected </c:if>>室長</option>
-								<option value="EM"
-									<c:if test="${emp.pos_code == 'EM'}"> selected </c:if>>本部長</option>
-								<option value="AEM"
-									<c:if test="${emp.pos_code == 'AEM'}"> selected </c:if>>本部長代理</option>
-								<option value="GM"
-									<c:if test="${emp.pos_code == 'GM'}"> selected </c:if>>部長</option>
-								<option value="AGM"
-									<c:if test="${emp.pos_code == 'AGM'}"> selected </c:if>>部長代理</option>
-								<option value="MG"
-									<c:if test="${emp.pos_code == 'MG'}"> selected </c:if>>マネージャー</option>
-								<option value="AMG"
-									<c:if test="${emp.pos_code == 'AMG'}"> selected </c:if>>マネージャー代理</option>
-								<option value="SLD"
-									<c:if test="${emp.pos_code == 'SLD'}"> selected </c:if>>総括リーダ</option>
-								<option value="LD"
-									<c:if test="${emp.pos_code == 'LD'}"> selected </c:if>>リーダ</option>
-								<option value="MB"
-									<c:if test="${emp.pos_code == 'MB'}"> selected </c:if>>メンバー</option>
-						</select></td>
-					</tr>
+				<tr>
+					<td>職位</td>
+					<td>: <select name="pos_code" id="pos_code">
+							<option value="${emp.pos_code}">${emp.pos_name}</option>
+							<option value="ONE"
+								<c:if test="${emp.pos_code == 'ONE'}"> selected </c:if>>
+								会長</option>
+							<option value="PD"
+								<c:if test="${emp.pos_code == 'PD'}"> selected </c:if>>社長</option>
+							<option value="DIR"
+								<c:if test="${emp.pos_code == 'DIR'}"> selected </c:if>>室長</option>
+							<option value="EM"
+								<c:if test="${emp.pos_code == 'EM'}"> selected </c:if>>本部長</option>
+							<option value="AEM"
+								<c:if test="${emp.pos_code == 'AEM'}"> selected </c:if>>本部長代理</option>
+							<option value="GM"
+								<c:if test="${emp.pos_code == 'GM'}"> selected </c:if>>部長</option>
+							<option value="AGM"
+								<c:if test="${emp.pos_code == 'AGM'}"> selected </c:if>>部長代理</option>
+							<option value="MG"
+								<c:if test="${emp.pos_code == 'MG'}"> selected </c:if>>マネージャー</option>
+							<option value="AMG"
+								<c:if test="${emp.pos_code == 'AMG'}"> selected </c:if>>マネージャー代理</option>
+							<option value="SLD"
+								<c:if test="${emp.pos_code == 'SLD'}"> selected </c:if>>総括リーダ</option>
+							<option value="LD"
+								<c:if test="${emp.pos_code == 'LD'}"> selected </c:if>>リーダ</option>
+							<option value="MB"
+								<c:if test="${emp.pos_code == 'MB'}"> selected </c:if>>メンバー</option>
+					</select></td>
+				</tr>
 
-					<tr>
-						<th>性別</th>
-						<td>: <c:set var="gender" value="${emp.gender}" /> <c:choose>
-								<c:when test="${gender == 1}">
+				<tr>
+					<th>性別</th>
+					<td>: <c:set var="gender" value="${emp.gender}" /> <c:choose>
+							<c:when test="${gender == 1}">
                		 		男性<input type="radio" name="gender" value="1"
-										checked />
+									checked />
                       	 	女性<input type="radio" name="gender" value="2" />
-								</c:when>
-								<c:otherwise>
+							</c:when>
+							<c:otherwise>
                		 		  男性<input type="radio" name="gender" value="1" /> 
                      		  女性<input type="radio" name="gender" value="2"
-										checked />
-								</c:otherwise>
-							</c:choose>
-						</td>
-					</tr>
+									checked />
+							</c:otherwise>
+						</c:choose>
+					</td>
+				</tr>
 
-					<tr>
-						<th>メール</th>
-						<td>: <input type="text" name="mail" value="${emp.mail}"></td>
-					</tr>
-					<tr>
-						<th>電話番号</th>
-						<td>: <input type="text" name="cellphone"
-							value="${emp.cellphone}"></td>
-					</tr>
-					<tr>
-						<th>住所</th>
-						<td>: <input type="text" name="address"
-							value="${emp.address}"></td>
-					</tr>
-					<tr>
-						<th>入社日</th>
-						<td>: <input type="number" id="userdate" name="entry_date"
-							value="${emp.entry_date}"></td>
-					</tr>
-				</table>
-		</center>
+				<tr>
+					<th>メール</th>
+					<td>: <input type="text" name="mail" value="${emp.mail}"></td>
+				</tr>
+				<tr>
+					<th>電話番号</th>
+					<td>: <input type="text" name="cellphone"
+						value="${emp.cellphone}"></td>
+				</tr>
+				<tr>
+					<th>住所</th>
+					<td>: <input type="text" name="address" value="${emp.address}"></td>
+				</tr>
+				<tr>
+					<th>入社日</th>
+					<td>: <input type="number" id="userdate" name="entry_date"
+						value="${emp.entry_date}"></td>
+				</tr>
+			</table>
 
-		<br> <input type="button" id="modify" onclick="empsubmit();"
-			value="修正完了" /> <input type="button" value="キャンセル"
-			onclick="history.back();" />
+			<div id="btn">
+				 <input type="button" id="modify" onclick="empsubmit();"value="修正完了" /> 
+				 <input type="button" value="キャンセル" onclick="history.back();" />
+			</div>
 		</form>
 	</div>
 </body>
@@ -164,8 +166,10 @@ th {
 		if (pw == "${Logininfo.password}") {
 			alert("変更したした。");
 			document.getElementById("modify").submit();
-		} else {
-			alert("password error");
+		} else if(!pw){
+			alert("パスワードを入力してください。");
+		}else{
+			alert("既存パスワードが違います。");
 		}
 	}
 

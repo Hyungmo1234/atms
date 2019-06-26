@@ -50,38 +50,46 @@ public class MemberPasswordChangeController {
             String pw = request.getParameter("pw");
             String new_pw = request.getParameter("new_pw");
             String re_new_pw = request.getParameter("re_new_pw");
-            if (pw!=null) {
-               if (new_pw!=null) {
-                  if(re_new_pw!=null) {
-                     if(pw.equals(dto.getPassword())) {
-                        if (new_pw.equals(re_new_pw)) {
-                           if(pw.equals(new_pw)){
-                              response.setContentType("text/html; charset=utf-8");
-                              PrintWriter out = response.getWriter();
-                              out.println("<script>alert('既存パスワードと違うようにしてください。');location.href='/G05'; </script>");
-                              out.flush();
+            
+            if (!pw.isEmpty()) {
+               if (!new_pw.isEmpty()) {
+                  if(!re_new_pw.isEmpty()) {
+                	  if(new_pw.length()>7 && new_pw.length()<13) {
+                		  if(pw.equals(dto.getPassword())) {
+                              if (new_pw.equals(re_new_pw)) {
+                                 if(pw.equals(new_pw)){
+                                    response.setContentType("text/html; charset=utf-8");
+                                    PrintWriter out = response.getWriter();
+                                    out.println("<script>alert('既存パスワードと違うようにしてください。');location.href='/G05'; </script>");
+                                    out.flush();
+                                 }else {
+                                    
+                                    response.setContentType("text/html; charset=utf-8");
+                                    PrintWriter out = response.getWriter();
+                                    out.println("<script>alert('変更しました。');location.href='/G03'; </script>");
+                                    out.flush();
+                                    service.G05_Update(dto.getId(), new_pw);
+                                 }
+                              }else {
+                                 response.setContentType("text/html; charset=utf-8");
+                                 PrintWriter out = response.getWriter();
+                                 out.println("<script>alert('変更するパスワードと不一致します。');location.href='/G05'; </script>");
+                                 out.flush();
+                              }
                            }else {
-                              
                               response.setContentType("text/html; charset=utf-8");
                               PrintWriter out = response.getWriter();
-                              out.println("<script>alert('変更したした。');location.href='/G03'; </script>");
+                              out.println("<script>alert('既存パスワードが違います。');location.href='/G05'; </script>");
                               out.flush();
-                              System.out.println(new_pw);
-                              service.G05_Update(dto.getId(), new_pw);
+                              
                            }
-                        }else {
-                           response.setContentType("text/html; charset=utf-8");
-                           PrintWriter out = response.getWriter();
-                           out.println("<script>alert('変更するパスワードと不一致します。');location.href='/G05'; </script>");
-                           out.flush();
-                        }
-                     }else {
-                        response.setContentType("text/html; charset=utf-8");
-                        PrintWriter out = response.getWriter();
-                        out.println("<script>alert('既存パスワードが違います。');location.href='/G05'; </script>");
-                        out.flush();
-                        
-                     }
+                	  }else {
+                		  response.setContentType("text/html; charset=utf-8");
+                          PrintWriter out = response.getWriter();
+                          out.println("<script>alert('変更するパスワードの形式を確認してください。');location.href='/G05'; </script>");
+                          out.flush();
+                	  }
+                     
                   }else {
                      response.setContentType("text/html; charset=utf-8");
                      PrintWriter out = response.getWriter();

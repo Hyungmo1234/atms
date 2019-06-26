@@ -64,12 +64,12 @@ input{
 				<tr>
 					<td><label>変更するパスワード</label></td>
 					<td>:</td>
-					<td><input type="password" name="new_pw" name="new_pw" placeholder="new_pw"></td>
+					<td><input type="password" name="new_pw" name="new_pw" placeholder="半角英数字、8～16字入力"></td>
 				</tr>
 				<tr>
 					<td><label>変更するパスワード確認</label></td>
 					<td>:</td>
-					<td><input type="password" name="re_new_pw" name="new_pw" placeholder="new_pw"></td>
+					<td><input type="password" name="re_new_pw" name="new_pw" placeholder="もう一度入力してください"></td>
 				</tr>
 			</table>
 		

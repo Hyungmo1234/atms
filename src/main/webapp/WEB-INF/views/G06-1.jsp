@@ -283,9 +283,8 @@ button:hover:before, button:hover:after {
       <div id="list" style="font-size: 30px;">
          <c:out value="${f_time}" /><!-- 총가동시간 출력 -->
       </div>
-      </p>
    </div>
-   <button onclick="history.back();" style="width: 100px">キャンセル</button><!-- 전 페이지로 되돌아가기  -->
+   <button onclick="window.history.back();" style="width: 100px">キャンセル</button><!-- 전 페이지로 되돌아가기  -->
    <!-- 追加 -->
 
 
