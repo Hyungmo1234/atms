@@ -44,7 +44,7 @@ th {
 					<tr>
 						<th>既存パスワード</th>
 						<td>: <input type="password" id="password" name="password"
-							value=""></td>
+							value="${emp.password}"></td>
 					</tr>
 					<tr>
 						<th>名前</th>

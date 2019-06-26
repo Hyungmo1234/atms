@@ -33,6 +33,17 @@ public class AjaxController {
 		return "G02_1";
 	}
 	
+	
+	@RequestMapping(value = "/G00-2/G10_1", method = RequestMethod.POST)
+	public String JoinPOST2(@RequestParam("com_code1") String com_code, Model model) throws Exception {	
+
+		model.addAttribute("JoinGET2", joinService.JoinGET(com_code));
+		
+
+		return "G10_1";
+	}
+	
+	
 	@RequestMapping(value = "/G02_2", method = RequestMethod.POST)
 	public String IdPOST(@RequestParam("id") String id, Model model,HttpServletResponse response) throws Exception {	
 		/*

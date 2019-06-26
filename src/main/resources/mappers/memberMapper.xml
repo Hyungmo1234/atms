@@ -6,13 +6,38 @@
 <mapper namespace="com.attmng.atms.mappers.member">
 
 	<select id="get_membersInfo" parameterType="map" resultType="MemberInfo">
-     SELECT e.id, e.emp_name, c.comName_ryak, p.pos_name, d.dep_name, e.adm_code, 
-      e.gender, e.entry_date, e.mail, e.address, (SELECT IFNULL(sum(op_time),0) FROM t_attendance WHERE id = e.id AND key_year_month = DATE_FORMAT(now(), '%Y%m')) as full_op_time
-      FROM t_employee e, t_company c, t_department d, t_position p
+     SELECT e.id
+          , e.emp_name
+          , c.comName_ryak
+          , p.pos_name
+          , d.dep_name
+          , e.adm_code
+          , e.gender
+          , e.entry_date
+          , e.mail
+          , e.address
+          , (SELECT IFNULL(sum(op_time),0) FROM t_attendance WHERE id = e.id AND key_year_month = DATE_FORMAT(now(), '%Y%m')) as full_op_time
+       FROM t_employee    e
+          , t_company     c
+          , t_department  d
+          , t_position    p
       WHERE e.com_code = c.com_code 
-      and   e.pos_code = p.pos_code
-      and   e.dep_code = d.dep_code
-     
+        and e.pos_code = p.pos_code
+        and e.dep_code = d.dep_code
+        
+        <if test="!''.equals(testa) and testa != null">
+        and e.com_code = #{testa}
+        </if>
+        <if test="!''.equals(testc) and testc != null">
+        and e.pos_code = #{testc}
+        </if>
+        <if test="!''.equals(testb) and testb != null">
+        and e.dep_code = #{testb}
+        </if>
+        <if test="!''.equals(testd) and testd != null">
+        and e.emp_name = #{testd}
+        </if>
+        
       <choose>
       <when test="comNameList.size != 0">
          and comName_ryak IN
@@ -20,7 +45,7 @@
             #{item}
          </foreach>
       </when>
-        </choose>
+      </choose>
    </select>
 	<select id="get_memberInfo" parameterType="map" resultType="MemberInfo">
 		select id, emp_name, entry_date, dep_name, comName_ryak, pos_name, cellphone, mail, address

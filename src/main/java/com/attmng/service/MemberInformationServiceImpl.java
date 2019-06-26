@@ -29,6 +29,12 @@ public class MemberInformationServiceImpl implements MemberInformationService{
 		// TODO Auto-generated method stub 
 		return MemberInformationDAO.getMembersInfo(Adm_code, ComName_ryak);
 	}
+	
+	@Override
+	public List<MemberInformationDTO> getMembersInformation2(String Adm_code, String ComName_ryak, Map<String, Object> tempMap) throws Exception {
+		// TODO Auto-generated method stub 
+		return MemberInformationDAO.getMembersInfo2(Adm_code, ComName_ryak, tempMap);
+	}
 
 	@Override
 	public List<MemberInformationDTO> getMemberInformation(String name) throws Exception {
