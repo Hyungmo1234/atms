@@ -1,5 +1,11 @@
-﻿<script
+﻿﻿<script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<!-- jQuery UI CSS파일  -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+<!-- jQuery 기본 js파일 -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+<!-- jQuery UI 라이브러리 js파일 -->
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -119,9 +125,10 @@
 						</td>
 					</tr>
 					<tr>
-						<td>入社日 <font size="2" color="red"> ex)20190528</font>
+						<td>入社日</font>
 						</td>
-						<td>: <input type="number" name="entry_date" id="entry_date">
+						<td>: <input type="number" name="entry_date" id="datepicker"
+							placeholder="ex)20190528">
 						</td>
 					</tr>
 					<tr>
@@ -154,7 +161,7 @@
 	}
 
 	function finish() {
-		
+
 		if (document.JoinPOST.id.value == "") {
 			alert("IDを入力してください。")
 			JoinPOST.id.focus()
@@ -303,6 +310,16 @@
 			}
 		})
 	})
+
+	$(function() {
+		$("#datepicker").datepicker({
+			changeMonth : true,
+			changeYear : true,
+			dayNamesMin : [ '日', '月', '火', '水', '木', '金', '土' ],
+			dateFormat : "yymmdd",
+			showOn : "button"
+		});
+	});
 
 	$('#id').change(function() {
 		/*  $("#id").remove();*/
