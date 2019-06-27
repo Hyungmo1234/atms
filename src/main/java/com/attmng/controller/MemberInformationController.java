@@ -20,6 +20,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.attmng.domain.EmployeeVO;
+import com.attmng.domain.JoinVO;
 import com.attmng.dto.MemberInformationDTO;
+import com.attmng.service.JoinService;
 import com.attmng.service.MemberInformationService;
 
 
@@ -39,6 +42,8 @@ public class MemberInformationController {
 	@Inject
 	MemberInformationService MemInfoService;
 	
+	@Autowired
+	private JoinService joinService;
 
 	// all month data
 	@RequestMapping("/G06-2")
@@ -104,11 +109,10 @@ public class MemberInformationController {
 	@RequestMapping(value="/test", method = RequestMethod.POST)
 	public String test(HttpServletRequest request, Model model, HttpSession session) throws Exception {
 		String testa = request.getParameter("com_code1");
-		String testb = request.getParameter("dep_area1");
+		String testb = request.getParameter("dep_areaHidden");
 		String testc = request.getParameter("pos_code");
 		String testd = request.getParameter("search");
-		
-		
+	
 		Map<String, Object> tempMap = new HashMap<String, Object>();
 		
 		tempMap.put("testa", testa);
@@ -116,9 +120,18 @@ public class MemberInformationController {
 		tempMap.put("testc", testc);
 		tempMap.put("testd", testd);
 		
+		
+		
 		EmployeeVO vo = (EmployeeVO) session.getAttribute("Logininfo");
 		//占쏙옙占쎄텥占쎄텚占쎄틒占쎄뎌畑댁옊二깍옙嫄�占쎄쾷占쎄퉰占쎄틬占쎄땟占쎄뎌占쎄탾占쎄덩占쎄콨
 		List<MemberInformationDTO> membersData = MemInfoService.getMembersInformation2(vo.getAdm_code(), vo.getComName_ryak(), tempMap);
+		
+		//model.addAttribute("JoinGET2", joinService.JoinGET(testa));
+		model.addAttribute("com_code1", testa);
+		model.addAttribute("dep_areaHidden", testb);
+		model.addAttribute("JoinGET2", joinService.JoinGET(testa));
+		model.addAttribute("pos_code", testc);
+		model.addAttribute("search", testd);
 		
 		//占쏙옙�젇�뿥夷쇽옙�늾占쎈┐�걲�굙已⑨옙占썹쳥怨삵렞塋딄낄占쏙옙占쎄퉰占쎄틬占쎄땟占쎄괏占쎄쾼占쎄콢占쎌죨占쎈└
 		
@@ -127,5 +140,5 @@ public class MemberInformationController {
 		
 		return "G10";
 	}
-	
+
 }

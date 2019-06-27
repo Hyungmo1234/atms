@@ -71,12 +71,12 @@
 			<td>
 			   <select name="com_code1" id="com_code1">
 					<option value="">全体</option>
-					<option value="11">GCS</option>
-					<option value="12">NCB</option>
-					<option value="13">CSS</option>
-					<option value="21">PSS</option>
-					<option value="22">FOS</option>
-					<option value="23">ISS</option>
+					<option value="11"<c:if test="${com_code1=='11'}">selected</c:if>>GCS</option>
+					<option value="12"<c:if test="${com_code1=='12'}">selected</c:if>>NCB</option>
+					<option value="13"<c:if test="${com_code1=='13'}">selected</c:if>>CSS</option>
+					<option value="21"<c:if test="${com_code1=='21'}">selected</c:if>>PSS</option>
+					<option value="22"<c:if test="${com_code1=='22'}">selected</c:if>>FOS</option>
+					<option value="23"<c:if test="${com_code1=='23'}">selected</c:if>>ISS</option>
 				</select>
 				
 				 <td>部署</td>
@@ -85,29 +85,32 @@
                            <option value="${JoinGET2.dep_code}">${JoinGET2.dep_name}</option>
                         </c:forEach>
                   </select>
+                  
+                  <input type=hidden name="dep_areaHidden" id="dep_areaHidden" value="${dep_areaHidden}" >
+                  
                   </td>
                   
              
                   <td>職位</td>
                   <td>: <select name="pos_code" id="pos_code">
                         <option value="">職位を選択してください。</option>
-                        <option value="ONE">会長</option>
-                        <option value="PD">社長</option>
-                        <option value="DIR">室長</option>
-                        <option value="EM">本部長</option>
-                        <option value="AEM">本部長代理</option>
-                        <option value="GM">部長</option>
-                        <option value="AGM">部長代理</option>
-                        <option value="MG">マネージャー</option>
-                        <option value="AMG">マネージャー代理</option>
-                        <option value="SLD">総括リーダ</option>
-                        <option value="LD">リーダ</option>
-                        <option value="MB">メンバー</option>
+                        <option value="ONE"<c:if test="${pos_code=='ONE'}">selected</c:if>>会長</option>
+                        <option value="PD"<c:if test="${pos_code=='PD'}">selected</c:if>>社長</option>
+                        <option value="DIR"<c:if test="${pos_code=='DIR'}">selected</c:if>>室長</option>
+                        <option value="EM"<c:if test="${pos_code=='EM'}">selected</c:if>>本部長</option>
+                        <option value="AEM"<c:if test="${pos_code=='AEM'}">selected</c:if>>本部長代理</option>
+                        <option value="GM"<c:if test="${pos_code=='GM'}">selected</c:if>>部長</option>
+                        <option value="AGM"<c:if test="${pos_code=='AGM'}">selected</c:if>>部長代理</option>
+                        <option value="MG"<c:if test="${pos_code=='MG'}">selected</c:if>>マネージャー</option>
+                        <option value="AMG"<c:if test="${pos_code=='AMG'}">selected</c:if>>マネージャー代理</option>
+                        <option value="SLD"<c:if test="${pos_code=='SLD'}">selected</c:if>>総括リーダ</option>
+                        <option value="LD"<c:if test="${pos_code=='LD'}">selected</c:if>>リーダ</option>
+                        <option value="MB"<c:if test="${pos_code=='MB'}">selected</c:if>>メンバー</option>
                   </select></td>
                   
 				<td>
-				 <input type=text name="search" value='' placeholder="名前を入力してください">
-				<button type='submit'>검색</button>
+				 <input type=text name="search" value="${search}" placeholder="名前を入力してください">
+				<button type='submit'>検索</button>
 				</td>
 			
                  
@@ -234,12 +237,37 @@ $('#com_code1').change(function() {
        },
        success : function(data) {
           $("#dep_area1").append(data);
+          $("#dep_areaHidden").val($("#dep_area1 option:selected").val());
        },
        error : function(request,status,error){
-    	   alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+    	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
        }
     })
  })
+ 
+$('#dep_area1').change(function() {
+	$("#dep_areaHidden").val($("#dep_area1 option:selected").val());
+})
+
+window.onload = function(){
+	var dep_codeLength = document.getElementById("dep_code1").options.length;
+	for (i=0; i<dep_codeLength; i++) {
+		if(document.getElementById("dep_code1").options[i].value == document.getElementById("dep_areaHidden").value){
+			document.getElementById("dep_code1").options[i].selected=true;
+		}
+	}
+}
+
+/* $(document).ready(function(){
+	alert($("#dep_areaHidden").val());
+})
+
+ function as() {
+	alert(${JoinGET2});
+	$("#dep_area1").on("change",function(){
+		$(this).val($("#dep_areaHidden").val()).prop("selected",true);
+	})
+} */
 </script>
 
 </html>

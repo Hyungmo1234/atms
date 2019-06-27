@@ -38,7 +38,14 @@ public class AjaxController {
 	public String JoinPOST2(@RequestParam("com_code1") String com_code, Model model) throws Exception {	
 
 		model.addAttribute("JoinGET2", joinService.JoinGET(com_code));
-		
+
+		return "G10_1";
+	}
+	
+	@RequestMapping(value = "/G10_1", method = RequestMethod.POST)
+	public String JoinPOST3(@RequestParam("com_code1") String com_code, Model model) throws Exception {	
+
+		model.addAttribute("JoinGET2", joinService.JoinGET(com_code));
 
 		return "G10_1";
 	}
