@@ -18,8 +18,8 @@ footer {
    <footer>
       <table>
         <tr>
-          <td rowspan="4" width="20%"><img src="/resources/images/ipsg.png" width="30%">
-               <img src="/resources/images/ta.png" width="30%"></td>
+          <td rowspan="4" width="20%"><img src="resources/images/ipsg.png" width="30%">
+               <img src="resources/images/ta.png" width="30%"></td>
           <td colspan="6" rowspan="2" width="60%">IPSG HODINGS, タウルス</td>
           <td width="10%">IPSG</td>
           <td width="10%">タウルス</td>

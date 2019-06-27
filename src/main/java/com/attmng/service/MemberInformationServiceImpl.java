@@ -36,9 +36,9 @@ public class MemberInformationServiceImpl implements MemberInformationService {
   }
 
   @Override
-  public List<MemberInformationDTO> getMemberInformation(String name) throws Exception {
+  public List<MemberInformationDTO> getMemberInformation(String id) throws Exception {
     // TODO Auto-generated method stub
-    return MemberInformationDAO.getMemberInfo(name);
+    return MemberInformationDAO.getMemberInfo(id);
   }
 
   @Override

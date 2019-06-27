@@ -18,92 +18,84 @@ import com.attmng.dto.MemberInformationDTO;
 import com.attmng.service.JoinService;
 import com.attmng.service.MemberInformationService;
 
-
 // @Auth
 @Controller
 public class MemberInformationController {
 
+	@Inject
+	MemberInformationService MemInfoService;
 
-  @Inject
-  MemberInformationService MemInfoService;
+	@Autowired
+	private JoinService joinService;
 
-  @Autowired
-  private JoinService joinService;
+	// all month data
+	@RequestMapping("/G06-2")
+	public ModelAndView alldata(HttpServletRequest request, HttpSession session, Model model) throws Exception {
 
-  // all month data
-  @RequestMapping("/G06-2")
-  public ModelAndView alldata(HttpServletRequest request, HttpSession session, Model model)
-      throws Exception {
+		MemInfoService.getUserAttendanceData(request, session, model);
 
-    MemInfoService.getUserAttendanceData(request, session, model);
+		return new ModelAndView("G12");
+	}
 
-    return new ModelAndView("G12");
-  }
+	@RequestMapping(value = "/G10", method = RequestMethod.GET)
+	public String Admin_get_MembersInformation(Model model, HttpSession session) throws Exception {
+		EmployeeVO vo = (EmployeeVO) session.getAttribute("Logininfo");
+		List<MemberInformationDTO> membersData = MemInfoService.getMembersInformation(vo.getAdm_code(),
+				vo.getComName_ryak());
 
-  @RequestMapping(value = "/G10", method = RequestMethod.GET)
-  public String Admin_get_MembersInformation(Model model, HttpSession session) throws Exception {
-    EmployeeVO vo = (EmployeeVO) session.getAttribute("Logininfo");
-    List<MemberInformationDTO> membersData =
-        MemInfoService.getMembersInformation(vo.getAdm_code(), vo.getComName_ryak());
+		model.addAttribute("membersData", membersData);
 
+		return "G10";
+	}
 
-    model.addAttribute("membersData", membersData);
+	@RequestMapping(value = "G11", method = RequestMethod.POST)
+	public String Admin_get_MemberInformation(HttpServletRequest request, Model model) throws Exception {
+		String id = request.getParameter("sinid");
 
-    return "G10";
-  }
+		List<MemberInformationDTO> memberData = MemInfoService.getMemberInformation(id);
 
-  @RequestMapping(value = "G11", method = RequestMethod.POST)
-  public String Admin_get_MemberInformation(HttpServletRequest request, Model model)
-      throws Exception {
-    String name = request.getParameter("name");
+		model.addAttribute("memberData", memberData.get(0));
 
-    List<MemberInformationDTO> memberData = MemInfoService.getMemberInformation(name);
+		return "G11";
+	}
 
-    model.addAttribute("memberData", memberData.get(0));
+	@RequestMapping(value = "/G12", method = RequestMethod.POST)
+	public String Admin_get_commuteInformation(HttpServletRequest request, HttpSession session, Model model)
+			throws Exception {
 
-    return "G11";
-  }
+		//
+		MemInfoService.getMemberAttendanceData(request, session, model);
 
-  @RequestMapping(value = "/G12", method = RequestMethod.POST)
-  public String Admin_get_commuteInformation(HttpServletRequest request, HttpSession session,
-      Model model) throws Exception {
+		return "G12";
+	}
 
-    //
-    MemInfoService.getMemberAttendanceData(request, session, model);
+	@RequestMapping(value = "/test", method = RequestMethod.POST)
+	public String test(HttpServletRequest request, Model model, HttpSession session) throws Exception {
+		String testa = request.getParameter("com_code1");
+		String testb = request.getParameter("dep_areaHidden");
+		String testc = request.getParameter("pos_code");
+		String testd = request.getParameter("search");
 
-    return "G12";
-  }
+		Map<String, Object> tempMap = new HashMap<String, Object>();
 
-  @RequestMapping(value = "/test", method = RequestMethod.POST)
-  public String test(HttpServletRequest request, Model model, HttpSession session)
-      throws Exception {
-    String testa = request.getParameter("com_code1");
-    String testb = request.getParameter("dep_areaHidden");
-    String testc = request.getParameter("pos_code");
-    String testd = request.getParameter("search");
+		tempMap.put("testa", testa);
+		tempMap.put("testb", testb);
+		tempMap.put("testc", testc);
+		tempMap.put("testd", testd);
 
-    Map<String, Object> tempMap = new HashMap<String, Object>();
+		EmployeeVO vo = (EmployeeVO) session.getAttribute("Logininfo");
+		List<MemberInformationDTO> membersData = MemInfoService.getMembersInformation2(vo.getAdm_code(),
+				vo.getComName_ryak(), tempMap);
 
-    tempMap.put("testa", testa);
-    tempMap.put("testb", testb);
-    tempMap.put("testc", testc);
-    tempMap.put("testd", testd);
+		model.addAttribute("com_code1", testa);
+		model.addAttribute("dep_areaHidden", testb);
+		model.addAttribute("JoinGET2", joinService.JoinGET(testa));
+		model.addAttribute("pos_code", testc);
+		model.addAttribute("search", testd);
 
+		model.addAttribute("membersData", membersData);
 
-
-    EmployeeVO vo = (EmployeeVO) session.getAttribute("Logininfo");
-    List<MemberInformationDTO> membersData =
-        MemInfoService.getMembersInformation2(vo.getAdm_code(), vo.getComName_ryak(), tempMap);
-
-    model.addAttribute("com_code1", testa);
-    model.addAttribute("dep_areaHidden", testb);
-    model.addAttribute("JoinGET2", joinService.JoinGET(testa));
-    model.addAttribute("pos_code", testc);
-    model.addAttribute("search", testd);
-
-    model.addAttribute("membersData", membersData);
-
-    return "G10";
-  }
+		return "G10";
+	}
 
 }

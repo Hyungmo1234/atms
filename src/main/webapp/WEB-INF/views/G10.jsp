@@ -153,7 +153,7 @@
 						<td>${membersData.comName_ryak}</td>
 						<td>${membersData.pos_name}</td>
 						<td class="table_EmpName"
-							onClick="document.getElementById('get_memeberInfoForm_${membersData.emp_name}').submit()">
+							onClick="document.getElementById('get_memeberInfoForm_${membersData.id}').submit()">
 							${membersData.emp_name}</td>
 						<td>${membersData.dep_name}</td>
 						<td><c:set var="gender" value="${membersData.gender}" /> <c:choose>
@@ -170,9 +170,9 @@
 							${membersData.full_op_time}</td>
 					</tr>
 					<!-- 社員情報アクセス -->
-					<form id="get_memeberInfoForm_${membersData.emp_name}"
+					<form id="get_memeberInfoForm_${membersData.id}"
 						action=<%= URL_personal_information %> method="POST">
-						<input type="hidden" name="name" value=${membersData.emp_name}>
+						<input type="hidden" name="sinid" value=${membersData.id}>
 					</form>
 					<!-- 勤怠情報アクセス -->
 					<form id="get_memeberAttdanceForm_${membersData.emp_name}"

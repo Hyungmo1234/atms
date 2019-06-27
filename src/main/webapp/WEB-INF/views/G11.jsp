@@ -25,6 +25,9 @@
 	font-size: 25px;
 	text-align: left;
 }
+#btn{
+	text-align: center;	
+}
 
 .table_memberInfoList {
 	width: 50%;
@@ -48,6 +51,11 @@
 	border-radius: 10px;
 }
 </style>
+<script type="text/javascript">
+	function back_click() {
+		window.history.back();
+	}
+</script>
 </head>
 <%
   String strReferer = request.getHeader("referer");
@@ -70,7 +78,7 @@
 				style="width: 100%; padding-left: 1%; padding-top: 1%; font-size: 35px; font-weight: bold;">
 				社員情報紹介</div>
 
-			<table class="table_memberInfoList">
+			<table style="margin-left: auto; margin-right: auto; margin-top: 50px">
 				<tr>
 					<td class="info_column">ID</td>
 					<td>:</td>
@@ -130,9 +138,9 @@
 				</tr>
 			</table>
 
-			<div class="cancel_btn">
-				<a style="color: black; text-decoration: none;"
-					href=<%=URL_MembersInfomation%>>キャンセル</a>
+			<div id="btn">
+				<input type="submit" value="勤怠情報" onclick="change_click()">
+				<input type="button" value="キャンセル" onclick="back_click()">
 			</div>
 		</div>
 	</div>
