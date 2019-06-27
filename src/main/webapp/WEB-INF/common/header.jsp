@@ -30,7 +30,7 @@ header {
 				<td>${Logininfo.pos_name}</td>
 				<td>${Logininfo.emp_name}</td>
 				<td>${Logininfo.id}</td>
-				<td><form action="/logout" method="GET"><input type="submit" value="ログアウト"/></form></td>
+				<td><form action="logout" method="GET"><input type="submit" value="ログアウト"/></form></td>
 				</c:if>
 			</tr>
 		</table>

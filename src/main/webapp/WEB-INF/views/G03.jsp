@@ -11,12 +11,14 @@
 #list {
 	font-size: 20px;
 }
+
 #btn {
-	text-align: center; 
+	text-align: center;
 }
+
 #btn input {
 	font-size: 15px;
-} 
+}
 </style>
 </head>
 <script type="text/javascript">
@@ -25,17 +27,17 @@
 	}
 </script>
 <%
-	String strReferer = request.getHeader("referer");
+  String strReferer = request.getHeader("referer");
 
-	if (strReferer == null) {
+			if (strReferer == null) {
 %>
 <script language="javascript">
 	alert("URL 주소창에 주소를 직접 입력해서 접근하셨습니다.\n\n정상적인 경로를 통해 다시 접근해 주십시오.");
 	document.location.href = "../G01";
 </script>
 <%
-	return;
-	}
+  return;
+  }
 %>
 <body>
 	<jsp:include page="/WEB-INF/common/header.jsp"></jsp:include>
@@ -48,55 +50,51 @@
 				<table id="list" style="margin-left: auto; margin-right: auto;">
 					<tr>
 						<td><label>ID</label></td>
-						<td>　: ${listAll.id}</td>
+						<td>: ${listAll.id}</td>
 					</tr>
 
 					<tr>
 						<td><label>名前</label></td>
-						<td>　: ${listAll.emp_name}</td>
+						<td>: ${listAll.emp_name}</td>
 					</tr>
 
 					<tr>
 						<td><label>会社</label></td>
-						<td>　: ${listAll.comName_ryak}</td>
+						<td>: ${listAll.comName_ryak}</td>
 					</tr>
 					<tr>
-					
-					
+
+
 						<td><label>部署</label></td>
-						<td>　: ${listAll.dep_name}</td>
+						<td>: ${listAll.dep_name}</td>
 					</tr>
 					<tr>
 						<td><label>職位</label></td>
-						<td>　: ${listAll.pos_name}</td>
+						<td>: ${listAll.pos_name}</td>
 					</tr>
 					<tr>
-					<c:choose>
-						<c:when test="${listAll.gender eq 1 }">
-						<td><label>性別</label></td>
-						<td>　: 男性 </td>
-						</c:when>
-						<c:otherwise>
-						<td><label>性別</label></td>
-						<td>　:　女性</td>
-						</c:otherwise>
-					</c:choose>
+						<c:choose>
+							<c:when test="${listAll.gender eq 1 }">
+								<td><label>性別</label></td>
+								<td>: 男性</td>
+							</c:when>
+							<c:otherwise>
+								<td><label>性別</label></td>
+								<td>: 女性</td>
+							</c:otherwise>
+						</c:choose>
 					</tr>
-				<%-- 	<tr>
-						<td><label>性別</label></td>
-						<td>　: ${listAll.gender}</td>
-					</tr> --%>
 					<tr>
 						<td><label>メール</label></td>
-						<td>　: ${listAll.mail}</td>
+						<td>: ${listAll.mail}</td>
 					</tr>
 					<tr>
 						<td><label>住所</label></td>
-						<td>　: ${listAll.address}</td>
+						<td>: ${listAll.address}</td>
 					</tr>
 					<tr>
 						<td><label>入社日</label></td>
-						<td>　: ${listAll.entry_date}</td>
+						<td>: ${listAll.entry_date}</td>
 					</tr>
 
 
@@ -104,8 +102,8 @@
 			</form>
 			<div id="btn">
 				<a href="G04?id=${listAll.id}"><input type="button" value="情報修正" /></a>
-				<a href="G05"><input type="button" value="パスワード 変更" /></a>
-			<input type="button" class="btn_list" value="キャンセル" onclick="goBack()">
+				<a href="G05"><input type="button" value="パスワード 変更" /></a> <input
+					type="button" class="btn_list" value="キャンセル" onclick="goBack()">
 			</div>
 
 

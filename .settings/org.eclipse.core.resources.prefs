@@ -1,6 +1,9 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/attmng/controller/AttendanceController.java=UTF-8
 encoding//src/main/java/com/attmng/controller/HomeController.java=UTF-8
 encoding//src/main/java/com/attmng/controller/LoginController.java=UTF-8
+encoding//src/main/java/com/attmng/controller/MemberInformationController.java=UTF-8
+encoding//src/main/java/com/attmng/controller/MemberPasswordChangeController.java=UTF-8
 encoding//src/main/java/com/attmng/dao/LoginDAOImpl.java=UTF-8
 encoding//src/main/java/com/attmng/dto/EmployeeDTO.java=UTF-8
 encoding//src/main/java/com/attmng/service/LoginServiceImpl.java=UTF-8
