@@ -1,4 +1,4 @@
-package com.attmng.dto;
+ package com.attmng.dto;
 
 public class MemberInformationDTO extends AttendanceDTO {
 	private String id;
@@ -14,6 +14,7 @@ public class MemberInformationDTO extends AttendanceDTO {
 	private String cellphone;
 	private String address;
 	private String full_op_time;
+	private int status;
 	
 	
 	
@@ -94,6 +95,12 @@ public class MemberInformationDTO extends AttendanceDTO {
 	}
 	public void setFull_op_time(String full_op_time) {
 		this.full_op_time = full_op_time;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 }

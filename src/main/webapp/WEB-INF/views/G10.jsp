@@ -168,6 +168,25 @@
 						<td class="table_WorkTime"
 							onClick="document.getElementById('get_memeberAttdanceForm_${membersData.emp_name}').submit()">
 							${membersData.full_op_time}</td>
+						<!-- status 출력란 -->
+						<td class="table_status">
+							<c:set var="status" value="${membersData.status}" /> 
+							<c:choose>
+							<c:when test="${status eq 100 }">
+	                           	作成中
+	                        </c:when>
+							<c:when test="${status eq 200  }">
+	                        	承認前
+	                        </c:when>
+							<c:when test="${status eq 400  }">
+	                        	承認	完了
+	                        </c:when>
+							<c:otherwise>
+	                           	作成前
+	                        </c:otherwise>
+							</c:choose>
+						</td>
+					</tr>
 					</tr>
 					<!-- 社員情報アクセス -->
 					<form id="get_memeberInfoForm_${membersData.id}"
