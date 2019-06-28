@@ -141,16 +141,16 @@ th {
 
 				<tr>
 					<th>メール</th>
-					<td>: <input type="text" name="mail" value="${emp.mail}"></td>
+					<td>: <input type="text" name="mail" id="mail" value="${emp.mail}"></td>
 				</tr>
 				<tr>
 					<th>電話番号</th>
-					<td>: <input type="text" name="cellphone"
+					<td>: <input type="text" name="cellphone" id="cellphone"
 						value="${emp.cellphone}"></td>
 				</tr>
 				<tr>
 					<th>住所</th>
-					<td>: <input type="text" name="address" value="${emp.address}"></td>
+					<td>: <input type="text" name="address" id="address" value="${emp.address}"></td>
 				</tr>
 				<tr>
 					<th>入社日</th>
@@ -167,17 +167,74 @@ th {
 	</div>
 </body>
 <script type="text/javascript">
-	function empsubmit() {
-		var pw = document.getElementById("password").value;
-		if (pw == "${Logininfo.password}") {
+function empsubmit() {
+	var pw = document.getElementById("password").value;
+	if (pw == "${Logininfo.password}") {
+		
+		if (document.getElementById("com_code").value == "") {
+			alert("会社を選択してください。")
+			document.modify.com_code.focus()
+			return false;
+		}
+
+		if (document.getElementById("dep_code").value == "") {
+			alert("部署を選択してください。")
+			document.modify.dep_code.focus()
+			return false;
+		}
+
+		if (document.getElementById("pos_code").value == "") {
+			alert("職位を選択してください。")
+			document.modify.pos_code.focus()
+			return false;
+		}
+		
+		
+		if (document.getElementById("mail").value == "") {
+			alert("メールを入力してください。")
+			document.modify.mail.focus()
+			return false;
+		}
+		
+		if (!document.getElementById("mail").value.match(/^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z\.]{2,6}$/)) {
+			alert("メールの形式が正しくありません。")
+			document.modify.mail.value = ""
+			document.modify.mail.focus()
+			return false;
+		}
+		
+		if (document.getElementById("address").value == "") {
+			alert("住所を入力してください。")
+			document.modify.address.focus()
+			return false;
+		}
+		
+		if (document.getElementById("datepicker").value == "") {
+			alert("入社日を入力してください。")
+			document.modify.entry_date.focus()
+			return false;
+		} else if(document.getElementById("datepicker").value.length != 8) {
+			alert("入社日の形式を守ってください。")
+			document.modify.entry_date.focus()
+			return false;
+		}
+
+		if (confirm("登録が完了しました。") == true) {
 			alert("変更したした。");
 			document.getElementById("modify").submit();
-		} else if(!pw){
-			alert("パスワードを入力してください。");
-		}else{
-			alert("既存パスワードが違います。");
+		} else {
+			return;
 		}
+		
+	} else if(!pw){
+		alert("パスワードを入力してください。");
+	}else{
+		alert("既存パスワードが違います。");
 	}
+	
+	
+	
+}
 
 	$(function() {
 		$("#datepicker").datepicker({
