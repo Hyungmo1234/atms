@@ -33,6 +33,7 @@
       <div style="font-family: verdana; border: 1px solid red; font-size: 25px; text-align: center; height: 100%">
       <div style="padding-top:70px;"><h4><a href="attendanceGET">勤怠情報入力</a></h4></div>
       <div><h4><a href="#" onClick="document.getElementById('getForm').submit()">勤怠情報照会</a></h4></div>
+      <div style="padding-top:0;"><h4><a href="G13">휴가보고서 작성 화면(작업중)</a></h4></div>
       <div style="padding-top:130px;"><h4><a href="G03">社員情報照会</a></h4></div>
       
       </div>

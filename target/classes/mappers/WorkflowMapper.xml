@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.attmng.atms.mappers.workflow">
+
+	<insert id="workflowUpdate" parameterType="map">
+		INSERT INTO t_workflow(id, key_year_month, commit_date, commit_name, status, memo)
+		VALUES(#{id}, #{key_year_month}, #{commit_date}, #{commit_name}, #{status}, #{memo})
+	</insert>
+	
+	<select id="workflowcheck" parameterType="String" resultType="int">
+		SELECT ifnull(max(status), 0)
+		FROM t_workflow
+		WHERE id = #{id}
+	</select>
+	
+	<select id="workflowfeedback" parameterType="String" resultType="string">
+		SELECT memo
+		FROM t_workflow
+		WHERE id = #{id}
+	</select>
+	
+	<update id="workflow_CancelUpdate" parameterType="map">
+		UPDATE t_workflow 
+		SET commit_name = #{commit_name}, commit_date = #{commit_date}, status=#{status}
+		WHERE id= #{id} 
+		
+	</update>
+	
+	<update id="workflow_okUpdate" parameterType="map">
+		UPDATE t_workflow
+		SET commit_date = #{commit_date},
+		commit_name = #{commit_name}, status = #{status}
+		WHERE id= #{id} 
+	</update>
+
+
+	
+</mapper>

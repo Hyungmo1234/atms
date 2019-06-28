@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.attmng.atms.mappers.vacationManagement">
+    <insert id="insert_t_vacation_management" parameterType="java.util.List">
+        INSERT INTO t_vacation_management(
+            id           ,
+            yearmonth    ,
+            `index`      ,
+	        vac_startdate,
+	        vac_enddate  ,
+	        division     ,
+	        detail
+        ) 
+        VALUES
+        <foreach collection="list" item="item" separator=" , ">
+        (
+            #{item.id           }                                             ,
+            #{item.yearmonth    }                                             ,
+            (SELECT IFNULL (MAX(`index`) + 1, 0) FROM t_vacation_management A),
+            #{item.vac_startdate}                                             ,
+            #{item.vac_enddate  }                                             ,
+            #{item.division     }                                             ,
+            #{item.detail       }
+        )
+        </foreach>
+    </insert>
+    
+    <insert id="insert_t_vacation_holiday" parameterType="java.util.List">
+        INSERT INTO t_vacation_holiday(
+            id           ,
+            yearmonth    ,
+            `index`      ,
+	        holi_work
+        ) 
+        VALUES
+        <foreach collection="list" item="item" separator=" , ">
+        (
+            #{item.id           }                                             ,
+            #{item.yearmonth    }                                             ,
+            (SELECT IFNULL (MAX(`index`) + 1, 0) FROM t_vacation_holiday A),
+            #{item.holi_work    }
+        )
+        </foreach>
+    </insert>
+    
+    <insert id="insert_t_vacation_worktimecontrol" parameterType="java.util.List">
+        INSERT INTO t_vacation_worktimecontrol(
+            id           ,
+            yearmonth    ,
+            `index`      ,
+	        con_time     
+        ) 
+        VALUES
+        <foreach collection="list" item="item" separator=" , ">
+        (
+            #{item.id           }                                             ,
+            #{item.yearmonth    }                                             ,
+            (SELECT IFNULL (MAX(`index`) + 1, 0) FROM t_vacation_worktimecontrol A),
+            #{item.con_time     }
+        )
+        </foreach>
+    </insert>
+    
+    <select id="select_vacation_management" parameterType="map" resultType="VacationManagementVO">
+		SELECT
+		    A.id           ,
+            A.yearmonth    ,
+            A.`index`      ,
+	        A.vac_startdate,
+	        A.vac_enddate  ,
+	        A.division     ,
+	        A.detail       ,
+            B.holi_work    ,
+            C.con_time
+	    FROM
+	        t_vacation_management A
+	        LEFT OUTER JOIN
+	        t_vacation_holiday B
+	        ON  A.id = B.id
+            AND A.yearmonth = B.yearmonth
+            AND A.`index` = B.`index`
+	        LEFT OUTER JOIN
+	        t_vacation_worktimecontrol C
+	        ON A.id = C.id
+            AND A.yearmonth = C.yearmonth
+            AND A.`index` = C.`index`
+		WHERE
+		    1=1
+		AND A.id        = #{id       }
+		AND A.yearmonth = #{yearmonth}
+	</select>
+	
+	<select id="select_vacation_management_t_vacation_management" parameterType="map" resultType="VacationManagementVO">
+		SELECT id                    AS id
+		     , yearmonth             AS yearmonth
+		     , 'index'               AS 'index'
+		     , vac_startdate         AS vac_startdate
+		     , vac_enddate           AS vac_enddate
+		     , division              AS division
+		     , detail                AS detail
+	      FROM t_vacation_management A
+		 WHERE 1=1
+		   AND id        = #{id       }
+		   AND yearmonth = #{yearmonth}
+	</select>
+	
+	<select id="select_vacation_management_t_vacation_holiday" parameterType="map" resultType="VacationManagementVO">
+		SELECT id                 AS id
+		     , yearmonth          AS yearmonth
+		     , 'index'            AS 'index'
+		     , holi_work          AS holi_work
+	      FROM t_vacation_holiday A
+		 WHERE 1=1
+		   AND id        = #{id       }
+		   AND yearmonth = #{yearmonth}
+	</select>
+	
+	<select id="select_vacation_management_t_vacation_worktimecontrol" parameterType="map" resultType="VacationManagementVO">
+		SELECT id                         AS id
+		     , yearmonth                  AS yearmonth
+		     , 'index'                    AS 'index'
+		     , con_time                   AS con_time
+	      FROM t_vacation_worktimecontrol A
+		 WHERE 1=1
+		   AND A.id        = #{id       }
+		   AND A.yearmonth = #{yearmonth}
+	</select>
+</mapper>
